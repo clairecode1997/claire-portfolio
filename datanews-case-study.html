@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Californian Car Plates — DataNews | Chih-yu Chang</title>
+<style>
+  :root{
+    --ink:#2b1c10; --sub:#8a6f5b; --line:#f0dfd0; --bg:#fff9f2; --card:#ffffff;
+    --accent:#e05c2a; --accent-soft:#fdeadf; --tag:#f9efe4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.85; font-size:16px;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 24px;}
+  header.top{position:sticky; top:0; z-index:50; background:rgba(255,249,242,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .top-inner{max-width:860px; margin:0 auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center;}
+  .lang-toggle{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:#fff;}
+  .lang-toggle button{border:0; background:transparent; padding:6px 16px; cursor:pointer; font-size:14px; color:var(--sub);}
+  .lang-toggle button.active{background:var(--ink); color:#fff;}
+  .hero{padding:64px 0 40px;}
+  .kicker{color:var(--accent); font-weight:700; font-size:14px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.3; font-weight:800; margin-bottom:16px;}
+  .lede{color:var(--sub); font-size:18px; max-width:660px;}
+  .video-box{margin:32px 0 0; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:#000;}
+  .video-box video{width:100%; display:block;}
+  .meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:32px 0;}
+  .meta div{background:var(--card); padding:16px 18px;}
+  .meta .k{font-size:12px; color:var(--sub); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px;}
+  .meta .v{font-weight:600; font-size:14.5px;}
+  section{padding:36px 0; border-top:1px solid var(--line);}
+  h2{font-size:26px; font-weight:800; margin-bottom:8px;}
+  h2 .num{color:var(--accent); font-size:15px; display:block; letter-spacing:.1em; margin-bottom:6px;}
+  p{margin:12px 0; color:#463122;}
+  ul,ol{margin:12px 0 12px 22px;}
+  li{margin:7px 0; color:#463122;}
+  strong{color:var(--ink);}
+  .callout{background:var(--accent-soft); border-left:4px solid var(--accent); border-radius:0 12px 12px 0; padding:16px 20px; margin:20px 0;}
+  figure{margin:24px 0;}
+  figure img{width:100%; border:1px solid var(--line); border-radius:12px; background:#fff; display:block;}
+  figcaption{font-size:13px; color:var(--sub); margin-top:8px; text-align:center;}
+  footer{padding:40px 0 60px; color:var(--sub); font-size:13.5px; border-top:1px solid var(--line);}
+  [data-lang="zh"] .en{display:none !important;}
+  [data-lang="en"] .zh{display:none !important;}
+  .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .tagrow span{background:var(--tag); border-radius:999px; padding:4px 14px; font-size:13px; color:var(--sub);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html" style="text-decoration:none;color:inherit;font-weight:700;">← Home&nbsp;&nbsp;<span style="opacity:.45">|</span>&nbsp;&nbsp;Chih-yu Chang · Portfolio</a>
+    <div class="lang-toggle">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Data Storytelling · DataNews Workshop</div>
+  <h1><span class="zh">Californian Car Plates<br><span style="font-size:.55em; color:var(--sub); font-weight:700;">被拒絕的兩萬張車牌，一支 85 秒的資料影片</span></span><span class="en">Californian Car Plates<br><span style="font-size:.55em; color:var(--sub); font-weight:700;">20,000 rejected plates, one 85-second data video</span></span></h1>
+  <p class="lede">
+    <span class="zh">加州人可以幫車牌自由命名——但 DMV 說了算。我們鑽進兩萬多筆個性化車牌申請與審核紀錄，把官僚審核流程變成一支幽默的資訊動畫。</span>
+    <span class="en">Californians can name their own license plates — but the DMV has the final say. We dug into 20,000+ vanity-plate applications and review records, turning bureaucratic moderation into a witty animated data video.</span>
+  </p>
+  <div class="tagrow">
+    <span>Data Analysis</span><span>Script Writing</span><span>Storyboard</span><span>Motion Graphics</span><span>After Effects</span>
+  </div>
+
+  <div class="video-box">
+    <video controls preload="metadata" poster="assets/datanews/poster.jpg">
+      <source src="assets/datanews/video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="meta">
+    <div><div class="k"><span class="zh">課程</span><span class="en">Course</span></div><div class="v">DataNews – Workshop on Data Videos（FH Potsdam）</div></div>
+    <div><div class="k"><span class="zh">期間</span><span class="en">Timeline</span></div><div class="v"><span class="zh">2025/26 冬季學期（交換）</span><span class="en">Winter Semester 2025/26 (exchange)</span></div></div>
+    <div><div class="k"><span class="zh">形式</span><span class="en">Format</span></div><div class="v"><span class="zh">分組專題・85 秒資訊影片</span><span class="en">Group project · 85-sec data video</span></div></div>
+    <div><div class="k"><span class="zh">我的參與</span><span class="en">My Role</span></div><div class="v"><span class="zh">全程：資料分析・腳本提案・動畫製作（部分片段）</span><span class="en">End-to-end: data analysis · script proposal · animation (selected segments)</span></div></div>
+  </div>
+</div>
+
+<section>
+  <h2><span class="num">01</span><span class="zh">從資料集裡找到故事</span><span class="en">Finding the Story in the Dataset</span></h2>
+  <p><span class="zh">課程提供多個開放資料集（英國公廁、柏林行道樹、德國大選⋯），我們選了最有戲的一個：<strong>加州 DMV 個性化車牌申請紀錄</strong>——2015 至 2016 年超過 20,000 筆申請，每筆都留有審核員的核可／駁回決定與理由備註。分析後找到敘事鉤子：多數申請被拒，但拒絕的邏輯出人意料——有些看似無害的組合被駁回，有些遊走邊緣的反而過關。</span>
+  <span class="en">The course offered several open datasets (UK toilets, Berlin street trees, German elections…). We picked the most dramatic one: <strong>California DMV vanity-plate applications</strong> — 20,000+ applications from 2015–16, each carrying the reviewer's approve/reject decision and notes. Analysis surfaced the hook: most applications fail, but the logic of rejection is surprising — innocent-looking combos get denied while borderline ones slip through.</span></p>
+  <div class="callout"><span class="zh"><strong>數據亮點：</strong>「420」相關組合 61 件申請僅 1 件通過；「14」「88」因常見於仇恨代碼而頻繁觸發紅旗——審核的不是字面，是語境。</span>
+  <span class="en"><strong>Data highlights:</strong> of 61 applications containing "420," exactly one was approved; "14" and "88" get flagged for their use in hate codes — reviewers judge context, not characters.</span></div>
+</section>
+
+<section>
+  <h2><span class="num">02</span><span class="zh">從腳本到動畫</span><span class="en">From Script to Motion</span></h2>
+  <p><span class="zh">我提出了影片腳本：以「你知道車牌可以自己取名嗎？」開場，帶觀眾走一遍審核流程，用真實的審核對話（申請者：「HOLYFCK 是宗教意涵！」→ REJECTED）製造笑點，數據段落用車牌牆與長條圖視覺化，結尾拋回給觀眾：「如果是你，你的車牌想寫什麼？」13 格手繪 storyboard 定稿後，以 Illustrator 建素材、After Effects 製作動態——我負責其中數個片段的動畫，包括使用正宗 Dealerplate California 字型的車牌畫面。</span>
+  <span class="en">I proposed the script: open with "did you know you can name your own plate?", walk viewers through the review process, mine the real reviewer dialogues for comedy (applicant: "HOLY as in religious!" → REJECTED), visualize the data with plate walls and bar charts, and end by throwing it back: "what would yours say?" After locking the 13-frame hand-drawn storyboard, we built assets in Illustrator and animated in After Effects — I animated several segments, including the plate scenes set in the authentic Dealerplate California typeface.</span></p>
+  <figure><img src="assets/datanews/storyboard.jpg" alt="Storyboard frames"><figcaption><span class="zh">13 格 storyboard 之二：申請量與拒絕率的開場鋪陳。</span><span class="en">Two of the 13 storyboard frames: setting up application volume and rejection rates.</span></figcaption></figure>
+  <figure><img src="assets/datanews/frame-420.jpg" alt="420 data visualization frame"><figcaption><span class="zh">影片中的數據段落：61 張「420」車牌申請，只有一張綠色的倖存者。</span><span class="en">The data beat: sixty-one "420" applications, one green survivor.</span></figcaption></figure>
+</section>
+
+<section>
+  <h2><span class="num">03</span><span class="zh">學到的事</span><span class="en">What I Learned</span></h2>
+  <ol>
+    <li><span class="zh"><strong>資料的價值在反直覺處。</strong>「多數被拒」不是故事，「拒絕的邏輯無法預測、但紅旗有跡可循」才是——找到觀眾預期與數據事實的落差，敘事就成立了。</span><span class="en"><strong>Data earns its keep where it defies intuition.</strong> "Most get rejected" isn't a story; "rejection is unpredictable, but red flags follow patterns" is. Find the gap between expectation and fact, and the narrative writes itself.</span></li>
+    <li><span class="zh"><strong>幽默是資訊的載體，不是干擾。</strong>審核紀錄原文比任何編劇都好笑，我們只需要忠實引用——真實素材自帶說服力。</span><span class="en"><strong>Humor carries information; it doesn't dilute it.</strong> The reviewer notes were funnier than anything we could write — faithful quotation was the best scriptwriting.</span></li>
+    <li><span class="zh"><strong>85 秒是紀律。</strong>每一格分鏡都要同時推進敘事與數據，捨不得刪的段落通常就是該刪的段落。</span><span class="en"><strong>85 seconds is a discipline.</strong> Every frame must advance both story and data; the segment you can't bear to cut is usually the one to cut.</span></li>
+  </ol>
+</section>
+
+<footer>
+  <span class="zh">本頁基於課程分鏡稿、AE 專案與最終影片整理。DataNews – Workshop on Data Videos，FH Potsdam，分組專題。© Chih-yu Chang</span>
+  <span class="en">Compiled from the course storyboard, AE projects, and the final video. DataNews – Workshop on Data Videos, FH Potsdam, group project. © Chih-yu Chang</span>
+</footer>
+
+</div>
+
+<script>
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', l==='zh');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  try{ localStorage.setItem('lang', l); }catch(e){}
+}
+try{ const s = localStorage.getItem('lang'); if(s) setLang(s); }catch(e){}
+</script>
+</body>
+</html>

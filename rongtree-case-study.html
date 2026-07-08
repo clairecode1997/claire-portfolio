@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>融樹 Rong Tree — 2024 點子松 | Chih-yu Chang</title>
+<style>
+  :root{
+    --ink:#33270f; --sub:#84745a; --line:#eee3d0; --bg:#fdfaf4; --card:#ffffff;
+    --accent:#c98a1b; --accent-soft:#fdf3df; --tag:#f7efe0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.85; font-size:16px;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 24px;}
+  header.top{position:sticky; top:0; z-index:50; background:rgba(253,250,244,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .top-inner{max-width:860px; margin:0 auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center;}
+  .lang-toggle{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:#fff;}
+  .lang-toggle button{border:0; background:transparent; padding:6px 16px; cursor:pointer; font-size:14px; color:var(--sub);}
+  .lang-toggle button.active{background:var(--ink); color:#fff;}
+  .hero{padding:64px 0 40px;}
+  .kicker{color:var(--accent); font-weight:700; font-size:14px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.3; font-weight:800; margin-bottom:16px;}
+  .lede{color:var(--sub); font-size:18px; max-width:660px;}
+  .hero-img{margin:32px 0 0; border-radius:16px; overflow:hidden; border:1px solid var(--line);}
+  .hero-img img{width:100%; display:block;}
+  .meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:32px 0;}
+  .meta div{background:var(--card); padding:16px 18px;}
+  .meta .k{font-size:12px; color:var(--sub); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px;}
+  .meta .v{font-weight:600; font-size:14.5px;}
+  section{padding:36px 0; border-top:1px solid var(--line);}
+  h2{font-size:26px; font-weight:800; margin-bottom:8px;}
+  h2 .num{color:var(--accent); font-size:15px; display:block; letter-spacing:.1em; margin-bottom:6px;}
+  h3{font-size:19px; font-weight:700; margin:28px 0 10px;}
+  p{margin:12px 0; color:#4a3c22;}
+  ul,ol{margin:12px 0 12px 22px;}
+  li{margin:7px 0; color:#4a3c22;}
+  strong{color:var(--ink);}
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  th{background:var(--tag); text-align:left; padding:10px 14px; font-weight:700;}
+  td{padding:10px 14px; border-top:1px solid var(--line); vertical-align:top;}
+  .callout{background:var(--accent-soft); border-left:4px solid var(--accent); border-radius:0 12px 12px 0; padding:16px 20px; margin:20px 0;}
+  figure{margin:24px 0;}
+  figure img{width:100%; border:1px solid var(--line); border-radius:12px; background:#fff; display:block;}
+  figcaption{font-size:13px; color:var(--sub); margin-top:8px; text-align:center;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:640px){ .grid2{grid-template-columns:1fr;} }
+  .grid2 figure{margin:0;}
+  footer{padding:40px 0 60px; color:var(--sub); font-size:13.5px; border-top:1px solid var(--line);}
+  [data-lang="zh"] .en{display:none !important;}
+  [data-lang="en"] .zh{display:none !important;}
+  .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .tagrow span{background:var(--tag); border-radius:999px; padding:4px 14px; font-size:13px; color:var(--sub);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html" style="text-decoration:none;color:inherit;font-weight:700;">← Home&nbsp;&nbsp;<span style="opacity:.45">|</span>&nbsp;&nbsp;Chih-yu Chang · Portfolio</a>
+    <div class="lang-toggle">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">UX Research Case Study · 2024 MODA Ideathon</div>
+  <h1><span class="zh">融樹：記憶的永恆守護</span><span class="en">Rong Tree: Where Memories Take Root</span><br><span style="font-size:.55em; color:var(--sub); font-weight:700;"><span class="zh">為 2040 年的多元家庭設計一棵 AI 家族樹</span><span class="en">An AI family tree for the plural families of 2040</span></span></h1>
+  <p class="lede">
+    <span class="zh">當核心家庭持續消失、家的形狀越來越多元，「家庭情感支持」這個不變的價值該由什麼承載？我們的答案是一棵樹——從 3,000 多組提案中走進前 30 強，拿下好點子獎。</span>
+    <span class="en">As nuclear families shrink and homes take ever more plural shapes, what carries the unchanging value of family emotional support? Our answer: a tree — Top 30 of 3,000+ entries and a Good Idea Award winner.</span>
+  </p>
+  <div class="tagrow">
+    <span>Futures Thinking</span><span>KANO Model</span><span>User Interviews</span><span>Scenario Design</span><span>Pitch Storytelling</span>
+  </div>
+
+  <div class="hero-img"><img src="assets/rongtree/hero.jpg" alt="Rong Tree holographic family tree concept"></div>
+
+  <div class="meta">
+    <div><div class="k"><span class="zh">競賽</span><span class="en">Competition</span></div><div class="v"><span class="zh">2024 數位發展部 第三屆「點子松」</span><span class="en">2024 MODA Ideathon (3rd)</span></div></div>
+    <div><div class="k"><span class="zh">團隊</span><span class="en">Team</span></div><div class="v"><span class="zh">2 人（北科大互動設計所）</span><span class="en">2 members (Taipei Tech IxD)</span></div></div>
+    <div><div class="k"><span class="zh">成績</span><span class="en">Result</span></div><div class="v"><span class="zh">3,000+ 組前 30 強・好點子獎・金點子獎入圍</span><span class="en">Top 30 of 3,000+ · Good Idea Award · Golden Idea finalist</span></div></div>
+    <div><div class="k"><span class="zh">我的角色</span><span class="en">My Role</span></div><div class="v"><span class="zh">提案・使用者研究・設計（共同主導）</span><span class="en">Proposal · UX research · Design (co-lead)</span></div></div>
+  </div>
+</div>
+
+<section>
+  <h2><span class="num">01</span><span class="zh">從數據開始的未來想像</span><span class="en">Futures Grounded in Data</span></h2>
+  <p><span class="zh">點子松要求提案者想像 2040 年的台灣。我們不從科技幻想出發，而是從家庭結構統計開始：24 年間核心家庭減少 15%、單身與夫婦家庭增加 18%——「幾乎少了一整個板橋區的核心家庭」；有偶人口下降的同時，跨國婚姻比例上升。推導出 2040 情境：<strong>個人主義浪潮下家庭結構劇變，共同生活家庭、選擇家庭、跨文化與遠距家庭成為常態。</strong></span>
+  <span class="en">The Ideathon asks entrants to imagine Taiwan in 2040. We started not from tech fantasy but from household statistics: over 24 years, nuclear families fell 15% while single and couple-only households rose 18% — "nearly an entire Banqiao District of nuclear families, gone." Marriage rates fell while cross-cultural marriages rose. Our 2040 scenario: <strong>family structures transformed by individualism — co-living families, chosen families, cross-cultural and long-distance families become the norm.</strong></span></p>
+  <div class="callout"><span class="zh"><strong>核心洞察：社會型態會變，價值觀不會。</strong>家庭形式再怎麼多元，「家庭情感支持」仍是無法被其他社會機制取代的需求——文獻指出它一旦失能，對青少年心理、長者健康都有連鎖影響。變動的結構 × 不變的價值＝新產品的機會空間。</span>
+  <span class="en"><strong>Core insight: social structures change; values don't.</strong> However plural families become, emotional support from family remains irreplaceable — when it fails, research links cascading effects on youth mental health and elder wellbeing. Shifting structures × an unchanging value = the opportunity space.</span></div>
+</section>
+
+<section>
+  <h2><span class="num">02</span><span class="zh">概念：一棵會長大的家族樹</span><span class="en">The Concept: A Family Tree That Grows</span></h2>
+  <p><span class="zh">初選我們同時提交了兩案（健康預見鏡／融樹），融樹晉級決選。它是一棵放在家中的 AI 全息家族樹：</span>
+  <span class="en">We submitted two ideas in the first round (a health-prediction mirror and Rong Tree); Rong Tree advanced to finals. It's an in-home holographic AI family tree:</span></p>
+  <ul>
+    <li><span class="zh"><strong>回憶積木</strong>：家人把回憶拼上樹，樹隨之抽芽生長——每個家庭的樹都長成獨一無二的樣子。</span><span class="en"><strong>Memory blocks</strong>: family members pin memories onto the tree, which sprouts and grows — every family's tree becomes unique.</span></li>
+    <li><span class="zh"><strong>儀式果實</strong>：AI 自動分類回憶，年復一年的家庭傳統（每年冬至的祖傳柑橘圓仔湯）凝結成樹上發光的果實——把「儀式感」視覺化。</span><span class="en"><strong>Ritual fruits</strong>: AI clusters recurring memories; yearly traditions (the family's winter-solstice tangyuan recipe) crystallize into glowing fruit — ritual made visible.</span></li>
+    <li><span class="zh"><strong>生物感知的陪伴</strong>：樹能感知成員情緒，以柔和的光與葉片顫動回應——安慰但不張揚。</span><span class="en"><strong>Bio-sensing companionship</strong>: the tree senses emotions and responds with soft light and trembling leaves — comfort without exposure.</span></li>
+    <li><span class="zh"><strong>數位種子</strong>：家庭重組或成員離家時，樹會結出數位種子，讓回憶與傳統在新家庭延續。</span><span class="en"><strong>Digital seeds</strong>: when families restructure or members leave, the tree bears digital seeds that carry memories and traditions into new homes.</span></li>
+    <li><span class="zh"><strong>個人／家庭雙資料庫</strong>：私密傾訴只留在個人庫，家庭樹只呈現本人同意分享的回憶，並可篩選哪些回憶傳承給下一代。</span><span class="en"><strong>Dual privacy databases</strong>: private confessions stay personal; the family tree shows only consented memories, with curated inheritance to the next generation.</span></li>
+  </ul>
+  <div class="grid2">
+    <figure><img src="assets/rongtree/solstice.jpg" alt="Winter solstice family scene with glowing tree"><figcaption><span class="zh">決選情境：冬至夜，柑橘果實在樹上亮起。</span><span class="en">The finals scenario: on winter solstice night, the tangerine fruit glows.</span></figcaption></figure>
+    <figure><img src="assets/rongtree/comic.jpg" alt="Four-panel scenario comic"><figcaption><span class="zh">情境四格：小榮、方方與欣欣一家與融樹的日常。</span><span class="en">Scenario comic: daily life of Xiao-Rong's chosen family with the tree.</span></figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">03</span><span class="zh">研究驗證：讓使用者否決我們的功能</span><span class="en">Research: Letting Users Veto Our Features</span></h2>
+  <p><span class="zh">概念不是一次成形的。我們用三種工具反覆驗證：多份問卷（2040 家庭想像、家庭情感凝聚與回憶傳承調查）、<strong>兩輪 KANO 模型</strong>、與深度訪談。KANO 問卷把八個功能假設攤在 DSI/SI 象限上，結果多數落在「無差異」與「魅力型」之間——這逼我們誠實面對：哪些是我們自嗨、哪些才是使用者要的。</span>
+  <span class="en">The concept wasn't born whole. We validated with three tools: multiple surveys (2040 family imaginaries; family cohesion & memory inheritance), <strong>two rounds of the KANO model</strong>, and in-depth interviews. Plotting eight feature hypotheses on the DSI/SI quadrants — most landed between "indifferent" and "attractive" — forced honesty about which features were our own excitement versus real user desire.</span></p>
+  <figure><img src="assets/rongtree/kano.jpg" alt="KANO DSI/SI analysis chart"><figcaption><span class="zh">KANO 分析：八項功能假設的 DSI/SI 分佈。</span><span class="en">KANO analysis: DSI/SI distribution of eight feature hypotheses.</span></figcaption></figure>
+  <h3><span class="zh">研究直接改掉的三個設計</span><span class="en">Three designs the research overturned</span></h3>
+  <table>
+    <tr><th><span class="zh">原設計</span><span class="en">Original</span></th><th><span class="zh">訪談發現</span><span class="en">Finding</span></th><th><span class="zh">修改後</span><span class="en">Revised</span></th></tr>
+    <tr><td><span class="zh">系統偵測情緒後直接告知家人（明示）</span><span class="en">System detects and broadcasts emotions</span></td><td><span class="zh">「不願意被讀取情緒後發送給別人」——情緒是隱私</span><span class="en">"I don't want my emotions read and sent to others" — emotion is private</span></td><td><span class="zh">樹可感知但不外傳，僅以葉色變化「暗示」，用「感受」代替「情緒」</span><span class="en">The tree senses but never broadcasts; leaf colors only hint; "feelings," not "emotions"</span></td></tr>
+    <tr><td><span class="zh">AI 在家庭爭吵時播放舊回憶「調解」</span><span class="en">AI plays old memories to mediate family fights</span></td><td><span class="zh">「太插手感情了，期待它輔助人做不到的事，而不是取代人」</span><span class="en">"Too intrusive — help with what humans can't do, don't replace them"</span></td><td><span class="zh">刪除調解功能，定位為「守護與記錄者」，互動由人發起</span><span class="en">Mediation cut; repositioned as guardian-recorder, with human-initiated interaction</span></td></tr>
+    <tr><td><span class="zh">樹是中性的回憶載體</span><span class="en">The tree as a neutral memory container</span></td><td><span class="zh">「植物要有自己的角色與生物痕跡，人才會對它產生情感」</span><span class="en">"The plant needs its own character and traces of life for people to bond with it"</span></td><td><span class="zh">強化共生設定：會生長、會回應、有生命感的角色</span><span class="en">Strengthened symbiosis: a growing, responsive, life-like character</span></td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="num">04</span><span class="zh">敘事設計：先讓評審口渴</span><span class="en">Pitch Craft: Make the Judges Thirsty First</span></h2>
+  <p><span class="zh">決選前我們參加官方的未來策略工作坊與三次導師輔導（8/13、8/20、8/29），把簡報重構為 <strong>Attention → Need → Satisfaction</strong> 的敘事：先用「少了一整個板橋區」這種有比例尺的數據抓注意力，再讓聽眾感受到情感支持失能的痛（「不渴就不知道水是甜的」），最後才端出融樹。決選簡報採<strong>雙人對話式演出</strong>——一人講人的行為、一人講樹的回應，把冬至圓仔湯的情境演成一場小劇。我們也預先寫好 Q&A 題庫：跟共享相簿差在哪？為什麼是回憶不是即時通訊？浮空投影以外的技術今天就能做嗎？</span>
+  <span class="en">Before finals we joined the official futures-strategy workshop and three mentor sessions, restructuring the pitch as <strong>Attention → Need → Satisfaction</strong>: hook with scaled data ("an entire district of nuclear families, gone"), make the audience feel the ache of failing emotional support ("you don't know water is sweet until you're thirsty"), and only then reveal the tree. The finals pitch was a <strong>two-person dialogue performance</strong> — one voice for the humans, one for the tree — acting out the winter-solstice scenario. We also pre-wrote a Q&A bank: how is this different from a shared album? Why memories, not instant messaging? What's feasible today beyond holography?</span></p>
+</section>
+
+<section>
+  <h2><span class="num">05</span><span class="zh">成果</span><span class="en">Results</span></h2>
+  <ul>
+    <li><span class="zh">自 3,000+ 組（約五分之一為國際投件）中入圍<strong>前 30 強</strong></span><span class="en"><strong>Top 30</strong> of 3,000+ entries (roughly one-fifth international)</span></li>
+    <li><span class="zh"><strong>好點子獎得主</strong>・金點子獎入圍</span><span class="en"><strong>Good Idea Award winner</strong> · Golden Idea Award finalist</span></li>
+    <li><span class="zh">與 MODA Picture／BWG Studio 合作產出「融樹：記憶的永恆守護」主視覺海報</span><span class="en">Key-visual poster "Rong Tree: Where Memories Take Root" produced with MODA Picture / BWG Studio</span></li>
+  </ul>
+  <div class="grid2">
+    <figure><img src="assets/rongtree/poster.jpg" alt="Rong Tree key visual poster"><figcaption><span class="zh">決選主視覺海報</span><span class="en">The finals key visual</span></figcaption></figure>
+    <figure>
+      <img src="assets/rongtree/award-cert.jpg" alt="Good Idea Award certificate">
+      <img src="assets/rongtree/award-venue.jpg" alt="Award venue poster wall" style="margin-top:16px;">
+      <figcaption><span class="zh">好點子獎獎狀與頒獎現場</span><span class="en">The award certificate and ceremony venue</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">06</span><span class="zh">學到的事</span><span class="en">What I Learned</span></h2>
+  <ol>
+    <li><span class="zh"><strong>研究的價值在於它會推翻你。</strong>「情緒明示」是我們很喜歡的功能，訪談把它變成了葉色的暗示——被使用者否決的每一次，概念都變得更誠實。</span><span class="en"><strong>Research is valuable because it overrules you.</strong> Emotion broadcasting was a feature we loved; interviews turned it into hinting leaf colors. Every user veto made the concept more honest.</span></li>
+    <li><span class="zh"><strong>價值觀錨定是未來思考最穩的地基。</strong>預測科技容易失準，但「社會變、價值不變」的交叉點幾乎不會錯——這個方法後來也影響了我做產品策略的方式。</span><span class="en"><strong>Anchoring on values is the steadiest ground in futures thinking.</strong> Tech predictions miss; the intersection of changing structures and unchanging values rarely does. This method later shaped how I do product strategy.</span></li>
+    <li><span class="zh"><strong>提案是體驗設計。</strong>同一個概念，說成規格是平庸的，演成一個冬至夜的故事就有了溫度——敘事不是包裝，是概念的一部分。</span><span class="en"><strong>A pitch is an experience design.</strong> The same concept read as specs is mediocre; performed as a winter-solstice story, it has warmth. Narrative isn't packaging — it's part of the concept.</span></li>
+  </ol>
+</section>
+
+<footer>
+  <span class="zh">本頁基於初選與決選提案、問卷與 KANO 訪談紀錄、導師輔導筆記整理。團隊：李佩恩、張致瑜（國立臺北科技大學互動設計所）。© Chih-yu Chang</span>
+  <span class="en">Compiled from first-round and finals proposals, survey and KANO interview records, and mentor session notes. Team: Pei-En Li & Chih-yu Chang (Taipei Tech IxD). © Chih-yu Chang</span>
+</footer>
+
+</div>
+
+<script>
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', l==='zh');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  try{ localStorage.setItem('lang', l); }catch(e){}
+}
+try{ const s = localStorage.getItem('lang'); if(s) setLang(s); }catch(e){}
+</script>
+</body>
+</html>

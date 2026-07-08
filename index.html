@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chih-yu (Claire) Chang — PM × UX Portfolio</title>
+<meta name="description" content="Product Manager × UX Designer portfolio of Chih-yu (Claire) Chang">
+<style>
+  :root{
+    --ink:#2b2350; --sub:#6f6a8a; --bg:#fef9ef;
+    --purple:#7c6cf0; --purple-deep:#5b4bd4;
+    --pink:#ff7bac; --yellow:#ffc93c; --mint:#4ecdc4; --orange:#ff9f5a;
+    --card:#ffffff; --line:#ece5d8;
+    --shadow:0 6px 0 rgba(43,35,80,.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.8; font-size:16px; overflow-x:hidden;}
+  .wrap{max-width:1020px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- top nav ---------- */
+  header.top{position:sticky; top:0; z-index:100; background:rgba(254,249,239,.9); backdrop-filter:blur(10px); border-bottom:2px solid var(--ink);}
+  .top-inner{max-width:1020px; margin:0 auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  .logo{font-weight:900; font-size:18px; letter-spacing:.02em; text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:8px;}
+  .logo .dot{width:14px; height:14px; border-radius:4px; background:var(--yellow); border:2px solid var(--ink); display:inline-block; transform:rotate(12deg);}
+  nav.menu{display:flex; gap:4px; flex-wrap:wrap;}
+  nav.menu a{text-decoration:none; color:var(--ink); font-size:14px; font-weight:700; padding:6px 12px; border-radius:999px; border:2px solid transparent;}
+  nav.menu a:hover{border-color:var(--ink); background:#fff;}
+  .lang-toggle{display:flex; border:2px solid var(--ink); border-radius:999px; overflow:hidden; background:#fff; flex-shrink:0;}
+  .lang-toggle button{border:0; background:transparent; padding:5px 14px; cursor:pointer; font-size:13px; font-weight:800; color:var(--sub);}
+  .lang-toggle button.active{background:var(--ink); color:#fff;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; padding:88px 0 72px; text-align:center;}
+  .blob{position:absolute; border-radius:50%; filter:blur(2px); opacity:.55; z-index:-1; animation:float 7s ease-in-out infinite;}
+  .b1{width:220px;height:220px; background:#ffd9e8; top:20px; left:-60px;}
+  .b2{width:160px;height:160px; background:#d8f7f3; top:140px; right:-30px; animation-delay:1.5s;}
+  .b3{width:120px;height:120px; background:#fff3c4; bottom:0; left:18%; animation-delay:3s;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+  .hero .badge{display:inline-block; background:var(--yellow); border:2px solid var(--ink); border-radius:999px; padding:6px 18px; font-weight:800; font-size:14px; box-shadow:var(--shadow); margin-bottom:22px; transform:rotate(-2deg);}
+  h1.name{font-size:clamp(34px,6.5vw,60px); font-weight:900; line-height:1.25; letter-spacing:.01em;}
+  h1.name .hl{background:linear-gradient(transparent 62%, #ffd9e8 62%);}
+  .role-row{display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:20px 0 18px;}
+  .role-chip{border:2px solid var(--ink); border-radius:12px; padding:6px 16px; font-weight:800; font-size:15px; background:#fff; box-shadow:var(--shadow);}
+  .role-chip.pm{background:var(--purple); color:#fff;}
+  .role-chip.ux{background:var(--pink); color:#fff;}
+  .role-chip.ai{background:var(--mint); color:#fff;}
+  .hero p.intro{max-width:620px; margin:0 auto; color:var(--sub); font-size:17px;}
+  .cta-row{margin-top:32px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn{display:inline-block; text-decoration:none; font-weight:900; border:2px solid var(--ink); border-radius:14px; padding:12px 28px; box-shadow:var(--shadow); transition:transform .12s;}
+  .btn:hover{transform:translateY(-3px);}
+  .btn.primary{background:var(--ink); color:#fff;}
+  .btn.ghost{background:#fff; color:var(--ink);}
+  .sprites{font-size:26px; letter-spacing:14px; margin-top:36px; opacity:.9;}
+
+  /* ---------- sections ---------- */
+  section{padding:64px 0;}
+  .sec-head{text-align:center; margin-bottom:40px;}
+  .sec-head .tag{display:inline-block; font-size:13px; font-weight:900; letter-spacing:.18em; color:#fff; background:var(--purple); border:2px solid var(--ink); padding:4px 14px; border-radius:999px; box-shadow:var(--shadow); text-transform:uppercase; transform:rotate(-1.5deg);}
+  .sec-head h2{font-size:clamp(24px,4vw,34px); font-weight:900; margin-top:14px;}
+  .sec-head p{color:var(--sub); margin-top:6px;}
+
+  /* quests / projects */
+  .quest-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:22px;}
+  .quest{background:var(--card); border:2.5px solid var(--ink); border-radius:20px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; transition:transform .15s;}
+  .quest:hover{transform:translateY(-5px) rotate(-.4deg);}
+  .quest .thumb{height:150px; display:flex; align-items:center; justify-content:center; font-size:54px; border-bottom:2.5px solid var(--ink); position:relative;}
+  .quest .thumb img{width:100%; height:100%; object-fit:cover;}
+  .t-pm{background:linear-gradient(135deg,#e6e1ff,#c9c0ff);}
+  .t-ux{background:linear-gradient(135deg,#ffe1ec,#ffc4da);}
+  .t-soon1{background:linear-gradient(135deg,#fff3c4,#ffe08a);}
+  .t-soon2{background:linear-gradient(135deg,#d8f7f3,#aeeae2);}
+  .t-soon3{background:linear-gradient(135deg,#ffe4d1,#ffcba8);}
+  .quest .body{padding:20px 22px 22px; display:flex; flex-direction:column; flex:1;}
+  .quest .rarity{font-size:11.5px; font-weight:900; letter-spacing:.12em; margin-bottom:8px;}
+  .r-ssr{color:var(--purple-deep);} .r-sr{color:#d4498c;} .r-soon{color:#a09a86;}
+  .quest h3{font-size:19px; font-weight:900; line-height:1.4;}
+  .quest p.desc{font-size:14.5px; color:var(--sub); margin:10px 0 14px; flex:1;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
+  .chip{font-size:12px; font-weight:700; background:var(--bg); border:1.5px solid var(--ink); border-radius:999px; padding:2px 10px;}
+  .quest a.go{align-self:flex-start; text-decoration:none; font-weight:900; font-size:14px; color:#fff; background:var(--ink); border-radius:10px; padding:8px 18px; border:2px solid var(--ink);}
+  .quest a.go:hover{background:var(--purple-deep);}
+  .quest .soon-label{align-self:flex-start; font-weight:900; font-size:13px; color:var(--sub); background:var(--bg); border:2px dashed var(--sub); border-radius:10px; padding:8px 18px;}
+  .quest.locked{opacity:.92;}
+  .quest.locked .thumb{filter:saturate(.75);}
+
+  /* skill tree */
+  .skill-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
+  .skill-card{background:var(--card); border:2.5px solid var(--ink); border-radius:20px; padding:22px 24px; box-shadow:var(--shadow);}
+  .skill-card .icon{font-size:32px; margin-bottom:8px;}
+  .skill-card h3{font-size:17px; font-weight:900; margin-bottom:12px;}
+  .skill-card ul{list-style:none;}
+  .skill-card li{font-size:14px; margin:8px 0; padding-left:22px; position:relative; color:#453e6b;}
+  .skill-card li::before{content:"▸"; position:absolute; left:4px; color:var(--pink); font-weight:900;}
+
+  /* timeline */
+  .timeline{position:relative; max-width:640px; margin:0 auto; padding-left:34px;}
+  .timeline::before{content:""; position:absolute; left:10px; top:6px; bottom:6px; width:4px; background:var(--ink); border-radius:2px;}
+  .tl-item{position:relative; margin-bottom:34px;}
+  .tl-item::before{content:""; position:absolute; left:-32px; top:6px; width:18px; height:18px; border-radius:50%; background:var(--yellow); border:3px solid var(--ink);}
+  .tl-item:nth-child(2)::before{background:var(--mint);}
+  .tl-item:nth-child(3)::before{background:var(--pink);}
+  .tl-item .when{font-size:13px; font-weight:900; color:var(--purple-deep); letter-spacing:.06em;}
+  .tl-item h3{font-size:18px; font-weight:900; margin:2px 0 4px;}
+  .tl-item p{font-size:14.5px; color:var(--sub);}
+
+  /* contact */
+  .contact-card{max-width:560px; margin:0 auto; background:var(--card); border:2.5px solid var(--ink); border-radius:24px; padding:40px 36px; text-align:center; box-shadow:var(--shadow);}
+  .contact-card .face{font-size:44px;}
+  .contact-card h2{font-size:26px; font-weight:900; margin:10px 0 6px;}
+  .contact-card p{color:var(--sub); font-size:15px;}
+  .contact-row{margin-top:22px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+
+  footer{padding:36px 0 48px; text-align:center; color:var(--sub); font-size:13px; border-top:2px solid var(--ink); margin-top:20px;}
+
+  [data-lang="zh"] .en{display:none !important;}
+  [data-lang="en"] .zh{display:none !important;}
+  @media (max-width:640px){ nav.menu{display:none;} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="logo" href="#"><span class="dot"></span>Claire Chang</a>
+    <nav class="menu">
+      <a href="#quests"><span class="zh">作品</span><span class="en">Work</span></a>
+      <a href="#skills"><span class="zh">技能</span><span class="en">Skills</span></a>
+      <a href="#journey"><span class="zh">經歷</span><span class="en">Journey</span></a>
+      <a href="#contact"><span class="zh">聯絡</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="lang-toggle">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap">
+    <div class="badge"><span class="zh">👋 你好，我是</span><span class="en">👋 Hi there, I'm</span></div>
+    <h1 class="name"><span class="zh">張致瑜<br><span class="hl" style="font-size:.6em">Chih-yu (Claire) Chang</span></span><span class="en"><span class="hl">Chih-yu (Claire) Chang</span></span></h1>
+    <div class="role-row">
+      <span class="role-chip pm">Product Manager</span>
+      <span class="role-chip ux">UX Designer</span>
+      <span class="role-chip ai">AI Product</span>
+    </div>
+    <p class="intro">
+      <span class="zh">臺北科技大學互動設計系碩士。我打造「有靈魂」的產品體驗——從 AI 陪伴角色、遊戲化系統到對話設計。相信好的產品是可以被工程化的魔法：每一分「像人」的體感，背後都是一層層可調參的系統。</span>
+      <span class="en">M.S. in Interaction Design, Taipei Tech. I build products with a soul — from AI companions and gamified systems to conversation design. Good products are engineered magic: every ounce of "feels alive" is a stack of tunable systems underneath.</span>
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="#quests"><span class="zh">查看作品 ▶</span><span class="en">View Work ▶</span></a>
+      <a class="btn ghost" href="#contact"><span class="zh">聯絡我 ✉</span><span class="en">Say Hi ✉</span></a>
+    </div>
+    <div class="sprites">🐧 🎮 ✨ 🗺️ 💬</div>
+  </div>
+</div>
+
+<!-- ================= QUESTS / WORK ================= -->
+<section id="quests">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Quests</span>
+      <h2><span class="zh">作品任務板</span><span class="en">Quest Board</span></h2>
+      <p><span class="zh">每個專案都是一場冒險。點開看完整 case study！</span><span class="en">Every project is an adventure. Open one for the full case study!</span></p>
+    </div>
+    <div class="quest-grid">
+
+      <div class="quest">
+        <div class="thumb t-pm"><img src="assets/penguin.png" alt="MarxAI mascot" style="object-fit:contain; padding:16px;" onerror="this.replaceWith('🐧')"></div>
+        <div class="body">
+          <div class="rarity r-ssr">★ FEATURED · SSR</div>
+          <h3><span class="zh">MarxAI 星朋友 — PM Case Study</span><span class="en">MarxAI "Star Friend" — PM Case Study</span></h3>
+          <p class="desc"><span class="zh">AI 陪伴社群 App 的完整產品設計：三大板塊架構、四資源經濟模型與蒙地卡羅模擬、AI 行為自動化 spec、LLM 品質評估流程。</span><span class="en">Full product design of an AI companion social app: three-pillar architecture, a simulation-validated four-resource economy, AI automation specs, and an LLM evaluation workflow.</span></p>
+          <div class="chip-row"><span class="chip">PRD</span><span class="chip">Game Economy</span><span class="chip">LLM Eval</span><span class="chip">iOS</span></div>
+          <a class="go" href="marx-pm-case-study.html"><span class="zh">開始任務 →</span><span class="en">Start Quest →</span></a>
+        </div>
+      </div>
+
+      <div class="quest">
+        <div class="thumb t-ux"><img src="assets/world-hall-wireframe.png" alt="World Hall wireframe" onerror="this.replaceWith('🗺️')"></div>
+        <div class="body">
+          <div class="rarity r-ssr">★ FEATURED · SSR</div>
+          <h3><span class="zh">MarxAI 星朋友 — UX Case Study</span><span class="en">MarxAI "Star Friend" — UX Case Study</span></h3>
+          <p class="desc"><span class="zh">設計一個角色、一段關係、一個世界：敘事化 Onboarding、16 型人格角色系統、熟悉度／情緒／記憶三大對話模組、世界大廳 wireframe。</span><span class="en">Designing a character, a relationship, a world: narrative onboarding, a 16-type character system, three conversation modules (familiarity/emotion/memory), and World Hall wireframes.</span></p>
+          <div class="chip-row"><span class="chip">Conversation Design</span><span class="chip">Character Design</span><span class="chip">Wireframe</span></div>
+          <a class="go" href="marx-ux-case-study.html"><span class="zh">開始任務 →</span><span class="en">Start Quest →</span></a>
+        </div>
+      </div>
+
+      <div class="quest">
+        <div class="thumb t-soon2" style="background:#e8863c;"><img src="assets/datanews/poster.jpg" alt="Californian Car Plates data video" onerror="this.replaceWith('🎬')"></div>
+        <div class="body">
+          <div class="rarity r-sr">🎬 SIDE QUEST · DATA VIDEO</div>
+          <h3><span class="zh">Californian Car Plates 資料影片</span><span class="en">Californian Car Plates — Data Video</span></h3>
+          <p class="desc"><span class="zh">DataNews 工作坊（FH Potsdam 交換）：鑽進加州 DMV 兩萬多筆個性化車牌審核紀錄，從資料分析、腳本提案到 AE 動畫，做成一支 85 秒的幽默資訊影片。</span><span class="en">DataNews workshop (FH Potsdam exchange): mining 20,000+ California DMV vanity-plate review records — from data analysis and script to AE animation — into a witty 85-second data video.</span></p>
+          <div class="chip-row"><span class="chip">Data Storytelling</span><span class="chip">Motion Graphics</span><span class="chip">After Effects</span></div>
+          <a class="go" href="datanews-case-study.html"><span class="zh">播放影片 →</span><span class="en">Watch →</span></a>
+        </div>
+      </div>
+
+      <div class="quest">
+        <div class="thumb t-soon1">🎭</div>
+        <div class="body">
+          <div class="rarity r-sr">★ WORK · SR</div>
+          <h3><span class="zh">新版謀殺衛斯理官方網站</span><span class="en">Murder of Wesley — Site Redesign</span></h3>
+          <p class="desc"><span class="zh">主導官網完整改版：視覺風格定調、前後端需求溝通與時程掌控，並規劃文本外包控管品質，大幅提升品牌一致性與資訊流暢度。</span><span class="en">Led a full official-site redesign: set the visual direction, coordinated front/back-end requirements and timelines, and managed outsourced copywriting — sharply improving brand consistency and information flow.</span></p>
+          <div class="chip-row"><span class="chip">專案管理</span><span class="chip">視覺設計</span><span class="chip">網站改版</span></div>
+          <a class="go" href="https://mwlarp.com" target="_blank" rel="noopener"><span class="zh">造訪官網 ↗</span><span class="en">Visit Site ↗</span></a>
+        </div>
+      </div>
+
+      <div class="quest">
+        <div class="thumb t-soon2" style="background:#2a2419;"><img src="assets/gathertown/scene-alley.jpg" alt="Gather Town murder mystery scene" onerror="this.replaceWith('🕵️')"></div>
+        <div class="body">
+          <div class="rarity r-sr">★ WORK · SR</div>
+          <h3><span class="zh">Gather Town 線上劇本殺遊戲</span><span class="en">Online Murder Mystery on Gather Town</span></h3>
+          <p class="desc"><span class="zh">疫情停業期間，主導將實體謀殺推理遊戲移植線上：客製地圖、RPG 式搜證、自建文本系統、保留真人主持，成功開闢新產品線並獲玩家社群 4 星好評。</span><span class="en">When COVID closed the venue, I led porting the murder mystery online: custom maps, RPG-style investigation, a custom text system, live hosts retained — a new product line earning 4-star community reviews.</span></p>
+          <div class="chip-row"><span class="chip">遊戲設計</span><span class="chip">空間設計</span><span class="chip">線上營運</span></div>
+          <a class="go" href="gathertown-case-study.html"><span class="zh">開始任務 →</span><span class="en">Start Quest →</span></a>
+        </div>
+      </div>
+
+      <div class="quest">
+        <div class="thumb t-soon3" style="background:#1a1008;"><img src="assets/rongtree/hero.jpg" alt="Rong Tree concept" onerror="this.replaceWith('🌳')"></div>
+        <div class="body">
+          <div class="rarity r-sr">🏆 AWARD · TOP 30 / 3,000+</div>
+          <h3><span class="zh">融樹：記憶的永恆守護</span><span class="en">Rong Tree — MODA Ideathon 2024</span></h3>
+          <p class="desc"><span class="zh">2024 數位發展部「點子松」好點子獎：為 2040 年的多元家庭設計一棵 AI 家族樹。以未來思考、兩輪 KANO Model 與使用者訪談反覆迭代，自 3,000+ 組中入圍前 30 強。</span><span class="en">MODA Ideathon 2024 Good Idea Award: an AI family tree for the plural families of 2040. Iterated through futures thinking, two KANO rounds, and user interviews — Top 30 of 3,000+ entries.</span></p>
+          <div class="chip-row"><span class="chip">UX 研究</span><span class="chip">KANO Model</span><span class="chip">未來思考</span></div>
+          <a class="go" href="rongtree-case-study.html"><span class="zh">開始任務 →</span><span class="en">Start Quest →</span></a>
+        </div>
+      </div>
+
+      <div class="quest">
+        <div class="thumb t-pm" style="background:#0a0a0f;"><img src="assets/eidolon/hero.jpg" alt="EIDOLON scooter" onerror="this.replaceWith('🛴')"></div>
+        <div class="body">
+          <div class="rarity r-ssr">🏆 EXHIBITED @ BMW HQ</div>
+          <h3><span class="zh">EIDOLON — Future Luxury × Rolls-Royce</span><span class="en">EIDOLON — Future Luxury × Rolls-Royce</span></h3>
+          <p class="desc"><span class="zh">柏林白湖藝術學院 × FH Potsdam × Rolls-Royce 跨校專題「Rethinking Urban Mobility」：為 RR 探索未來無車城市的奢華行動。從未來情境建構到概念 EIDOLON——收納於車側、自動展開的奢華滑板車＋智慧頭飾＋Live Concierge 服務。2026/3 於 BMW 慕尼黑總部展出，獲主管詢問專利意願。我負責情境腳本與全套分鏡插圖。</span><span class="en">A weißensee kunsthochschule berlin × FH Potsdam × Rolls-Royce joint project, "Rethinking Urban Mobility": luxury mobility for future car-free cities. From futures scenarios to EIDOLON — a self-unfolding luxury scooter stowed in the RR fender, plus a smart headpiece and live concierge service. Exhibited at BMW's Munich HQ (Mar 2026), where executives asked about patenting. I owned scenario writing and the full storyboard illustrations.</span></p>
+          <div class="chip-row"><span class="chip">未來思考</span><span class="chip">情境插圖</span><span class="chip">服務設計</span></div>
+          <a class="go" href="eidolon-case-study.html"><span class="zh">開始任務 →</span><span class="en">Start Quest →</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILL TREE ================= -->
+<section id="skills" style="background:#fff; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink);">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag" style="background:var(--pink);">Skill Tree</span>
+      <h2><span class="zh">技能樹</span><span class="en">Skill Tree</span></h2>
+      <p><span class="zh">在 MarxAI 專案與課程實作中點滿的技能點。</span><span class="en">Skill points earned through the MarxAI project and hands-on coursework.</span></p>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <div class="icon">📋</div>
+        <h3><span class="zh">產品管理</span><span class="en">Product Management</span></h3>
+        <ul>
+          <li><span class="zh">PRD／Spec 撰寫（驗收標準、邊界情境）</span><span class="en">PRDs & specs (acceptance criteria, edge cases)</span></li>
+          <li><span class="zh">產品策略與 MVP 收斂</span><span class="en">Product strategy & MVP scoping</span></li>
+          <li><span class="zh">遊戲化與經濟系統設計</span><span class="en">Gamification & economy design</span></li>
+          <li><span class="zh">數值模擬與資料驅動調參</span><span class="en">Numerical simulation & data-driven tuning</span></li>
+          <li><span class="zh">跨職能 Sprint 協作</span><span class="en">Cross-functional sprint collaboration</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🎨</div>
+        <h3><span class="zh">UX 設計</span><span class="en">UX Design</span></h3>
+        <ul>
+          <li><span class="zh">對話設計（語氣分級、情緒、記憶）</span><span class="en">Conversation design (tone, emotion, memory)</span></li>
+          <li><span class="zh">角色設計與世界觀建構</span><span class="en">Character design & world-building</span></li>
+          <li><span class="zh">敘事化 Onboarding 設計</span><span class="en">Narrative onboarding</span></li>
+          <li><span class="zh">Wireframe 與 User Flow</span><span class="en">Wireframing & user flows</span></li>
+          <li><span class="zh">機制研究與競品拆解</span><span class="en">Mechanism research & teardowns</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🤖</div>
+        <h3><span class="zh">AI 產品</span><span class="en">AI Product</span></h3>
+        <ul>
+          <li><span class="zh">Prompt 系統設計與模板化</span><span class="en">Prompt system design & templating</span></li>
+          <li><span class="zh">LLM 評估（LLM-as-a-Judge）</span><span class="en">LLM evaluation (LLM-as-a-judge)</span></li>
+          <li><span class="zh">LangSmith／評估器設計</span><span class="en">LangSmith / evaluator design</span></li>
+          <li><span class="zh">Token 成本模型設計</span><span class="en">Token cost modeling</span></li>
+          <li><span class="zh">Agent 行為系統規格</span><span class="en">Agent behavior specs</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🧰</div>
+        <h3><span class="zh">工具與語言</span><span class="en">Tools & Languages</span></h3>
+        <ul>
+          <li>Figma · Notion · LangSmith</li>
+          <li>Python · Firebase</li>
+          <li><span class="zh">中文（母語）</span><span class="en">Mandarin (native)</span></li>
+          <li><span class="zh">英文（TOEIC 940 / TOEFL 100）</span><span class="en">English (TOEIC 940 / TOEFL 100)</span></li>
+          <li><span class="zh">德文（Potsdam 交換）</span><span class="en">German (exchange in Potsdam)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNEY ================= -->
+<section id="journey">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag" style="background:var(--mint);">Journey Log</span>
+      <h2><span class="zh">冒險日誌</span><span class="en">Journey Log</span></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="when">2026</div>
+        <h3><span class="zh">國立臺北科技大學 互動設計系 碩士</span><span class="en">M.S., Interaction Design — Taipei Tech</span></h3>
+        <p><span class="zh">碩士班期間深耕使用者研究、互動設計與產品開發。</span><span class="en">Focused on user research, interaction design, and product development.</span></p>
+      </div>
+      <div class="tl-item">
+        <div class="when">2025</div>
+        <h3><span class="zh">火星生技 — 軟體 PM 實習生（MarX AI）</span><span class="en">Mars Biotech — Software PM Intern (MarX AI)</span></h3>
+        <p><span class="zh">主導 AI 應用產品從 0 到多版本迭代，定位從健康助理演進至情感陪伴對話代理人；負責產品藍圖、遊戲化模組設計、使用者研究與跨職能協作。</span><span class="en">Led an AI product from zero through multiple iterations — health assistant to emotional companion agent; owned roadmap, gamification design, user research, and cross-functional coordination.</span></p>
+      </div>
+      <div class="tl-item">
+        <div class="when">2024</div>
+        <h3><span class="zh">數位發展部「點子松」— 前 30 強・好點子獎</span><span class="en">MODA Ideathon — Top 30 · Good Idea Award</span></h3>
+        <p><span class="zh">「融樹：記憶的永恆守護」自 3,000+ 組中脫穎而出，入圍前 30 強並獲好點子獎。</span><span class="en">"Melding Tree" stood out among 3,000+ teams — Top 30 finalist and Good Idea Award winner.</span></p>
+      </div>
+      <div class="tl-item">
+        <div class="when"><span class="zh">疫情期間</span><span class="en">COVID era</span></div>
+        <h3><span class="zh">謀殺衛斯理 — 專案管理與視覺設計師</span><span class="en">Murder of Wesley — PM & Visual Designer</span></h3>
+        <p><span class="zh">主導官網完整改版與 Gather Town 線上劇本殺開發，為公司開闢線上產品線、度過疫情營收中斷。</span><span class="en">Led the official-site redesign and the Gather Town online murder-mystery — a new product line that carried the company through COVID closures.</span></p>
+      </div>
+      <div class="tl-item">
+        <div class="when">2025–26</div>
+        <h3><span class="zh">德國波茨坦 — 交換學生・Future Luxury × Rolls-Royce</span><span class="en">Potsdam, Germany — Exchange · Future Luxury × Rolls-Royce</span></h3>
+        <p><span class="zh">交換期間與德國同學組隊完成 Rolls-Royce 未來奢華行動專題（概念 EIDOLON），成果於 BMW 總部展出並獲主管詢問專利意願；同時學習德語、體驗跨文化協作。</span><span class="en">Teamed up with German classmates on the Rolls-Royce Future Luxury project (concept EIDOLON), exhibited at BMW HQ where executives inquired about patenting — while learning German and working across cultures.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" style="padding-bottom:80px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag" style="background:var(--orange);">Contact</span>
+      <h2><span class="zh">一起組隊吧！</span><span class="en">Let's Team Up!</span></h2>
+    </div>
+    <div class="contact-card">
+      <div class="face">🐧💌</div>
+      <h2><span class="zh">找我聊產品、聊設計、聊 AI</span><span class="en">Talk product, design, or AI with me</span></h2>
+      <p><span class="zh">正在尋找產品 PM／UX 相關機會，歡迎來信！</span><span class="en">Open to PM / UX opportunities — drop me a line!</span></p>
+      <div class="contact-row">
+        <a class="btn primary" href="mailto:clairechang1997@gmail.com">✉ clairechang1997@gmail.com</a>
+        <!-- TODO: 補上 LinkedIn 網址後取消註解
+        <a class="btn ghost" href="https://www.linkedin.com/in/你的ID" target="_blank">in LinkedIn</a>
+        -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="zh">© 2026 Chih-yu (Claire) Chang · 用 ❤️ 與很多 ☕ 打造</span>
+  <span class="en">© 2026 Chih-yu (Claire) Chang · Made with ❤️ and a lot of ☕</span>
+</footer>
+
+<script>
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', l==='zh');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  try{ localStorage.setItem('lang', l); }catch(e){}
+}
+try{ const s = localStorage.getItem('lang'); if(s) setLang(s); }catch(e){}
+</script>
+</body>
+</html>

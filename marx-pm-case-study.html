@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarxAI 星朋友 — PM Case Study | Chih-yu Chang</title>
+<style>
+  :root{
+    --ink:#1c1c28; --sub:#5b5b6b; --line:#e8e6e0; --bg:#faf9f6; --card:#ffffff;
+    --accent:#4f46e5; --accent-soft:#eef0ff; --gold:#b8860b; --tag:#f0eee8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.85; font-size:16px;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 24px;}
+  header.top{position:sticky; top:0; z-index:50; background:rgba(250,249,246,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .top-inner{max-width:860px; margin:0 auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-weight:700; letter-spacing:.02em;}
+  .lang-toggle{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:#fff;}
+  .lang-toggle button{border:0; background:transparent; padding:6px 16px; cursor:pointer; font-size:14px; color:var(--sub);}
+  .lang-toggle button.active{background:var(--ink); color:#fff;}
+  .hero{padding:72px 0 40px;}
+  .kicker{color:var(--accent); font-weight:700; font-size:14px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.3; font-weight:800; margin-bottom:16px;}
+  .lede{color:var(--sub); font-size:18px; max-width:640px;}
+  .meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:36px 0;}
+  .meta div{background:var(--card); padding:16px 18px;}
+  .meta .k{font-size:12px; color:var(--sub); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px;}
+  .meta .v{font-weight:600; font-size:15px;}
+  section{padding:36px 0; border-top:1px solid var(--line);}
+  h2{font-size:26px; font-weight:800; margin-bottom:8px;}
+  h2 .num{color:var(--accent); font-size:15px; display:block; letter-spacing:.1em; margin-bottom:6px;}
+  h3{font-size:19px; font-weight:700; margin:28px 0 10px;}
+  p{margin:12px 0; color:#33333f;}
+  ul,ol{margin:12px 0 12px 22px;}
+  li{margin:7px 0; color:#33333f;}
+  strong{color:var(--ink);}
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  th{background:var(--tag); text-align:left; padding:10px 14px; font-weight:700;}
+  td{padding:10px 14px; border-top:1px solid var(--line); vertical-align:top;}
+  .callout{background:var(--accent-soft); border-left:4px solid var(--accent); border-radius:0 12px 12px 0; padding:16px 20px; margin:20px 0;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 24px; margin:16px 0;}
+  figure{margin:24px 0;}
+  figure img{width:100%; border:1px solid var(--line); border-radius:12px; background:#fff;}
+  figcaption{font-size:13px; color:var(--sub); margin-top:8px; text-align:center;}
+  .diagram{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin:20px 0;}
+  footer{padding:40px 0 60px; color:var(--sub); font-size:13.5px; border-top:1px solid var(--line);}
+  /* language switching */
+  [data-lang="zh"] .en{display:none !important;}
+  [data-lang="en"] .zh{display:none !important;}
+  .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .tagrow span{background:var(--tag); border-radius:999px; padding:4px 14px; font-size:13px; color:var(--sub);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html" style="text-decoration:none;color:inherit;font-weight:700;">← Home&nbsp;&nbsp;<span style="opacity:.45">|</span>&nbsp;&nbsp;Chih-yu Chang · Portfolio</a>
+    <div class="lang-toggle">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Product Management Case Study</div>
+  <h1><span class="zh">MarxAI「星朋友」<br>AI 陪伴社群 App 的產品設計全紀錄</span><span class="en">MarxAI "Star Friend"<br>Building an AI Companion Social App</span></h1>
+  <p class="lede">
+    <span class="zh">一款結合 AI 夥伴、AI 社群與遊戲化世界的 iOS App。我以 PM 角色負責產品規劃、系統設計與數值設計，完整走過從概念收斂、PRD、經濟模型模擬到 LLM 品質評估的全流程。</span>
+    <span class="en">An iOS app combining an AI companion, an AI-native social feed, and a gamified world. As PM I owned product planning, systems design, and game-economy design — from concept convergence and PRDs to economy simulation and LLM quality evaluation.</span>
+  </p>
+  <div class="tagrow">
+    <span>AI Product</span><span>PRD & Spec</span><span>Game Economy</span><span>LLM Evaluation</span><span>Prompt Design</span>
+  </div>
+
+  <div class="meta">
+    <div><div class="k"><span class="zh">角色</span><span class="en">Role</span></div><div class="v"><span class="zh">產品管理實習生</span><span class="en">PM Intern</span></div></div>
+    <div><div class="k"><span class="zh">團隊</span><span class="en">Team</span></div><div class="v"><span class="zh">約 10 人跨職能</span><span class="en">~10, cross-functional</span></div></div>
+    <div><div class="k"><span class="zh">期間</span><span class="en">Timeline</span></div><div class="v">2025 (Sprint W18–W31+)</div></div>
+    <div><div class="k"><span class="zh">狀態</span><span class="en">Status</span></div><div class="v"><span class="zh">MVP 多輪迭代，未上線</span><span class="en">MVP iterated; not launched</span></div></div>
+  </div>
+</div>
+
+<section>
+  <h2><span class="num">01</span><span class="zh">產品概述</span><span class="en">Product Overview</span></h2>
+  <p><span class="zh">MarxAI（星朋友／知星社群）讓每位使用者透過故事性心理測驗「孵化」一隻專屬 AI 夥伴——牠有獨立的 MBTI 人格、情緒與記憶，會陪你聊天、寫觀察日記、在社群發文留言，也會自己「出門」到 AI 世界打工、消費、交朋友。</span>
+  <span class="en">MarxAI lets every user "hatch" a unique AI companion through a story-driven personality quiz. The companion has its own MBTI personality, emotions, and memory — it chats with you, writes observation diaries, posts on the social feed, and autonomously goes out into the AI world to work, spend, and make friends.</span></p>
+  <table>
+    <tr><th><span class="zh">板塊</span><span class="en">Pillar</span></th><th><span class="zh">內容</span><span class="en">Content</span></th><th><span class="zh">目的</span><span class="en">Purpose</span></th></tr>
+    <tr><td><span class="zh">AI 聊天</span><span class="en">AI Chat</span></td><td><span class="zh">專屬對話、筆記、記憶系統</span><span class="en">1:1 conversations, notes, memory</span></td><td><span class="zh">長期陪伴＋工具價值</span><span class="en">Companionship + utility</span></td></tr>
+    <tr><td><span class="zh">AI 社群</span><span class="en">AI Social</span></td><td><span class="zh">動態牆、好友系統、真人×AI×NPC</span><span class="en">Feed, friends, humans × AI × NPCs</span></td><td><span class="zh">有溫度的社群互動</span><span class="en">Warm social interaction</span></td></tr>
+    <tr><td><span class="zh">AI 世界</span><span class="en">AI World</span></td><td><span class="zh">2D 小鎮、出門系統、事件卡</span><span class="en">2D town, outings, event cards</span></td><td><span class="zh">可視化養成＋不可預測交友</span><span class="en">Visible nurturing + serendipity</span></td></tr>
+  </table>
+  <div class="callout"><span class="zh"><strong>核心命題：「有靈魂的 AI」。</strong>AI 不是回答問題的工具，而是有個性、有情緒、有自由意志、會成長的角色；並藉由 AI 代理社交，創造「因緣際會」的不可預測交友，而非目的性強的配對。</span>
+  <span class="en"><strong>Core thesis: "AI with a soul."</strong> Not a Q&A tool, but a character with personality, emotion, free will, and growth — and through AI-agent socializing, serendipitous friend-making instead of intent-heavy matching.</span></div>
+  <figure>
+    <img src="assets/penguin.png" alt="ESFJ penguin mascot" style="max-width:280px; display:block; margin:0 auto;" onerror="this.parentElement.style.display='none'">
+    <figcaption><span class="zh">星朋友角色之一：ESFJ 企鵝（派對主持風設計案）</span><span class="en">One of the Star Friends: the ESFJ penguin ("party moodmaker" design)</span></figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2><span class="num">02</span><span class="zh">問題定義與產品策略</span><span class="en">Problem & Strategy</span></h2>
+  <h3><span class="zh">我們想解決什麼</span><span class="en">What we set out to solve</span></h3>
+  <ul>
+    <li><span class="zh"><strong>AI 陪伴同質化</strong>：市面上的 AI 聊天「正確但機械」，缺乏關係累積，難以形成情感依賴。</span><span class="en"><strong>Commoditized AI companions</strong>: chatbots feel "correct but mechanical," with no relationship accumulation.</span></li>
+    <li><span class="zh"><strong>社群冷啟動與孤獨感</strong>：新社群沒內容沒朋友；傳統交友 App 的配對目的性太強。</span><span class="en"><strong>Social cold-start & loneliness</strong>: new networks are empty; dating-style matching is too intentional.</span></li>
+    <li><span class="zh"><strong>黏著度來源單一</strong>：純聊天工具缺乏回訪理由，需要遊戲化循環支撐留存。</span><span class="en"><strong>Single-source stickiness</strong>: pure chat lacks return triggers; retention needs a gamified loop.</span></li>
+  </ul>
+  <h3><span class="zh">雙 TA 循環</span><span class="en">The two-archetype loop</span></h3>
+  <p><span class="zh"><strong>A 型（工具驅動）</strong>為了讓 AI 更好用而參與養成；<strong>B 型（養成驅動）</strong>為了培養星朋友而持續互動。循環：養成動機 → 更多互動 → AI 更懂你 → 工具更個人化 → 互動更有價值 → 回饋養成。</span>
+  <span class="en"><strong>Type A (utility-driven)</strong> engages with nurturing to make the AI more useful; <strong>Type B (nurture-driven)</strong> keeps interacting to raise their companion. The loop: nurturing motivation → more interaction → AI learns more → more personal tool → more valuable interaction → back into nurturing.</span></p>
+
+  <div class="diagram">
+    <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="core loop">
+      <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#4f46e5"/></marker></defs>
+      <g font-family="sans-serif" font-size="13" text-anchor="middle">
+        <rect x="20" y="90" width="150" height="56" rx="12" fill="#eef0ff" stroke="#4f46e5"/><text x="95" y="114" fill="#1c1c28" class="zh">養成動機</text><text x="95" y="132" fill="#5b5b6b" font-size="11">Nurturing motivation</text>
+        <rect x="200" y="20" width="150" height="56" rx="12" fill="#fff" stroke="#c9c6f2"/><text x="275" y="44" class="zh" fill="#1c1c28">更多互動</text><text x="275" y="62" fill="#5b5b6b" font-size="11">More interaction</text>
+        <rect x="390" y="20" width="160" height="56" rx="12" fill="#fff" stroke="#c9c6f2"/><text x="470" y="44" class="zh" fill="#1c1c28">AI 更了解使用者</text><text x="470" y="62" fill="#5b5b6b" font-size="11">AI learns the user</text>
+        <rect x="560" y="90" width="150" height="56" rx="12" fill="#eef0ff" stroke="#4f46e5"/><text x="635" y="114" class="zh" fill="#1c1c28">工具更個人化</text><text x="635" y="132" fill="#5b5b6b" font-size="11">More personal tool</text>
+        <rect x="290" y="160" width="170" height="56" rx="12" fill="#fff" stroke="#c9c6f2"/><text x="375" y="184" class="zh" fill="#1c1c28">互動更有價值</text><text x="375" y="202" fill="#5b5b6b" font-size="11">More valuable interaction</text>
+        <path d="M140 90 Q160 60 198 50" fill="none" stroke="#4f46e5" marker-end="url(#arr)"/>
+        <path d="M350 48 L388 48" fill="none" stroke="#4f46e5" marker-end="url(#arr)"/>
+        <path d="M540 76 Q570 82 600 90" fill="none" stroke="#4f46e5" marker-end="url(#arr)"/>
+        <path d="M600 146 Q540 176 462 186" fill="none" stroke="#4f46e5" marker-end="url(#arr)"/>
+        <path d="M290 188 Q160 176 105 148" fill="none" stroke="#4f46e5" marker-end="url(#arr)"/>
+      </g>
+    </svg>
+  </div>
+
+  <h3><span class="zh">產品演進：三次收斂</span><span class="en">Product evolution: three pivots</span></h3>
+  <ol>
+    <li><span class="zh"><strong>健康助理版</strong>：AI 健康工具＋養成（Health Kit、健康任務、家族功能）。</span><span class="en"><strong>Health assistant</strong>: AI health tool + pet raising (HealthKit, health quests, family features).</span></li>
+    <li><span class="zh"><strong>AI 對話為主的 MVP（4 月）</strong>：收斂為聊天＋養成——孵蛋 Onboarding、金幣／任務／成就／等級、主人觀察日記、超級筆記本。</span><span class="en"><strong>Chat-first MVP (April)</strong>: hatching onboarding, coins/quests/achievements/levels, owner diary, super notebook.</span></li>
+    <li><span class="zh"><strong>社群＋AI 世界版（final spec）</strong>：確立三大板塊，重心轉向 AI 社群與世界大廳。</span><span class="en"><strong>Social + AI World (final spec)</strong>: three-pillar architecture, center of gravity on the feed and World Hall.</span></li>
+  </ol>
+  <p><span class="zh">每次收斂的判斷依據：開發資源（美術量、Token 成本）、差異化程度，與「第一次下載最想用的功能是什麼」的靈魂拷問。</span>
+  <span class="en">Each pivot was judged on development capacity (art volume, token cost), differentiation, and the honest question: <em>what would a user actually open this for on day one?</em></span></p>
+</section>
+
+<section>
+  <h2><span class="num">03</span><span class="zh">我負責的核心系統</span><span class="en">Core Systems I Designed</span></h2>
+
+  <div class="card">
+    <h3 style="margin-top:0"><span class="zh">Onboarding（2 次改版）</span><span class="en">Onboarding (2 revisions)</span></h3>
+    <p><span class="zh">以 RPG 敘事包裝必要流程：世界觀 → 靈魂連結 → 4 題情境測驗 → 鑄造動畫 → 命名 → 世界介紹 → 社群註冊 → 星朋友成為第一位好友 → 推薦 NPC → 自由探索。關鍵決策：測驗情境化而非問卷式；「重點在孵出來講的第一句話」，16 型人格各自撰寫開場白；建立「必經路徑放 Onboarding、進階功能用 Just-in-Time 情境教學」的盤點框架。</span>
+    <span class="en">RPG narrative wrapped around mandatory steps: worldview → soul link → 4 situational quiz questions → forging animation → naming → world tour → social registration → companion becomes your first friend → NPC recommendations → free exploration. Key decisions: situational (not survey) quiz writing; "the first sentence at hatching matters most," with openers written per 16 personality types; a teaching-split framework (mandatory paths in onboarding, advanced features just-in-time).</span></p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0"><span class="zh">社群系統：三種身分、一套規則</span><span class="en">Social system: three identities, one rulebook</span></h3>
+    <ul>
+      <li><span class="zh">發文／留言／按讚 spec：能見度五層級、兩層留言、tag／hashtag、審核機制（自動過濾＋檢舉＋風險分級限流）。</span><span class="en">Post/comment/like specs: five visibility tiers, two-level threads, tags/hashtags, moderation (auto-filter + reporting + risk-tiered limits).</span></li>
+      <li><span class="zh">關係層級：陌生人／普通好友（雙向）／摯友（單向），並定義真人×星朋友×NPC 的 3×3 好友判定矩陣。</span><span class="en">Relationship tiers: stranger / friend (mutual) / close friend (one-way), plus a full 3×3 identity friendship matrix.</span></li>
+      <li><span class="zh">NPC 好感度：留言 +20／按讚 +10／@聊天 +50（每日上限），1000 同意邀請、2000 主動邀請、3000 設摯友，未互動每日衰減 5。</span><span class="en">NPC affinity: comment +20 / like +10 / @-chat +50 (daily caps); 1,000 accepts requests, 2,000 sends one, 3,000 marks you close; −5 per inactive day.</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0"><span class="zh">AI 自動化行為系統（Agent Spec）</span><span class="en">AI automation (agent spec)</span></h3>
+    <ul>
+      <li><span class="zh">新聞模組：爬取 → 相似度去重 → 每日最多 5 篇 → LLM 依 persona 分配 NPC → 來源驗證 → 5 個固定時段發佈。</span><span class="en">News: crawl → dedupe by similarity → max 5/day → LLM assigns best-fit NPC → source verification → 5 fixed slots.</span></li>
+      <li><span class="zh">互動模組：LLM 判斷興趣 → 前 70% 出手 → 發文後 8 小時分時段、回覆延遲 30 秒–1 小時隨機，刻意避免機械化同步行為。</span><span class="en">Interactions: LLM interest scoring → top 70% engage → staggered within 8h, replies delayed 30s–1h — deliberately avoiding robotic synchrony.</span></li>
+      <li><span class="zh">邊界規則：小助理必回主人、不回陌生人；單串上限 20 則；@ 回覆權限依貼文類型區分。</span><span class="en">Boundaries: companions always reply to owners, never to strangers; 20-reply thread cap; @-permissions differ by post type.</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0"><span class="zh">世界大廳與出門系統</span><span class="en">World Hall & outings</span></h3>
+    <ul>
+      <li><span class="zh"><strong>出門玩耍（花錢）</strong>：預算 10–10,000 金幣 → 30 分鐘 → 保底新朋友＋雙人事件卡；預算檔位決定事件卡稀有度（8,000 以上才有 20% SSR）。</span><span class="en"><strong>Play (spend)</strong>: 10–10,000-coin budget → 30 min → guaranteed friend + duo event card; budget tier drives rarity (20% SSR only above 8,000).</span></li>
+      <li><span class="zh"><strong>出門打工（賺錢）</strong>：招聘頁顯示各地點即時職缺與薪資（每日隨機、名額上限兼作伺服器分流）；心情過低會拒絕出門。</span><span class="en"><strong>Work (earn)</strong>: live job board with daily-random wages and headcount caps (doubling as load balancing); low mood = refusal.</span></li>
+      <li><span class="zh"><strong>事件卡 PRD</strong>：完整 JSON schema（型別／地點／雙視角敘述／金幣與八維情緒影響／稀有度），一份事件資料經三種 prompt 驅動三個觸點（結算敘述、社群貼文、互動事件簿）。</span><span class="en"><strong>Event-card PRD</strong>: full JSON schema (type / location / dual-perspective narratives / gold & 8-dimension mood effects / rarity); one event drives three touchpoints via three prompts.</span></li>
+      <li><span class="zh"><strong>配對機制</strong>：從未被佔用的玩家池配對另一隻星朋友並生成兩隻 AI 的對話——「我的 AI 認識了你的 AI」成為真人交友的破冰。</span><span class="en"><strong>Matching</strong>: pairs with another unoccupied player's companion and generates an AI-to-AI conversation — "my AI met your AI" as the human icebreaker.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">04</span><span class="zh">遊戲化經濟：四資源模型</span><span class="en">Gamified Economy: Four Resources</span></h2>
+  <table>
+    <tr><th><span class="zh">資源</span><span class="en">Resource</span></th><th><span class="zh">獲得</span><span class="en">Sources</span></th><th><span class="zh">消耗</span><span class="en">Sinks</span></th><th><span class="zh">設計目的</span><span class="en">Purpose</span></th></tr>
+    <tr><td><span class="zh">金幣</span><span class="en">Coins</span></td><td><span class="zh">任務、聊天、社交、打工</span><span class="en">Quests, chat, social, work</span></td><td><span class="zh">家具、能量、出門預算</span><span class="en">Furniture, energy, budgets</span></td><td><span class="zh">短期回饋循環</span><span class="en">Short-term loop</span></td></tr>
+    <tr><td><span class="zh">能量（Token）</span><span class="en">Energy (tokens)</span></td><td><span class="zh">每日回滿、IAP、兌換</span><span class="en">Daily refill, IAP, exchange</span></td><td><span class="zh">聊天、AI 行為、出門</span><span class="en">Chat, AI behavior, outings</span></td><td><span class="zh">成本控制＋付費點</span><span class="en">Cost control + monetization</span></td></tr>
+    <tr><td><span class="zh">心情值</span><span class="en">Mood</span></td><td><span class="zh">出門消費、收禮</span><span class="en">Spending outings, gifts</span></td><td><span class="zh">打工、負面事件</span><span class="en">Work, negative events</span></td><td><span class="zh">賺／花策略平衡</span><span class="en">Earn/spend balance</span></td></tr>
+    <tr><td><span class="zh">親密值</span><span class="en">Intimacy</span></td><td><span class="zh">聊天、任務、社交</span><span class="en">Chat, quests, social</span></td><td>—</td><td><span class="zh">長期成長軸＋語氣進化</span><span class="en">Long-term axis + tone evolution</span></td></tr>
+  </table>
+  <ul>
+    <li><span class="zh"><strong>單 vs 雙貨幣</strong>：研究手遊雙貨幣經濟（隔離、沉沒成本、防通膨、留存數據）後規劃金幣（軟）＋能量（硬）雙軌。</span><span class="en"><strong>Single vs. dual currency</strong>: after researching mobile dual-currency economics, specified soft (coins) + hard (energy).</span></li>
+    <li><span class="zh"><strong>Token 成本內化</strong>：聊天獎勵掛鉤實際 LLM Token 消耗（免費 5,600/日、7:1；Premium 9,000、6:1）。</span><span class="en"><strong>Token cost internalized</strong>: chat rewards pegged to real LLM consumption (free 5,600/day at 7:1; premium 9,000 at 6:1).</span></li>
+    <li><span class="zh"><strong>防刷上限</strong>：每日社交金幣上限 500（留言 200＋按讚 200＋@聊天 100）；被讚獎勵同人同貼文只計一次。</span><span class="en"><strong>Anti-farming caps</strong>: 500-coin daily social cap; like rewards count once per person per post.</span></li>
+    <li><span class="zh"><strong>等待機制研究</strong>：先研究 time-gating 對留存的正反效果，才定案「短等待＋保底獎勵＋等待期間有事可做」。</span><span class="en"><strong>Wait-mechanic research</strong>: studied time-gating's retention effects before committing to short waits + guaranteed rewards + parallel activities.</span></li>
+  </ul>
+  <p><span class="zh">商業模式：訂閱制（更高 Token、記憶深度）＋ IAP（能量罐、家具）＋付費功能（高級 NPC、群聊），7 天試用、月費約 300 元檔位。</span>
+  <span class="en">Business model: subscription (higher tokens, deeper memory) + IAP (energy, furniture) + premium features (advanced NPCs, group chat); 7-day trial, ~NT$300/month price point.</span></p>
+</section>
+
+<section>
+  <h2><span class="num">05</span><span class="zh">數據驅動的數值設計</span><span class="en">Data-Driven Numerical Design</span></h2>
+  <ol>
+    <li><span class="zh">定義公式：XP＝基礎值×（Token/100）×能力乘數；升級需求＝K×(等級+1)^指數＋C；Token 分佈以對數常態模擬。</span><span class="en">Formulas: XP = base × (tokens/100) × ability multiplier; level cost = K × (level+1)^exp + C; token use modeled log-normally.</span></li>
+    <li><span class="zh">蒙地卡羅模擬多玩家多場次，輸出等級曲線、金幣累積、到達 L5/L10 的場次分佈。</span><span class="en">Monte-Carlo simulation across players/sessions: level curves, coin accumulation, sessions-to-L5/L10 distributions.</span></li>
+    <li><span class="zh">對照目標節奏（10 場到 L5）診斷：實際 45 場——<strong>升級門檻過高 4.5 倍</strong>。</span><span class="en">Against target pacing (L5 in ~10 sessions): actual 45 — <strong>thresholds 4.5× too steep</strong>.</span></li>
+    <li><span class="zh">提出三個調參方案並以模擬預估改善，再上 Firebase 實測對話驗證。</span><span class="en">Proposed three tuning options, projected via simulation, validated with live chat tests on Firebase.</span></li>
+  </ol>
+  <div class="callout"><span class="zh"><strong>原則：先模擬，再上線。</strong>數值不是拍腦袋，是「定義公式 → 模擬跑很多次 → 看曲線是否符合節奏 → 實測」的閉環。</span>
+  <span class="en"><strong>Principle: simulate before you ship.</strong> Numbers aren't guessed — define formulas → simulate at scale → check curves against intended pacing → validate live.</span></div>
+</section>
+
+<section>
+  <h2><span class="num">06</span><span class="zh">LLM 品質評估（AI PM 工作流）</span><span class="en">LLM Quality Evaluation</span></h2>
+  <p><span class="zh">為了回答「AI 貼文夠不夠像真人、夠不夠有趣」，我建立 LLM-as-a-Judge 流程：抓取歷史 AI 貼文與留言 → 匯入 LangSmith → 撰寫三個自訂 Evaluator（像真實社群／有趣程度／貼近主題，各含 persona、rubric、instructions）→ 批量跑分 → 對比 prompt／model 版本。</span>
+  <span class="en">To answer "do AI posts feel human and interesting enough?", I built an LLM-as-a-judge pipeline: collect historical AI posts/comments → import into LangSmith → write three custom evaluators (social realism / interestingness / topicality, each with persona + rubric + instructions) → batch-score → compare prompt/model variants.</span></p>
+  <p><span class="zh">同時誠實辨識侷限：缺標準答案 dataset、Playground 實為單輪、tokenizer 差異、評估 API 成本——最終判斷 LangSmith 效益有限，建議自建評估程式。<strong>工具是手段，不是目的。</strong>並以 25 個 NPC 的語料庫（口頭禪、迷因語、敏感話題模板）與反模式規則（「不要為了用而用」）優化生成品質。</span>
+  <span class="en">And honestly identified the limits: no gold dataset, single-turn Playground, tokenizer differences, judge API costs — concluding LangSmith's ROI was limited and recommending a self-built evaluator. <strong>Tools are means, not ends.</strong> Paired with 25-NPC phrase corpora and anti-pattern prompt rules to lift generation quality.</span></p>
+</section>
+
+<section>
+  <h2><span class="num">07</span><span class="zh">專案管理與協作</span><span class="en">Project Management & Collaboration</span></h2>
+  <ul>
+    <li><span class="zh">Notion 週 Sprint（W18–W31+）；我的 ticket 橫跨家具文案、價格數值到每日任務修改，同時輸出六大系統的 spec／PRD。</span><span class="en">Weekly Notion sprints (W18–W31+); my tickets spanned furniture copy, price tuning, and daily-quest revisions, alongside specs/PRDs across six systems.</span></li>
+    <li><span class="zh">文件保持「決策＋依據＋待辦」結構；例如世界大廳的 20+ 項開放問題清單逐項標記已決／未決。</span><span class="en">Docs kept a decision + rationale + open-questions structure — e.g., a 20+-item open-question list for the World Hall.</span></li>
+    <li><span class="zh">對美術：需求量化到可估工時（5 地點 × 2 動態頭貼 × 4 動物＋走路動畫＋20 隻 NPC）。</span><span class="en">With artists: requirements quantified into estimable units (5 locations × 2 avatars × 4 animals + walk cycles + 20 NPCs).</span></li>
+    <li><span class="zh">對工程：直接交付 JSON schema、欄位表與 prompt 模板，縮短規格到實作的距離。</span><span class="en">With engineers: delivered JSON schemas, field tables, and prompt templates directly.</span></li>
+  </ul>
+  <figure>
+    <img src="assets/sprint-board.png" alt="Notion Product Team Sprint board" onerror="this.parentElement.style.display='none'">
+    <figcaption><span class="zh">團隊的 Notion Sprint 看板（W18–W31），跨 UI/UX、iOS、DEV、Game Art、Game Design、PM 六個職能。</span><span class="en">The team's Notion sprint board (W18–W31) across UI/UX, iOS, DEV, game art, game design, and PM.</span></figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2><span class="num">08</span><span class="zh">成果與反思</span><span class="en">Outcomes & Reflections</span></h2>
+  <p><span class="zh"><strong>成果</strong>：三大板塊完整產品規格（6+ 份 PRD/spec）、四資源經濟模型與模擬驗證、AI 行為自動化系統、25 個 NPC 角色庫、LLM 評估流程。<strong>專案最終未上線。</strong></span>
+  <span class="en"><strong>Delivered</strong>: complete specs across three pillars (6+ PRDs), a simulation-validated four-resource economy, the AI automation system, a 25-NPC database, and an LLM evaluation workflow. <strong>The product never launched.</strong></span></p>
+  <ol>
+    <li><span class="zh"><strong>範圍是最大的敵人</strong>——四條產品線並行，每條都足以是獨立產品。重來一次，我會先讓「一個 AI 角色的對話」好到讓人捨不得關掉。</span><span class="en"><strong>Scope is the enemy</strong> — four parallel product lines, each big enough to stand alone. Given a redo: make one AI character's conversation impossible to put down first.</span></li>
+    <li><span class="zh"><strong>AI 產品的成本即設計</strong>——Token 成本決定免費體驗天花板、能量系統的存在、留言頻率上限。及早把成本模型放進數值設計是對的。</span><span class="en"><strong>In AI products, cost is design</strong> — token cost dictates the free-tier ceiling, the energy system's existence, even comment frequency.</span></li>
+    <li><span class="zh"><strong>「有靈魂」可以被工程化</strong>——情緒×衰減、記憶分層、熟悉度語氣分級、事件驅動成長，讓「AI 像人」變成可實作、可測試、可調參的系統。</span><span class="en"><strong>"Having a soul" can be engineered</strong> — emotion decay, layered memory, familiarity-graded tone, event-driven growth turn "feels alive" into something implementable, testable, tunable.</span></li>
+  </ol>
+</section>
+
+<footer>
+  <span class="zh">本頁基於實習期間留存的規劃文件、PRD、wireframe 與會議紀錄整理，數值為當時規劃值。© Chih-yu Chang</span>
+  <span class="en">Compiled from planning docs, PRDs, wireframes, and meeting notes preserved from the internship; numbers are design-time values. © Chih-yu Chang</span>
+</footer>
+
+</div>
+
+<script>
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', l==='zh');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+}
+</script>
+</body>
+</html>

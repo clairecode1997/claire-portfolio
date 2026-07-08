@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EIDOLON — Future Luxury × Rolls-Royce | Chih-yu Chang</title>
+<style>
+  :root{
+    --ink:#231d33; --sub:#6d6683; --line:#e6e1ef; --bg:#faf8fd; --card:#ffffff;
+    --accent:#5b4b8a; --accent-soft:#efeaf9; --tag:#f2eef8; --rr:#291333;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.85; font-size:16px;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 24px;}
+  header.top{position:sticky; top:0; z-index:50; background:rgba(250,248,253,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .top-inner{max-width:860px; margin:0 auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center;}
+  .lang-toggle{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:#fff;}
+  .lang-toggle button{border:0; background:transparent; padding:6px 16px; cursor:pointer; font-size:14px; color:var(--sub);}
+  .lang-toggle button.active{background:var(--ink); color:#fff;}
+  .hero{padding:64px 0 40px;}
+  .kicker{color:var(--accent); font-weight:700; font-size:14px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.3; font-weight:800; margin-bottom:16px;}
+  .lede{color:var(--sub); font-size:18px; max-width:660px;}
+  .hero-img{margin:32px 0 0; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:#000;}
+  .hero-img img{width:100%; display:block;}
+  .meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:32px 0;}
+  .meta div{background:var(--card); padding:16px 18px;}
+  .meta .k{font-size:12px; color:var(--sub); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px;}
+  .meta .v{font-weight:600; font-size:14.5px;}
+  section{padding:36px 0; border-top:1px solid var(--line);}
+  h2{font-size:26px; font-weight:800; margin-bottom:8px;}
+  h2 .num{color:var(--accent); font-size:15px; display:block; letter-spacing:.1em; margin-bottom:6px;}
+  h3{font-size:19px; font-weight:700; margin:28px 0 10px;}
+  p{margin:12px 0; color:#39334d;}
+  ul,ol{margin:12px 0 12px 22px;}
+  li{margin:7px 0; color:#39334d;}
+  strong{color:var(--ink);}
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  th{background:var(--tag); text-align:left; padding:10px 14px; font-weight:700;}
+  td{padding:10px 14px; border-top:1px solid var(--line); vertical-align:top;}
+  .callout{background:var(--accent-soft); border-left:4px solid var(--accent); border-radius:0 12px 12px 0; padding:16px 20px; margin:20px 0;}
+  figure{margin:24px 0;}
+  figure img{width:100%; border:1px solid var(--line); border-radius:12px; background:#fff; display:block;}
+  figcaption{font-size:13px; color:var(--sub); margin-top:8px; text-align:center;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:640px){ .grid2{grid-template-columns:1fr;} }
+  .grid2 figure{margin:0;}
+  footer{padding:40px 0 60px; color:var(--sub); font-size:13.5px; border-top:1px solid var(--line);}
+  [data-lang="zh"] .en{display:none !important;}
+  [data-lang="en"] .zh{display:none !important;}
+  .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .tagrow span{background:var(--tag); border-radius:999px; padding:4px 14px; font-size:13px; color:var(--sub);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html" style="text-decoration:none;color:inherit;font-weight:700;">← Home&nbsp;&nbsp;<span style="opacity:.45">|</span>&nbsp;&nbsp;Chih-yu Chang · Portfolio</a>
+    <div class="lang-toggle">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Design Case Study · Future Luxury × Rolls-Royce</div>
+  <h1>EIDOLON<br><span style="font-size:.55em; color:var(--sub); font-weight:700;"><span class="zh">無車城市裡的至臻行動</span><span class="en">Superior Mobility in the Car-Free City</span></span></h1>
+  <p class="lede">
+    <span class="zh">當未來的市中心不再允許汽車駛入，勞斯萊斯的奢華體驗在哪裡結束？我們的答案：不結束——它摺疊起來，藏在車側翼裡。一學期的跨校專題，最終於 BMW 慕尼黑總部展出。</span>
+    <span class="en">When future city centers ban cars, where does the Rolls-Royce experience end? Our answer: it doesn't — it folds up and hides in the fender. A semester-long joint project, exhibited at BMW's Munich headquarters.</span>
+  </p>
+  <div class="tagrow">
+    <span>Futures Thinking</span><span>Scenario Design</span><span>Storyboard Illustration</span><span>Service Design</span><span>Industrial Design</span>
+  </div>
+
+  <div class="hero-img"><img src="assets/eidolon/hero.jpg" alt="EIDOLON scooter side profile render"></div>
+
+  <div class="meta">
+    <div><div class="k"><span class="zh">課程</span><span class="en">Course</span></div><div class="v">Future Luxury: Rethinking Urban Mobility</div></div>
+    <div><div class="k"><span class="zh">合作</span><span class="en">Partners</span></div><div class="v">weißensee kunsthochschule berlin × FH Potsdam × Rolls-Royce Motor Cars</div></div>
+    <div><div class="k"><span class="zh">團隊</span><span class="en">Team</span></div><div class="v"><span class="zh">3 人（指導：Prof. Nils Krüger）</span><span class="en">3 members (Advisor: Prof. Nils Krüger)</span></div></div>
+    <div><div class="k"><span class="zh">期間</span><span class="en">Timeline</span></div><div class="v"><span class="zh">2025/26 冬季學期</span><span class="en">Winter Semester 2025/26</span></div></div>
+    <div><div class="k"><span class="zh">成果</span><span class="en">Outcome</span></div><div class="v"><span class="zh">2026/3/3 於 BMW 慕尼黑總部展出</span><span class="en">Exhibited at BMW HQ Munich, Mar 3, 2026</span></div></div>
+    <div><div class="k"><span class="zh">我的角色</span><span class="en">My Role</span></div><div class="v"><span class="zh">情境腳本・分鏡插圖・未來研究</span><span class="en">Scenario writing · Storyboard illustration · Futures research</span></div></div>
+  </div>
+</div>
+
+<section>
+  <h2><span class="num">01</span><span class="zh">專案背景</span><span class="en">Background</span></h2>
+  <p><span class="zh">這是柏林白湖藝術學院、波茨坦應用科學大學與 Rolls-Royce Motor Cars 合作的跨領域設計專題（產品設計組，含社會學基礎），我在波茨坦交換期間與兩位德國同學 Simon 與 Sebastian 組隊參與。題目「Future Luxury」要求我們重新思考：在劇烈變化的未來城市裡，奢華行動意味著什麼？</span>
+  <span class="en">An interdisciplinary design project by weißensee kunsthochschule berlin, Fachhochschule Potsdam, and Rolls-Royce Motor Cars (product design track with sociology foundations). I joined during my exchange semester in Potsdam, teaming up with two German classmates, Simon and Sebastian. The brief, "Future Luxury," asked us to rethink what luxury mobility means in radically changing future cities.</span></p>
+</section>
+
+<section>
+  <h2><span class="num">02</span><span class="zh">未來研究：2035 年的無車城市</span><span class="en">Futures Research: The Car-Free City of 2035</span></h2>
+  <p><span class="zh">我們以 2×2 情境矩陣（資源有限↔無限 × 新型行動載具被接受↔不被接受）收斂出目標世界——<strong>Car-Free Solar Punk City</strong>：市中心全面無車、城市以 15 分鐘生活圈重組、綠能普及、資源有限、價值觀從「極致奢華」轉向「純粹意義」。研究依據包括 Pontevedra 全市行人化、Oslo 微型物流等真實案例。</span>
+  <span class="en">Using a 2×2 scenario matrix (limited↔unlimited resources × new mobility accepted↔rejected), we converged on our target world — the <strong>Car-Free Solar Punk City</strong>: fully car-free centers, cities reorganized into 15-minute neighborhoods, green energy, finite resources, and values shifting from "ultimate luxury" to "pure meaning." Grounded in real cases like Pontevedra's full pedestrianization and Oslo's micro-logistics.</span></p>
+  <figure><img src="assets/eidolon/carfree-map.jpg" alt="Car-free inner city illustration"><figcaption><span class="zh">無車市中心的想像圖（插圖：張致瑜）</span><span class="en">Envisioning the car-free inner city (illustration: Chih-yu Chang)</span></figcaption></figure>
+  <p><span class="zh">接著我們把六個未來因素逐一翻譯成 RR 的機會與張力——汽車過時（車變成「移動的藝術品」，品牌需轉向整體行動體驗）、資源有限、綠能、Polycrisis（品牌必須表態）、價值轉移、數位工藝（自動化世界裡手工藝反而更稀缺）。我負責「汽車過時」段的分析與期末簡報主講。</span>
+  <span class="en">We then translated six future factors into opportunities and tensions for RR — cars becoming obsolete (the car turns into "mobile art"; the brand must move toward holistic mobility), finite resources, green energy, polycrisis (brands must take positions), shifting values, and digital craftsmanship (handcraft grows scarcer — and more precious — in an automated world). I owned the "cars are obsolete" analysis and presented that section in the final review.</span></p>
+</section>
+
+<section>
+  <h2><span class="num">03</span><span class="zh">問題定義</span><span class="en">Framing the Problem</span></h2>
+  <div class="callout"><span class="zh"><strong>如何讓 Rolls-Royce 車主在無車市中心，依然擁有獨立、安全、優雅的旅程？</strong>我們沒有迴避這個提案最大的槽點，反而把它放上簡報：「勞斯萊斯車主騎滑板車？也太牽強了吧！」——正面回應質疑，成為整份敘事的張力來源。</span>
+  <span class="en"><strong>How might a Rolls-Royce owner still enjoy an independent, safe, and elegant ride in a car-free city center?</strong> We didn't dodge the concept's biggest objection — we put it on a slide: "That's quite a stretch — a Rolls-Royce owner on a scooter!" Confronting the doubt head-on became the narrative's central tension.</span></div>
+  <figure><img src="assets/eidolon/stretch.jpg" alt="That's quite a stretch slide"><figcaption><span class="zh">簡報中的自我吐槽——先說出觀眾心裡的疑問，再逐一拆解。</span><span class="en">Voicing the audience's doubt before answering it, point by point.</span></figcaption></figure>
+  <p><span class="zh">概念發散期我們並行探索兩條路線——「實體 add-on 衛星載具」與「城市服務網絡」，我為兩個方向各寫了完整的情境腳本（名人隱私版／攜寵物進城版）。與教授的 consultation 後收斂：以實體產品為主、服務包覆為輔。</span>
+  <span class="en">During divergence we explored two directions in parallel — a physical add-on "satellite vehicle" and an in-city service network — and I wrote full scenario scripts for both (a privacy-minded celebrity version and a dog-owner version). After faculty consultations we converged: physical product first, wrapped in service.</span></p>
+</section>
+
+<section>
+  <h2><span class="num">04</span><span class="zh">最終概念：EIDOLON 三件組</span><span class="en">The Concept: EIDOLON, a Trio</span></h2>
+  <p><span class="zh">命名取自古希臘文 εἴδωλον（幻影、分身）——刻意呼應 Rolls-Royce 的 Ghost、Wraith、Phantom 命名譜系：它是你的勞斯萊斯在無車城市裡的分身。</span>
+  <span class="en">Named after the ancient Greek εἴδωλον — apparition, double — deliberately echoing Rolls-Royce's Ghost, Wraith, and Phantom lineage: it is your Rolls-Royce's double in the car-free city.</span></p>
+
+  <h3><span class="zh">A. 滑板車：收納於車側翼，如花朵般展開</span><span class="en">A. The Scooter: Stowed in the Fender, Unfolds Like a Flower</span></h3>
+  <div class="grid2">
+    <figure><img src="assets/eidolon/stored.jpg" alt="Stored in front of the doors"><figcaption><span class="zh">收納於 suicide doors 前側翼、常時充電</span><span class="en">Stored ahead of the suicide doors, always charged</span></figcaption></figure>
+    <figure><img src="assets/eidolon/unfolds.jpg" alt="Unfolds and ready to ride"><figcaption><span class="zh">自動送出、自行展開、即刻可騎</span><span class="en">Auto-extends, self-unfolds, ready to ride</span></figcaption></figure>
+  </div>
+  <ul>
+    <li><span class="zh">雙側寬踏板平行站立、可升降底盤——上下車不彎腰，停等紅燈時穩定站立不必下車</span><span class="en">Wide parallel footboards and a lowerable chassis — no bending to mount, stable standing at red lights without dismounting</span></li>
+    <li><span class="zh">超出手部的大型前擋與寬胎懸吊，把 Magic Carpet Ride 的行路質感帶到兩輪上</span><span class="en">An oversized front shield and wide cushioned tires bring the Magic Carpet Ride to two wheels</span></li>
+    <li><span class="zh">一鍵摺疊後如行李箱拖行，直接交給門房代管</span><span class="en">One-touch folding turns it into a wheeled suitcase you hand to the doorman</span></li>
+  </ul>
+  <div class="grid2">
+    <figure><img src="assets/eidolon/anatomy.jpg" alt="EIDOLON design anatomy"><figcaption><span class="zh">設計解剖：手部護罩、風擋、寬胎</span><span class="en">Anatomy: hand cover, windshield, broad tyres</span></figcaption></figure>
+    <figure><img src="assets/eidolon/folding.jpg" alt="Folding mechanism diagram"><figcaption><span class="zh">摺疊機構研究</span><span class="en">Folding mechanism study</span></figcaption></figure>
+  </div>
+
+  <h3><span class="zh">B. Bespoke 頭飾：資訊在視野裡，不在手機上</span><span class="en">B. Bespoke Headpieces: Information in Your View, Not on Your Phone</span></h3>
+  <div class="grid2">
+    <figure><img src="assets/eidolon/headpieces.jpg" alt="Bespoke headpiece collection"><figcaption><span class="zh">從 smart glasses 到時尚帽款的個人化系列</span><span class="en">A bespoke range from smart glasses to fashion hats</span></figcaption></figure>
+    <figure><img src="assets/eidolon/hud.jpg" alt="Integrated HUD display"><figcaption><span class="zh">visor HUD：導航投影於視野，停等時自動轉為透明</span><span class="en">Visor HUD: navigation in view, auto-transparent when stopped</span></figcaption></figure>
+  </div>
+
+  <h3><span class="zh">C. Live Concierge Service：真人禮賓延伸到車外</span><span class="en">C. Live Concierge Service: Human Concierge Beyond the Car</span></h3>
+  <figure><img src="assets/eidolon/lcs.jpg" alt="Live Concierge Service dialogue"><figcaption><span class="zh">整合 Whispers App 的真人禮賓：主動更新路線、代為通知目的地——「Certainly, Ms. Eleanor.」</span><span class="en">A live concierge in the Whispers app: proactive rerouting, calls ahead on your behalf — "Certainly, Ms. Eleanor."</span></figcaption></figure>
+  <figure><img src="assets/eidolon/folded.jpg" alt="Folded position as wheeled suitcase"><figcaption><span class="zh">抵達後：摺疊、拖行、交給門房，旅程優雅收尾。</span><span class="en">On arrival: fold, roll, hand over — an elegant end to the journey.</span></figcaption></figure>
+</section>
+
+<section>
+  <h2><span class="num">05</span><span class="zh">我的角色：用情境和插圖說服人</span><span class="en">My Role: Persuading with Scenarios and Illustration</span></h2>
+  <ul>
+    <li><span class="zh"><strong>情境腳本</strong>：兩個概念方向的完整使用者旅程腳本，最終版本成為手冊與簡報的敘事主軸——從選帽出門、車側展開、騎行與紅燈待機、LCS 對話，到摺疊交給門房。</span><span class="en"><strong>Scenario scripts</strong>: full user-journey scripts for both concept directions; the final version became the narrative spine of the brochure and presentation — from choosing your headpiece to handing the folded scooter to the doorman.</span></li>
+    <li><span class="zh"><strong>全套分鏡插圖</strong>：以 RR 紫為基調繪製整個 user journey 的 storyboard 與城市氛圍圖——上方所有敘事插圖即為此系列。插圖統一了團隊的視覺語言，也是 BMW 展場敘事的核心資產。</span><span class="en"><strong>The full storyboard illustration set</strong>: I illustrated the entire user journey and city scenes in the RR purple palette — every narrative illustration on this page is from that series. It unified the team's visual language and anchored the BMW exhibition storytelling.</span></li>
+    <li><span class="zh"><strong>未來因素分析與簡報主講</strong>（「汽車過時」段），及微型移動市場研究的亞洲視角輸入（台灣 YouBike 制度等）。</span><span class="en"><strong>Futures factor analysis and final-review presenting</strong> (the "cars are obsolete" section), plus Asian-market input to the micromobility research (e.g., Taiwan's YouBike system).</span></li>
+  </ul>
+  <div class="callout"><span class="zh">跨文化協作的註腳：這是一支中德混編團隊，工作語言在英德文之間切換。我學會用畫面代替語言辯論——當一張分鏡能讓所有人點頭，就不需要三十分鐘的討論。</span>
+  <span class="en">A note on cross-cultural collaboration: we were a Taiwanese-German team switching between English and German. I learned to argue with images instead of words — when one storyboard frame gets everyone nodding, you don't need a thirty-minute debate.</span></div>
+</section>
+
+<section>
+  <h2><span class="num">06</span><span class="zh">原型、專利檢索與 BMW 總部展出</span><span class="en">Prototype, Patent Search & the BMW Exhibition</span></h2>
+  <ul>
+    <li><span class="zh"><strong>原型驗證</strong>：1:1 testing mule 與 3D 列印樞軸驗證摺疊機構與站姿。</span><span class="en"><strong>Prototyping</strong>: a 1:1 testing mule and 3D-printed pivots validated the folding mechanism and riding stance.</span></li>
+    <li><span class="zh"><strong>專利前案檢索</strong>：以 espacenet 與 Google Patents 檢索可升降底盤與主動懸吊相關前案（CN108001585A、US10289650B2 等），確認機構的新穎性空間。</span><span class="en"><strong>Prior-art search</strong>: espacenet and Google Patents searches on lowerable chassis and active suspension (CN108001585A, US10289650B2, etc.) mapped the novelty space.</span></li>
+    <li><span class="zh"><strong>2026 年 3 月 3 日，BMW 慕尼黑總部展出</strong>：EIDOLON 於 BMW 總部展覽，<strong>BMW 主管現場詢問團隊的專利申請意願</strong>並建立專利窗口聯繫——對一個學期專題而言，這是最有力的外部驗證。</span><span class="en"><strong>March 3, 2026 — exhibited at BMW HQ, Munich</strong>: EIDOLON was shown at BMW headquarters, where <strong>BMW executives asked about the team's interest in patenting</strong> and connected us with their patent office — for a semester project, the strongest external validation we could ask for.</span></li>
+  </ul>
+  <figure><img src="assets/eidolon/closing.jpg" alt="Superior mobility in the car-free city"><figcaption><span class="zh">Superior Mobility in the Car-Free City.</span><span class="en">Superior Mobility in the Car-Free City.</span></figcaption></figure>
+</section>
+
+<section>
+  <h2><span class="num">07</span><span class="zh">學到的事</span><span class="en">What I Learned</span></h2>
+  <ol>
+    <li><span class="zh"><strong>奢華是體驗的連續性，不是單一產品。</strong>EIDOLON 的說服力不在滑板車本身，而在「體驗不中斷」：從車、到展開、到 HUD、到禮賓、到門房，任何一個縫隙漏了，奢華就斷了。</span><span class="en"><strong>Luxury is continuity of experience, not a product.</strong> EIDOLON's persuasiveness isn't the scooter — it's the unbroken chain from car to unfold to HUD to concierge to doorman. One gap, and the luxury breaks.</span></li>
+    <li><span class="zh"><strong>先替觀眾說出質疑，敘事才有張力。</strong>「RR 車主騎滑板車也太牽強」這頁自我吐槽，反而是整份簡報最抓人的一頁。</span><span class="en"><strong>Voice the audience's doubt before they do.</strong> The self-roasting "that's quite a stretch" slide turned out to be the most gripping page of the deck.</span></li>
+    <li><span class="zh"><strong>插圖是跨語言團隊的共通語。</strong>在英德文交錯的協作裡，分鏡是最快的對齊工具——也讓我確認了「視覺敘事」是我在團隊裡不可替代的位置。</span><span class="en"><strong>Illustration is a multilingual team's common tongue.</strong> Amid English-German collaboration, storyboards were the fastest alignment tool — and confirmed visual storytelling as my irreplaceable seat at the table.</span></li>
+  </ol>
+</section>
+
+<footer>
+  <span class="zh">本頁基於課程 Miro 板紀錄與期末簡報整理。團隊：張致瑜、Simon Morgenstern、Sebastian Altenberger｜指導：Prof. Nils Krüger｜插圖：張致瑜。© Chih-yu Chang</span>
+  <span class="en">Compiled from the course Miro board and final presentation. Team: Chih-yu Chang, Simon Morgenstern, Sebastian Altenberger | Advisor: Prof. Nils Krüger | Illustrations: Chih-yu Chang. © Chih-yu Chang</span>
+</footer>
+
+</div>
+
+<script>
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', l==='zh');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  try{ localStorage.setItem('lang', l); }catch(e){}
+}
+try{ const s = localStorage.getItem('lang'); if(s) setLang(s); }catch(e){}
+</script>
+</body>
+</html>

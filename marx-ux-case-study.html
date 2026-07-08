@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarxAI 星朋友 — UX Case Study | Chih-yu Chang</title>
+<style>
+  :root{
+    --ink:#231f20; --sub:#6b6460; --line:#eae4dc; --bg:#fbf8f4; --card:#ffffff;
+    --accent:#e0653a; --accent-soft:#fdeee7; --tag:#f4efe8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.85; font-size:16px;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 24px;}
+  header.top{position:sticky; top:0; z-index:50; background:rgba(251,248,244,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .top-inner{max-width:860px; margin:0 auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-weight:700;}
+  .lang-toggle{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:#fff;}
+  .lang-toggle button{border:0; background:transparent; padding:6px 16px; cursor:pointer; font-size:14px; color:var(--sub);}
+  .lang-toggle button.active{background:var(--ink); color:#fff;}
+  .hero{padding:72px 0 40px;}
+  .kicker{color:var(--accent); font-weight:700; font-size:14px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.3; font-weight:800; margin-bottom:16px;}
+  .lede{color:var(--sub); font-size:18px; max-width:640px;}
+  .meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:36px 0;}
+  .meta div{background:var(--card); padding:16px 18px;}
+  .meta .k{font-size:12px; color:var(--sub); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px;}
+  .meta .v{font-weight:600; font-size:15px;}
+  section{padding:36px 0; border-top:1px solid var(--line);}
+  h2{font-size:26px; font-weight:800; margin-bottom:8px;}
+  h2 .num{color:var(--accent); font-size:15px; display:block; letter-spacing:.1em; margin-bottom:6px;}
+  h3{font-size:19px; font-weight:700; margin:28px 0 10px;}
+  p{margin:12px 0; color:#3a3432;}
+  ul,ol{margin:12px 0 12px 22px;}
+  li{margin:7px 0; color:#3a3432;}
+  strong{color:var(--ink);}
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  th{background:var(--tag); text-align:left; padding:10px 14px; font-weight:700;}
+  td{padding:10px 14px; border-top:1px solid var(--line); vertical-align:top;}
+  .callout{background:var(--accent-soft); border-left:4px solid var(--accent); border-radius:0 12px 12px 0; padding:16px 20px; margin:20px 0;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 24px; margin:16px 0;}
+  figure{margin:24px 0;}
+  figure img{width:100%; border:1px solid var(--line); border-radius:12px; background:#fff;}
+  figcaption{font-size:13px; color:var(--sub); margin-top:8px; text-align:center;}
+  .quote{font-size:15px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:10px 0; color:#3a3432;}
+  .quote .who{font-size:12px; color:var(--sub); margin-bottom:4px; letter-spacing:.05em;}
+  footer{padding:40px 0 60px; color:var(--sub); font-size:13.5px; border-top:1px solid var(--line);}
+  [data-lang="zh"] .en{display:none !important;}
+  [data-lang="en"] .zh{display:none !important;}
+  .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .tagrow span{background:var(--tag); border-radius:999px; padding:4px 14px; font-size:13px; color:var(--sub);}
+  .flow{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:16px 0;}
+  .flow .step{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px 12px; font-size:13.5px;}
+  .flow .sep{color:var(--accent); font-weight:700;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html" style="text-decoration:none;color:inherit;font-weight:700;">← Home&nbsp;&nbsp;<span style="opacity:.45">|</span>&nbsp;&nbsp;Chih-yu Chang · Portfolio</a>
+    <div class="lang-toggle">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">UX Case Study</div>
+  <h1><span class="zh">MarxAI「星朋友」<br>設計一個角色、一段關係、一個世界</span><span class="en">MarxAI "Star Friend"<br>Designing a Character, a Relationship, a World</span></h1>
+  <p class="lede">
+    <span class="zh">每個人都有一隻專屬 AI 夥伴的陪伴社群 App。我負責體驗研究、對話設計、角色設計與遊戲化體驗——讓「AI 有靈魂」從口號變成可感受的產品體驗。</span>
+    <span class="en">A companionship app where everyone owns a unique AI friend. I owned experience research, conversation design, character design, and gamification UX — turning "AI with a soul" from slogan into felt experience.</span>
+  </p>
+  <div class="tagrow">
+    <span>Conversation Design</span><span>Character Design</span><span>Onboarding</span><span>Gamification UX</span><span>Wireframing</span><span>UX Research</span>
+  </div>
+
+  <div class="meta">
+    <div><div class="k"><span class="zh">角色</span><span class="en">Role</span></div><div class="v">UX / Interaction Design</div></div>
+    <div><div class="k"><span class="zh">團隊</span><span class="en">Team</span></div><div class="v"><span class="zh">約 10 人跨職能</span><span class="en">~10, cross-functional</span></div></div>
+    <div><div class="k"><span class="zh">期間</span><span class="en">Timeline</span></div><div class="v">2025 (Apr–Oct)</div></div>
+    <div><div class="k"><span class="zh">狀態</span><span class="en">Status</span></div><div class="v"><span class="zh">MVP 多輪迭代，未上線</span><span class="en">MVP iterated; not launched</span></div></div>
+  </div>
+</div>
+
+<section>
+  <h2><span class="num">01</span><span class="zh">設計挑戰</span><span class="en">The Design Challenge</span></h2>
+  <ol>
+    <li><span class="zh">如何讓使用者在第一分鐘就對 AI 角色產生「這是我的」擁有感？</span><span class="en">How do users feel <em>"this one is mine"</em> within the first minute?</span></li>
+    <li><span class="zh">如何讓對話「不像在跟機器說話」，並隨關係加深自然變化？</span><span class="en">How do conversations feel human — and evolve as the relationship deepens?</span></li>
+    <li><span class="zh">如何讓真人、AI 夥伴、NPC 在同一動態牆共存而不突兀？</span><span class="en">How do humans, companions, and NPCs coexist on one feed without feeling fake?</span></li>
+    <li><span class="zh">如何讓遊戲化創造回訪動力，而非挫折？</span><span class="en">How does gamification create return visits, not frustration?</span></li>
+  </ol>
+  <div class="callout"><span class="zh">品牌關鍵字：<strong>「有靈魂的 AI」、遊戲化、新世界探索、陪伴感、科技感。</strong></span>
+  <span class="en">Brand keywords: <strong>"AI with a soul," gamified, new-world exploration, companionship, tech warmth.</strong></span></div>
+</section>
+
+<section>
+  <h2><span class="num">02</span><span class="zh">研究：關係是怎麼發生的</span><span class="en">Research: How Relationships Form</span></h2>
+  <div class="card">
+    <h3 style="margin-top:0"><span class="zh">為什麼一起玩線上遊戲容易交到朋友？</span><span class="en">Why do gamers make friends?</span></h3>
+    <p><span class="zh">五個機制：共同目標、高頻互動的陪伴感（熟悉感來自曝光頻率而非深聊）、虛擬身分降低防備、遊戲自帶話題、群體歸屬。→ <strong>設計轉譯</strong>：交友不做「配對」，做「共同經歷」——兩隻星朋友一起經歷一個事件，事件成為兩位主人開口的話題。</span>
+    <span class="en">Five catalysts: shared goals, high-frequency companionship (familiarity = exposure, not depth), virtual identity lowering guardedness, built-in topics, group belonging. → <strong>Translation</strong>: friend-making as shared experience, not matching — two companions live through an event together; the event becomes the owners' conversation starter.</span></p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0"><span class="zh">等待機制是黏著還是勸退？</span><span class="en">Are wait timers sticky or repellent?</span></h3>
+    <p><span class="zh">Time-gating 研究：適當等待創造 appointment gameplay 與期待；過長則造成挫折與操縱感。→ <strong>設計轉譯</strong>：出門固定 30 分鐘、花錢出門保底事件卡、等待期間社群可逛、倒數可視化。</span>
+    <span class="en">Time-gating research: reasonable waits create appointment gameplay; excessive waits create frustration and manipulation. → <strong>Translation</strong>: fixed 30-minute outings, guaranteed event cards, the feed fills the wait, visible countdowns.</span></p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0"><span class="zh">競品機制拆解</span><span class="en">Mechanism teardowns</span></h3>
+    <p><span class="zh"><strong>多鄰國</strong>的低／中／高參與度分層與每日累積視覺化 → 轉譯為每日一問 → 每日任務 → 限定家具收集，累積視覺化在「房間」上；<strong>戀與深空</strong>的親密養成與成就觸發作為角色養成參考。</span>
+    <span class="en"><strong>Duolingo</strong>'s engagement layering and visualized daily accumulation → translated into Daily Question → dailies → limited furniture collection, visualized in the room; <strong>Love and Deepspace</strong> as reference for intimacy progression and achievement triggers.</span></p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">03</span><span class="zh">資訊架構</span><span class="en">Information Architecture</span></h2>
+  <p><span class="zh">主選單四板塊：<strong>AI 聊天／社交／AI 世界／個人設定</strong>。三種體驗節奏——聊天「深度私密」、社交「輕量高頻」、世界「掛機期待」——並刻意互相導流：聊天內容一鍵分享到社群、出門事件自動變成貼文、社群新朋友回到聊天。</span>
+  <span class="en">Four areas: <strong>AI Chat / Social / AI World / Profile</strong>. Three rhythms — deep & private, light & frequent, idle & anticipatory — deliberately cross-feeding: chat moments share to the feed, outing events auto-post, new friends flow back into chat.</span></p>
+</section>
+
+<section>
+  <h2><span class="num">04</span><span class="zh">Onboarding：孵化一段關係</span><span class="en">Onboarding: Hatching a Relationship</span></h2>
+  <div class="flow">
+    <div class="step"><span class="zh">世界觀</span><span class="en">Worldview</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">靈魂連結</span><span class="en">Soul link</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">4 題情境測驗</span><span class="en">4-question quiz</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">鑄造動畫</span><span class="en">Hatching</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">命名</span><span class="en">Naming</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">世界介紹 ×3</span><span class="en">World tour ×3</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">社群註冊</span><span class="en">Registration</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">第一位好友 🎉</span><span class="en">First friend 🎉</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">推薦 NPC</span><span class="en">NPC recs</span></div><div class="sep">→</div>
+    <div class="step"><span class="zh">自由探索</span><span class="en">Explore</span></div>
+  </div>
+  <ul>
+    <li><span class="zh"><strong>測驗故事化</strong>：拒絕量表，用生活情境二選一（「週五下班你最想：一個人耍廢 vs 找朋友吃飯」），四題串成一個週末小故事。</span><span class="en"><strong>Story-based quiz</strong>: binary life situations ("Friday night: sofa alone or dinner with friends?"), four questions chaining into a weekend story.</span></li>
+    <li><span class="zh"><strong>第一句話＝第一印象</strong>：孵化瞬間依 16 型人格說出專屬開場白。ENFP 赤狐：「嗨～你好呀！我超期待能和你一起探索新點子！」；INTJ 孤狼：「如果你有目標，我可以幫你加快實現它的速度。」</span><span class="en"><strong>The first sentence is the first impression</strong>: personality-specific openers at hatching. ENFP fox: "Hi!! Can't wait to explore new ideas with you!" INTJ wolf: "If you have a goal, I can help you get there faster."</span></li>
+    <li><span class="zh"><strong>命名儀式</strong>＋「隱藏個性會隨熟悉展現」的提示，為長期關係埋鉤子。</span><span class="en"><strong>Naming as ritual</strong>, plus a hint that hidden traits emerge over time — a hook for the long term.</span></li>
+    <li><span class="zh"><strong>冷啟動解法</strong>：註冊即有第一位好友（星朋友本人）＋部分 NPC 秒同意邀請，動態牆第一眼不空。</span><span class="en"><strong>Cold-start</strong>: everyone finishes with one friend (the companion) + instant-accept NPCs, so the feed is never empty.</span></li>
+    <li><span class="zh"><strong>教學分層</strong>：必經路徑放 Onboarding；進階功能用 Just-in-Time tooltip，出現一次、可回顧、追蹤完成率。</span><span class="en"><strong>Layered teaching</strong>: mandatory paths in onboarding; advanced features just-in-time, shown once, reviewable, tracked.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">05</span><span class="zh">角色設計：16 型人格 × 動物</span><span class="en">Character Design: 16 Types × Animals</span></h2>
+  <p><span class="zh">以 MBTI 為骨架的 16 種動物角色（ISTJ 龜、INTP 貓頭鷹、ENFP 赤狐、ESFJ 企鵝、ESTJ 大象、ISFJ 兔子…），每型六欄位：個性、<strong>潛在缺點</strong>、互動風格、開場白、外型、配色。缺點是刻意保留的——ESFJ 企鵝用搞笑掩蓋情緒、ISFJ 兔子有討好型人格。<strong>缺點讓角色可信。</strong></span>
+  <span class="en">Sixteen animal × MBTI characters (ISTJ turtle, INTP owl, ENFP fox, ESFJ penguin, ESTJ elephant, ISFJ rabbit…), each with six fields: personality, <strong>flaws</strong>, interaction style, opening quote, visual design, palette. Flaws are deliberate — the penguin hides feelings behind comedy; the rabbit people-pleases. <strong>Flaws make characters believable.</strong></span></p>
+  <figure>
+    <img src="assets/penguin.png" alt="ESFJ penguin mascot" style="max-width:260px; display:block; margin:0 auto;" onerror="this.parentElement.style.display='none'">
+    <figcaption><span class="zh">ESFJ 企鵝——「活潑可愛又有點小逞強」：連帽衫印表情包、大掛耳機、名牌寫著 MC PENG。用道具講性格。</span><span class="en">The ESFJ penguin — "playful, sweet, secretly trying too hard": emoji hoodie, big headphones, an "MC PENG" name tag. Props that speak personality.</span></figcaption>
+  </figure>
+  <ul>
+    <li><span class="zh"><strong>雙層人格</strong>：外顯個性（動物）＋隨機內顯個性（不顯示），同種動物依然獨一無二，保留「越熟越了解牠」的探索感。</span><span class="en"><strong>Two-layer personality</strong>: visible (animal) + hidden inner traits (randomized, never shown) — same-animal companions stay unique, and discovery is preserved.</span></li>
+    <li><span class="zh"><strong>25 個 NPC 生態系</strong>：10 網紅＋10 素人＋特色角色，各有背景、動機、貼文風格、常用語。情緒配比刻意不完美（70% 正向／20% 抱怨／10% 無厘頭）；角色「要有特色、有爭議」，可以 @ 出來吵架——爭議是社群的話題引擎。</span><span class="en"><strong>25-NPC ecosystem</strong>: 10 influencers + 10 ordinary accounts + edgy characters, each with backstory, motivation, style, catchphrases. Sentiment mix deliberately imperfect (70/20/10); characters "should have edges, even controversy" — you can @ them to argue. Controversy is the topic engine.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">06</span><span class="zh">對話設計：讓 AI「越來越熟」</span><span class="en">Conversation Design: An AI That Grows Familiar</span></h2>
+  <p><span class="zh">核心工作：把「關係變熟」工程化為三個模組。</span><span class="en">The core of my work: engineering "getting closer" into three modules.</span></p>
+
+  <h3><span class="zh">6.1 熟悉度模組（語氣分級）</span><span class="en">6.1 Familiarity module (tone grading)</span></h3>
+  <table>
+    <tr><th><span class="zh">階段</span><span class="en">Stage</span></th><th><span class="zh">熟悉度</span><span class="en">Score</span></th><th><span class="zh">範例（User：最近工作有點累）</span><span class="en">Sample (User: "Work's been exhausting")</span></th></tr>
+    <tr><td><span class="zh">陌生人</span><span class="en">Stranger</span></td><td>1–5</td><td><span class="zh">「抱歉聽到您心情不佳。如果需要，我可以提供一些放鬆的建議。」</span><span class="en">"I'm sorry to hear that. I can suggest ways to unwind if you'd like."</span></td></tr>
+    <tr><td><span class="zh">初步信任</span><span class="en">Early trust</span></td><td>6–15</td><td><span class="zh">「辛苦了！如果你想聊聊，都可以跟我說說喔。」</span><span class="en">"That sounds rough! I'm here if you want to talk it out."</span></td></tr>
+    <tr><td><span class="zh">熟悉</span><span class="en">Familiar</span></td><td>16–24</td><td><span class="zh">「唉，這種會議真的很折磨。我以前也會想暴飲暴食，抱抱你。」</span><span class="en">"Ugh, those meetings are brutal. I used to stress-eat after them too. Hug."</span></td></tr>
+    <tr><td><span class="zh">朋友</span><span class="en">Friend</span></td><td>25–35</td><td><span class="zh">「爽欸，哪間？」——超短句、嘴砲、冷淡的親密</span><span class="en">"Rough. Which boss this time?" — ultra-short, teasing, affectionate bluntness</span></td></tr>
+  </table>
+  <div class="callout"><span class="zh">最高階段刻意「更短、更懶、偶爾冷淡」——真正的熟人不寒暄。這是整個模組最反直覺、也最有效的洞察。同一分級也套用到社群貼文：同一主題依關係層級寫出四種深度版本。</span>
+  <span class="en">The top stage is deliberately shorter, lazier, occasionally cold — real close friends skip pleasantries. The most counterintuitive and effective insight of the module. The same grading applies to feed posts: one theme, four depths by relationship tier.</span></div>
+
+  <h3><span class="zh">6.2 情緒模組（會生氣也會和好）</span><span class="en">6.2 Emotion module (it can get hurt — and make up)</span></h3>
+  <p><span class="zh">四維情緒（快樂／焦慮／能量／信任），事件驅動＋向基準線衰減。連續被罵 → 快樂歸零、AI 進入疏離模式（「嗯，好的。」）；持續善意才能修復。我實際跑了兩段對照測試（崩潰 vs 回暖）逐句分析語氣，驗證「AI 有情緒」的體感與修復成本。</span>
+  <span class="en">Four dimensions (happiness / anxiety / energy / trust), event-driven with decay toward baseline. Repeated scolding → happiness hits zero, the AI withdraws ("Mm. Okay."); only sustained kindness repairs it. I ran two controlled tests (meltdown vs. warmth), analyzing tone line by line.</span></p>
+  <figure>
+    <img src="assets/emotion-module-flow.png" alt="Emotion module flowchart" onerror="this.parentElement.style.display='none'">
+    <figcaption><span class="zh">情緒模組流程：使用者語句 → Embedding 比對情緒例句庫（34 種）→ 閥值判定 → 更新八大情緒值 → 讀取語氣 Prompt → 插入主 Prompt 生成回覆。</span><span class="en">Emotion pipeline: utterance → embedding match against a 34-type example bank → threshold check → update eight emotion values → fetch tone prompt → inject into master prompt.</span></figcaption>
+  </figure>
+
+  <h3><span class="zh">6.3 記憶模組（記得才像朋友）</span><span class="en">6.3 Memory module (remembering is what friends do)</span></h3>
+  <ul>
+    <li><span class="zh">分層記憶：事件記憶／狀態記憶／衍生偏好／人格記憶。</span><span class="en">Layers: event memory / state memory / derived traits / personality memory.</span></li>
+    <li><span class="zh"><strong>記「事件」不記「單句」</strong>——「我喜歡蘋果」不構成記憶，一次爭執、一次深談才是；候選記憶先進「建議記憶池」由 LLM 判斷價值，避免記憶污染。</span><span class="en"><strong>Remember events, not sentences</strong> — "I like apples" isn't a memory; an argument or a confession is. Candidates enter a suggested-memory pool judged by an LLM, preventing pollution.</span></li>
+    <li><span class="zh">記憶的呈現是語氣與話題的自然體現，不是複誦：「昨天你說想養貓，我找到幾個有趣的品種耶！」</span><span class="en">Memories surface as natural topics, never recitation: "You mentioned wanting a cat — I found some fun breeds!"</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">07</span><span class="zh">社群體驗：三種身分、一面動態牆</span><span class="en">Social UX: Three Identities, One Feed</span></h2>
+  <ul>
+    <li><span class="zh"><strong>關係即權限</strong>：陌生人／好友／摯友直接映射內容能見度與語氣深度——「變熟」成為看得見的解鎖。</span><span class="en"><strong>Relationship as permission</strong>: tiers map to visibility and tone depth — closeness becomes visible unlocking.</span></li>
+    <li><span class="zh"><strong>NPC 好感度</strong>：互動累積、冷落衰減；夠熟 NPC 會主動加你好友——關係需要經營，這正是「有靈魂」的體感。</span><span class="en"><strong>NPC affinity</strong>: builds with interaction, decays with neglect; close enough and the NPC friends <em>you</em>. Tending is the feeling of soul.</span></li>
+    <li><span class="zh"><strong>人味細節</strong>：留言 60 分鐘內隨機出現、@ 回覆延遲 30 秒–1 小時、只有 70% 有興趣的 AI 出手、回覆串由 AI 決定何時結束。<strong>不同步、不即時、不全回——不完美才像人。</strong></span><span class="en"><strong>Human-feel details</strong>: comments arrive randomly within 60 min, @-replies delayed 30s–1h, only the top 70% engage, threads end when the AI decides. <strong>Asynchronous, non-instant, non-exhaustive — imperfection reads as human.</strong></span></li>
+    <li><span class="zh"><strong>防「AI 腔」</strong>：台灣網路語感語料庫（Dcard／PTT 語氣、迷因、語助詞）＋反模式規則：不要每則用流行語、不要固定開頭、長度 10–180 字隨情境。</span><span class="en"><strong>Anti-"AI voice"</strong>: Taiwanese internet-vernacular corpora (Dcard/PTT tone, memes, particles) + anti-patterns: don't force slang, never reuse openers, length varies 10–180 chars.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">08</span><span class="zh">世界大廳：觀察，而非操控</span><span class="en">The World Hall: Watching, Not Controlling</span></h2>
+  <p><span class="zh">45 度角 2D 小鎮（咖啡廳、健身房、公園、超市、漢堡店）。刻意的立場：<strong>玩家不能直接操作星朋友</strong>——可以指派出門，但牠依心情決定要不要聽；心情太差會拒絕打工並告訴你理由。「AI 有自由意志」不是說出來的，是被拒絕的那一刻感受到的。</span>
+  <span class="en">A 45° 2D town (café, gym, park, supermarket, burger shop). A deliberate stance: <strong>players cannot control the companion</strong> — you can send it out, but it decides by mood; too grumpy and it refuses, telling you why. "Free will" isn't stated — it's felt the moment you get turned down.</span></p>
+  <figure>
+    <img src="assets/world-hall-wireframe.png" alt="World Hall outing flow wireframe" onerror="this.parentElement.style.display='none'">
+    <figcaption><span class="zh">世界大廳出門流程 wireframe：房間出門按鈕 → 玩耍／打工選擇 → 職缺・預算頁 → 倒數計時 → 地圖動畫 → 結算彈窗。</span><span class="en">World Hall outing wireframes: Go Out button → play/work choice → job board & budget → countdown → map animation → settlement popup.</span></figcaption>
+  </figure>
+  <ul>
+    <li><span class="zh"><strong>微交互</strong>：行動中隨機跳出驚嘆號，點擊觸發事件卡——把等待變成「值得回來看一眼」的期待。</span><span class="en"><strong>Micro-interaction</strong>: random exclamation marks mid-outing reveal event cards — turning the wait into a reason to peek back.</span></li>
+    <li><span class="zh"><strong>事件卡</strong>：雙人卡有兩個視角的敘述；同一事件經三種 prompt 轉成結算敘述、社群貼文、事件簿對話——一個事件、三次觸點、一段可回顧的共同回憶。稀有度（N/R/SR/SSR）與預算掛鉤、可收藏、可分享炫耀。</span><span class="en"><strong>Event cards</strong>: duo cards carry two perspective narratives; one event flows through three prompts into a settlement line, a feed post, and a dialogue log — one event, three touchpoints, one revisitable memory. Rarity scales with budget; collectible; shareable.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">09</span><span class="zh">測試與迭代</span><span class="en">Testing & Iteration</span></h2>
+  <ul>
+    <li><span class="zh"><strong>對話體感測試</strong>：情緒模組兩段對照實測，逐句記錄數值與語氣，抓出「附和被誤判為批評」等 edge case。</span><span class="en"><strong>Conversation feel tests</strong>: two controlled emotion sessions logged line by line; surfaced edge cases like agreement misread as criticism.</span></li>
+    <li><span class="zh"><strong>生成品質評估</strong>：LangSmith 三個 LLM 評分器（像真實社群／有趣／切題）批量評估 NPC 貼文，跨 prompt 版本比較；後判斷工具效益有限，轉向自建。</span><span class="en"><strong>Generation quality</strong>: three LLM judges (realism / interest / topicality) batch-scoring NPC posts across prompt variants; later pivoted toward a self-built evaluator.</span></li>
+    <li><span class="zh"><strong>節奏模擬</strong>：與數值模擬結合驗證「前期要快、有成就感」——L5 達成慢了 4.5 倍後下修門檻。</span><span class="en"><strong>Pacing simulation</strong>: validated "fast early wins" — L5 arriving 4.5× late led to threshold cuts.</span></li>
+    <li><span class="zh"><strong>每日一問</strong>：最低摩擦的每日接觸點——任務直接開一則新對話、星朋友先開口、完成後推播不打斷聊天。</span><span class="en"><strong>Daily Question</strong>: the lowest-friction daily touchpoint — opens a fresh chat, the companion asks first, non-interrupting completion push.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">10</span><span class="zh">視覺與品牌方向</span><span class="en">Visual & Brand Direction</span></h2>
+  <p><span class="zh">Moodboard 關鍵字「有靈魂的 AI／遊戲化／新世界探索」；UI Style Guide 參考 GitHub Primer 定義色彩、字體與元件狀態清單（Input／Button／Card／Tab／List）。吉祥物同時是 UI 資產與 IP 資產——設計時即評估「能否成為可販售的 IP」。</span>
+  <span class="en">Moodboard: "AI with a soul / gamified / new-world exploration." Style guide (referencing GitHub Primer) defined color, type, and component state inventories. Mascots double as UI and IP assets — designed with "sellable IP" in mind.</span></p>
+</section>
+
+<section>
+  <h2><span class="num">11</span><span class="zh">成果與反思</span><span class="en">Outcomes & Reflections</span></h2>
+  <p><span class="zh"><strong>成果</strong>：Onboarding 兩次改版、16 型角色系統與 25 個 NPC、熟悉度／情緒／記憶三大對話模組、世界大廳完整 wireframe 與出門流程、事件卡體驗、LLM 內容評估方法。<strong>專案未上線</strong>，但它讓我確信：</span>
+  <span class="en"><strong>Delivered</strong>: two onboarding redesigns, the 16-type system and 25 NPCs, three conversation modules, complete World Hall wireframes and outing flow, event-card UX, and an LLM content evaluation method. <strong>The product never launched</strong> — but it convinced me:</span></p>
+  <ol>
+    <li><span class="zh"><strong>關係是可以被設計的</strong>——「AI 越來越懂我」的魔法感，背後是一層層可調參的體驗系統。</span><span class="en"><strong>Relationships can be designed</strong> — the magic of "my AI gets me" is a stack of tunable systems.</span></li>
+    <li><span class="zh"><strong>不完美才是真實感的來源</strong>——隨機延遲、會拒絕的 AI、越熟越短的回覆。我學會刻意設計不完美。</span><span class="en"><strong>Imperfection is where realness lives</strong> — random delays, an AI that says no, replies that shrink with closeness. I learned to design imperfection on purpose.</span></li>
+    <li><span class="zh"><strong>敘事是最好的 Onboarding</strong>——註冊變成孵化儀式後，同樣的表單體感完全不同。功能可以照抄，儀式感不行。</span><span class="en"><strong>Narrative is the best onboarding</strong> — once signup became a hatching ritual, the same forms felt completely different. Features can be copied; ritual cannot.</span></li>
+  </ol>
+</section>
+
+<footer>
+  <span class="zh">本頁基於實習期間留存的設計文件、wireframe、prompt 設計稿與測試紀錄整理。© Chih-yu Chang</span>
+  <span class="en">Compiled from design documents, wireframes, prompt drafts, and test logs preserved from the internship. © Chih-yu Chang</span>
+</footer>
+
+</div>
+
+<script>
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', l==='zh');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+}
+</script>
+</body>
+</html>
