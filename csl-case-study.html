@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSL UROP — Data Engineering & Urban AI | Chih-yu Chang</title>
+  <style>
+    :root{
+      --ink:#1c1c28; --sub:#5b5b6b; --line:#e8e6e0; --bg:#faf9f6; --card:#ffffff;
+      --accent:#4f46e5; --accent-soft:#eef0ff; --green:#16a34a; --green-soft:#f0fdf4;
+      --teal:#0d9488; --teal-soft:#f0fdfa; --tag:#f0eee8;
+    }
+    *{box-sizing:border-box; margin:0; padding:0;}
+    body{font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.85; font-size:16px;}
+    .wrap{max-width:860px; margin:0 auto; padding:0 24px;}
+    header.top{position:sticky; top:0; z-index:50; background:rgba(250,249,246,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+    .top-inner{max-width:860px; margin:0 auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center;}
+    .brand{font-weight:700; letter-spacing:.02em;}
+    .lang-toggle{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:#fff;}
+    .lang-toggle button{border:0; background:transparent; padding:6px 16px; cursor:pointer; font-size:14px; color:var(--sub);}
+    .lang-toggle button.active{background:var(--ink); color:#fff;}
+    .hero{padding:72px 0 40px;}
+    .kicker{color:var(--accent); font-weight:700; font-size:14px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px;}
+    h1{font-size:clamp(28px,5vw,44px); line-height:1.3; font-weight:800; margin-bottom:16px;}
+    .lede{color:var(--sub); font-size:18px; max-width:640px;}
+    .meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:36px 0;}
+    .meta div{background:var(--card); padding:16px 18px;}
+    .meta .k{font-size:12px; color:var(--sub); letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px;}
+    .meta .v{font-weight:600; font-size:15px;}
+    section{padding:36px 0; border-top:1px solid var(--line);}
+    h2{font-size:26px; font-weight:800; margin-bottom:8px;}
+    h2 .num{color:var(--accent); font-size:15px; display:block; letter-spacing:.1em; margin-bottom:6px;}
+    h3{font-size:19px; font-weight:700; margin:28px 0 10px;}
+    p{margin:12px 0; color:#33333f;}
+    ul,ol{margin:12px 0 12px 22px;}
+    li{margin:7px 0; color:#33333f;}
+    strong{color:var(--ink);}
+    table{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+    th{background:var(--tag); text-align:left; padding:10px 14px; font-weight:700;}
+    td{padding:10px 14px; border-top:1px solid var(--line); vertical-align:top;}
+    .callout{background:var(--accent-soft); border-left:4px solid var(--accent); border-radius:0 12px 12px 0; padding:16px 20px; margin:20px 0;}
+    .callout.green{background:var(--green-soft); border-left-color:var(--green);}
+    .callout.teal{background:var(--teal-soft); border-left-color:var(--teal);}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 24px; margin:16px 0;}
+    .stat-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:20px 0;}
+    .stat{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; text-align:center;}
+    .stat .num{font-size:28px; font-weight:800; color:var(--accent); line-height:1.2;}
+    .stat .label{font-size:13px; color:var(--sub); margin-top:4px;}
+    .diagram{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin:20px 0; overflow-x:auto;}
+    .phase-bar{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:20px 0;}
+    .phase{border-radius:12px; padding:16px 20px;}
+    .phase.blue{background:var(--accent-soft); border:1px solid #c7d2fe;}
+    .phase.teal{background:var(--teal-soft); border:1px solid #99f6e4;}
+    .phase .ph-title{font-weight:700; font-size:14px; margin-bottom:6px;}
+    .phase .ph-date{font-size:12px; color:var(--sub); margin-bottom:10px;}
+    footer{padding:40px 0 60px; color:var(--sub); font-size:13.5px; border-top:1px solid var(--line);}
+    [data-lang="zh"] .en{display:none !important;}
+    [data-lang="en"] .zh{display:none !important;}
+    .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+    .tagrow span{background:var(--tag); border-radius:999px; padding:4px 14px; font-size:13px; color:var(--sub);}
+    @media(max-width:600px){.phase-bar{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html" style="text-decoration:none;color:inherit;font-weight:700;">← Home&nbsp;&nbsp;<span style="opacity:.45">|</span>&nbsp;&nbsp;Chih-yu Chang · Portfolio</a>
+    <div class="lang-toggle">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="kicker">Research Internship Case Study</div>
+  <h1>
+    <span class="zh">城市科學實驗室 UROP<br>資料工程 × 地理空間 × 城市 AI 介面</span>
+    <span class="en">City Science Lab UROP<br>Data Engineering × Geospatial × Urban AI UI</span>
+  </h1>
+  <p class="lede">
+    <span class="zh">在 CSL 實習的半年，我從零建立城市資料 ELT 基礎設施、處理 350 萬筆地理空間時序資料，並重新設計城市 AI 平台的使用者介面——橫跨資料工程與產品設計兩個維度。</span>
+    <span class="en">Over six months at CSL, I built a city data ELT infrastructure from scratch, processed 3.5M+ rows of geospatial time-series data, and redesigned the City AI platform interface — spanning both data engineering and product design.</span>
+  </p>
+  <div class="tagrow">
+    <span>Apache Airflow</span><span>dbt</span><span>H3 Geospatial</span><span>Kubernetes</span><span>UI Design</span><span>PostgreSQL</span>
+  </div>
+
+  <div class="meta">
+    <div><div class="k"><span class="zh">角色</span><span class="en">Role</span></div><div class="v"><span class="zh">UROP 研究實習生</span><span class="en">UROP Research Intern</span></div></div>
+    <div><div class="k"><span class="zh">實驗室</span><span class="en">Lab</span></div><div class="v">City Science Lab (CSL)</div></div>
+    <div><div class="k"><span class="zh">Mentor</span><span class="en">Mentor</span></div><div class="v">軒柏 & 威竹</div></div>
+    <div><div class="k"><span class="zh">期間</span><span class="en">Timeline</span></div><div class="v">2025 / 02 – 05</div></div>
+  </div>
+</div>
+
+<!-- ─── 01 Overview ─── -->
+<section>
+  <h2><span class="num">01</span><span class="zh">實習背景與專案全覽</span><span class="en">Background & Project Overview</span></h2>
+
+  <p>
+    <span class="zh">城市科學實驗室（CSL）專注於城市資料分析與 AI 應用研究。我的實習分為兩個階段：第一期以資料工程為核心（Data-UROP），第二期以城市 AI 介面設計為核心（Taiwan Island Project）。</span>
+    <span class="en">The City Science Lab (CSL) focuses on urban data analysis and applied AI research. My internship spanned two phases: Phase 1 centered on data engineering (Data-UROP), and Phase 2 on urban AI interface design (Taiwan Island Project).</span>
+  </p>
+
+  <div class="phase-bar">
+    <div class="phase blue">
+      <div class="ph-title">Phase 1 · Data-UROP</div>
+      <div class="ph-date">2025 / 02 – 03</div>
+      <span class="zh">建立城市資料 ELT 管道基礎設施，並對新竹市多種城市圖層做 H3 地理空間分析</span>
+      <span class="en">Built the city data ELT pipeline infrastructure and performed H3 geospatial analysis on multiple Hsinchu urban layers</span>
+    </div>
+    <div class="phase teal">
+      <div class="ph-title">Phase 2 · Taiwan Island Project</div>
+      <div class="ph-date">2025 / 03 – 05</div>
+      <span class="zh">台北西區時序人口分析，同時主導 City AI 平台的 UI 改版設計（單頁版介面迭代）</span>
+      <span class="en">Taipei West time-series population analysis; led UI redesign of the City AI platform (single-page interface iterations)</span>
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <th><span class="zh">專案</span><span class="en">Project</span></th>
+      <th><span class="zh">技術</span><span class="en">Tech</span></th>
+      <th><span class="zh">資料規模</span><span class="en">Scale</span></th>
+    </tr>
+    <tr>
+      <td><strong><span class="zh">Urban Data Pipeline</span></strong></td>
+      <td>Airflow · dbt · Airbyte · Docker · K8s · PostgreSQL</td>
+      <td><span class="zh">3 個 DAG · 3 套環境</span><span class="en">3 DAGs · 3 envs</span></td>
+    </tr>
+    <tr>
+      <td><strong><span class="zh">H3 Geospatial Analysis</span></strong></td>
+      <td>Python · H3 · Shapely · GeoPandas · Jupyter</td>
+      <td><span class="zh">464K+ 格子（新竹）· 350萬+ 筆（台北）</span><span class="en">464K+ cells (Hsinchu) · 3.5M+ rows (Taipei)</span></td>
+    </tr>
+    <tr>
+      <td><strong><span class="zh">City AI UI Redesign</span></strong></td>
+      <td><span class="zh">UI 設計 · 功能規格 · 迭代測試</span><span class="en">UI Design · Feature Spec · Iteration</span></td>
+      <td><span class="zh">3 版迭代 · 6+ 功能模組</span><span class="en">3 design versions · 6+ modules</span></td>
+    </tr>
+  </table>
+</section>
+
+<!-- ─── 02 Data Pipeline ─── -->
+<section>
+  <h2><span class="num">02</span><span class="zh">Urban Data Pipeline</span><span class="en">Urban Data Pipeline</span></h2>
+
+  <p>
+    <span class="zh">從零建立一套可擴展的城市資料 ELT 基礎設施，支援從 API 抓取外部城市資料、載入 PostgreSQL、再透過 dbt 進行標準化轉換，最終提供給 H3 視覺化與分析使用。</span>
+    <span class="en">Built a scalable urban data ELT infrastructure from scratch — fetching external city data via APIs, loading into PostgreSQL, transforming through dbt, and feeding H3 visualization and analysis downstream.</span>
+  </p>
+
+  <h3><span class="zh">系統架構</span><span class="en">Architecture</span></h3>
+
+  <div class="diagram">
+    <svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ELT pipeline architecture">
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 z" fill="#4f46e5"/>
+        </marker>
+      </defs>
+      <g font-family="sans-serif" font-size="13" text-anchor="middle">
+        <!-- Data Sources -->
+        <rect x="10" y="60" width="130" height="80" rx="10" fill="#f0eee8" stroke="#d1cfc8"/>
+        <text x="75" y="92" fill="#1c1c28" font-weight="600">Data Sources</text>
+        <text x="75" y="112" fill="#5b5b6b" font-size="11">TDX · Overture</text>
+        <text x="75" y="128" fill="#5b5b6b" font-size="11">SEGIS · API</text>
+
+        <!-- Airbyte -->
+        <rect x="175" y="70" width="110" height="60" rx="10" fill="#eef0ff" stroke="#c7d2fe"/>
+        <text x="230" y="97" fill="#4f46e5" font-weight="700">Airbyte</text>
+        <text x="230" y="115" fill="#5b5b6b" font-size="11">Extract & Load</text>
+
+        <!-- PostgreSQL -->
+        <rect x="325" y="60" width="110" height="80" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+        <text x="380" y="92" fill="#16a34a" font-weight="700">PostgreSQL</text>
+        <text x="380" y="110" fill="#5b5b6b" font-size="11">Raw Schema</text>
+        <text x="380" y="128" fill="#5b5b6b" font-size="11">Port 5432</text>
+
+        <!-- dbt -->
+        <rect x="475" y="70" width="110" height="60" rx="10" fill="#fff7ed" stroke="#fed7aa"/>
+        <text x="530" y="97" fill="#ea580c" font-weight="700">dbt</text>
+        <text x="530" y="115" fill="#5b5b6b" font-size="11">Transform</text>
+
+        <!-- Airflow -->
+        <rect x="325" y="10" width="110" height="40" rx="10" fill="#fdf4ff" stroke="#e9d5ff"/>
+        <text x="380" y="35" fill="#9333ea" font-weight="700" font-size="12">Airflow (DAG)</text>
+
+        <!-- Output -->
+        <rect x="635" y="60" width="130" height="80" rx="10" fill="#f0fdfa" stroke="#99f6e4"/>
+        <text x="700" y="88" fill="#0d9488" font-weight="600">Output</text>
+        <text x="700" y="108" fill="#5b5b6b" font-size="11">H3 Visualization</text>
+        <text x="700" y="126" fill="#5b5b6b" font-size="11">Analytics</text>
+
+        <!-- Arrows -->
+        <path d="M140 100 L173 100" fill="none" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <path d="M285 100 L323 100" fill="none" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <path d="M435 100 L473 100" fill="none" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <path d="M585 100 L633 100" fill="none" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <!-- Airflow orchestrates -->
+        <path d="M380 50 L380 62" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+      </g>
+    </svg>
+  </div>
+
+  <h3><span class="zh">三套部署環境</span><span class="en">Three Deployment Environments</span></h3>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="num">1</div>
+      <div class="label">local-dev<br><span style="font-size:11px">Docker Compose</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">2</div>
+      <div class="label">local-kubernetes<br><span style="font-size:11px">KinD</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">3</div>
+      <div class="label">prod-kubernetes<br><span style="font-size:11px">正式環境</span></div>
+    </div>
+  </div>
+
+  <h3><span class="zh">實作的 Airflow DAG</span><span class="en">Airflow DAGs Implemented</span></h3>
+  <div class="card">
+    <ul style="margin:0; padding-left:20px;">
+      <li><strong>elt.py</strong> — <span class="zh">ELT 範例管道：Airbyte 抽取 → PostgreSQL 載入 → dbt 轉換，@daily 排程</span><span class="en">ELT template: Airbyte extract → PostgreSQL load → dbt transform, @daily schedule</span></li>
+      <li><strong>overture-places.py</strong> — <span class="zh">Overture Maps 地點資料抓取與入庫</span><span class="en">Overture Maps places data ingestion</span></li>
+      <li><strong>tdx_national_highway.py</strong> — <span class="zh">TDX 高速公路即時資料定時同步</span><span class="en">TDX national highway data sync</span></li>
+    </ul>
+  </div>
+
+  <h3><span class="zh">技術選型說明</span><span class="en">Key Technical Decisions</span></h3>
+  <table>
+    <tr>
+      <th><span class="zh">工具</span><span class="en">Tool</span></th>
+      <th><span class="zh">解決的問題</span><span class="en">Problem Solved</span></th>
+    </tr>
+    <tr>
+      <td><strong>Airflow</strong></td>
+      <td><span class="zh">以 Python 程式碼定義排程依賴，可視化監控每條管道狀態，支援 retry 與 alert</span><span class="en">Code-defined scheduling dependencies, visual pipeline monitoring, retry and alerting</span></td>
+    </tr>
+    <tr>
+      <td><strong>dbt</strong></td>
+      <td><span class="zh">模組化 SQL 轉換，避免重複程式碼；把「設計圖」和「實際資料」分開管理</span><span class="en">Modular SQL transforms, no repeated code; separates "schema design" from "actual data"</span></td>
+    </tr>
+    <tr>
+      <td><strong>Airbyte</strong></td>
+      <td><span class="zh">API 測試與封裝，統一管理外部資料來源連線設定</span><span class="en">API testing and packaging, centralizes external source connection management</span></td>
+    </tr>
+    <tr>
+      <td><strong>Docker + K8s</strong></td>
+      <td><span class="zh">確保本機到正式環境的一致性；KubernetesExecutor 讓每個 Task 獨立運行在 Pod 中</span><span class="en">Guarantees dev-to-prod consistency; KubernetesExecutor runs each Task in its own Pod</span></td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <span class="zh"><strong>一個關鍵學習：PostgreSQL Schema ≠ dbt Model。</strong>前者是資料庫的「資料夾」，後者是資料工程師的「設計圖」。兩者名字可能相同，但在 ELT 流程的不同層次扮演完全不同的角色。</span>
+    <span class="en"><strong>A key learning: PostgreSQL Schema ≠ dbt Model.</strong> The former is a database "folder"; the latter is the data engineer's "blueprint." Same name, entirely different roles at different pipeline layers.</span>
+  </div>
+</section>
+
+<!-- ─── 03 H3 Geospatial ─── -->
+<section>
+  <h2><span class="num">03</span><span class="zh">H3 地理空間分析</span><span class="en">H3 Geospatial Analysis</span></h2>
+
+  <p>
+    <span class="zh">使用 Uber H3 六邊形格網系統，對新竹市五種城市圖層與台北西區 12 年人口資料進行空間索引化與視覺化分析。H3 讓不規則的行政區邊界轉換為標準化的六邊形格子，可以直接做跨資料集的空間比較。</span>
+    <span class="en">Used Uber's H3 hexagonal grid to spatially index and visualize five Hsinchu urban layers and 12 years of Taipei West population data. H3 converts irregular administrative boundaries into standardized hexagonal cells, enabling direct cross-dataset spatial comparison.</span>
+  </p>
+
+  <div class="callout teal">
+    <span class="zh"><strong>H3 的核心優勢：</strong>把地球表面切割成多解析度的六邊形格子，每格有唯一 Hex ID。相較於行政區，六邊形在空間密度計算上更均勻、視覺上更直觀，且可在不同解析度之間做父子映射（res 15 → res 12 → res 9）。</span>
+    <span class="en"><strong>Why H3:</strong> Divides the Earth's surface into multi-resolution hexagonal cells with unique IDs. Compared to administrative units, hexagons give more uniform spatial density and intuitive visualization, with parent-child resolution mapping (res 15 → res 12 → res 9).</span>
+  </div>
+
+  <h3><span class="zh">專案一：新竹市城市圖層分析</span><span class="en">Project A: Hsinchu Urban Layer Analysis</span></h3>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="num">5</div>
+      <div class="label"><span class="zh">處理的城市圖層</span><span class="en">Urban layers</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">464K+</div>
+      <div class="label"><span class="zh">H3 格子（人行道）</span><span class="en">H3 cells (sidewalk)</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">106 MB</div>
+      <div class="label"><span class="zh">原始 GeoJSON</span><span class="en">Raw GeoJSON</span></div>
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <th><span class="zh">資料集</span><span class="en">Dataset</span></th>
+      <th><span class="zh">解析度</span><span class="en">Resolution</span></th>
+      <th><span class="zh">H3 格子數</span><span class="en">H3 cells</span></th>
+    </tr>
+    <tr><td><span class="zh">人行道（030）</span><span class="en">Sidewalks</span></td><td>res 12 / 15</td><td>464,313</td></tr>
+    <tr><td><span class="zh">交通事故熱區（010）</span><span class="en">Traffic accident hotspots</span></td><td>res 12</td><td>10,629</td></tr>
+    <tr><td><span class="zh">路燈（052）</span><span class="en">Street lighting</span></td><td>res 12</td><td>26,263</td></tr>
+    <tr><td><span class="zh">公有停車場（041）</span><span class="en">Public parking</span></td><td>res 9 / 12</td><td>62 / 42</td></tr>
+    <tr><td><span class="zh">YouBike 2.0（053）</span><span class="en">YouBike 2.0</span></td><td>res 9 / 12</td><td>103 / 95</td></tr>
+  </table>
+
+  <div class="card">
+    <p style="margin:0; font-weight:600; margin-bottom:8px;"><span class="zh">人行道覆蓋率計算邏輯</span><span class="en">Sidewalk coverage calculation logic</span></p>
+    <ol style="margin:0; padding-left:20px;">
+      <li><span class="zh">讀取人行道 GeoJSON（WGS84）與新竹市行政邊界（WKB 格式）</span><span class="en">Read sidewalk GeoJSON (WGS84) and Hsinchu admin boundary (WKB format)</span></li>
+      <li><span class="zh">對所有多邊形生成 res 15 的 H3 索引（最細粒度）</span><span class="en">Generate res-15 H3 indices for all polygons (finest granularity)</span></li>
+      <li><span class="zh">將 res 15 映射到 res 12 父格，統計每個父格包含的子格數</span><span class="en">Map res-15 to res-12 parent cells; count child cells per parent</span></li>
+      <li><span class="zh">除以 117,649（7⁶）得到覆蓋比例，保留六位小數</span><span class="en">Divide by 117,649 (7⁶) for coverage ratio, rounded to 6 decimal places</span></li>
+      <li><span class="zh">補上覆蓋率為 0 的格子（確保空間完整性）</span><span class="en">Backfill zero-coverage cells to ensure spatial completeness</span></li>
+    </ol>
+  </div>
+
+  <h3><span class="zh">專案二：台北西區人口時序分析</span><span class="en">Project B: Taipei West Population Time-Series</span></h3>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="num">3.5M+</div>
+      <div class="label"><span class="zh">時序資料總筆數</span><span class="en">Total rows</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">25</div>
+      <div class="label"><span class="zh">時間快照</span><span class="en">Time snapshots</span></div>
+    </div>
+    <div class="stat">
+      <div class="num">12 <span style="font-size:16px">年</span></div>
+      <div class="label">2011 – 2023</div>
+    </div>
+    <div class="stat">
+      <div class="num">495 MB</div>
+      <div class="label"><span class="zh">原始 GeoJSON</span><span class="en">Raw GeoJSON</span></div>
+    </div>
+  </div>
+
+  <p>
+    <span class="zh">資料來源為 SEGIS 人口統計最小統計區，轉換至 H3 res 9 / 10 / 11 三個解析度，產出每半年一張的台北市人口密度 H3 地圖，可動態播放 12 年的人口變遷趨勢。</span>
+    <span class="en">Data source: SEGIS smallest statistical area. Converted to H3 res 9/10/11, producing semi-annual Taipei population density maps. The series visualizes 12 years of demographic change with playable time-lapse capability.</span>
+  </p>
+
+  <div class="callout green">
+    <span class="zh"><strong>視覺化洞察：</strong>總數 vs. 密度的選擇至關重要——同一份資料用人口「總數」渲染時，大面積行政區會被放大；改用「密度」後，實際人口集中的市中心才會突出。兩張圖說的是不同的故事。</span>
+    <span class="en"><strong>Visualization insight:</strong> total count vs. density is a critical design choice — the same data rendered by total population inflates large administrative areas; density reveals where people actually concentrate. The two maps tell fundamentally different stories.</span>
+  </div>
+</section>
+
+<!-- ─── 04 UI Redesign ─── -->
+<section>
+  <h2><span class="num">04</span><span class="zh">City AI 介面改版</span><span class="en">City AI UI Redesign</span></h2>
+  <p>
+    <span class="zh">City AI 是 CSL 的城市資料 AI 分析平台，使用者可以用自然語言查詢城市資料，系統透過 Multi-Agent 架構在背景取資料、分析，並把結果渲染到地圖上。我負責將原有的多頁版介面收斂為「單頁版」，並設計 Multi-Agent 溝通過程的視覺化呈現。</span>
+    <span class="en">City AI is CSL's urban data AI analytics platform — users query city data in natural language; the system fetches, analyzes, and renders results onto a map through a Multi-Agent architecture. I led the redesign from a multi-page layout to a single-page interface and designed the visual language for the Multi-Agent communication process.</span>
+  </p>
+
+  <div class="callout">
+    <span class="zh"><strong>核心問題：AI 是一個黑盒。</strong>使用者輸入查詢後不知道 AI 在做什麼，也不知道什麼時候會得到結果。Multi-Agent 系統讓這個問題更嚴重——背後有 Planner、Data Fetcher、Map 等多個 Agent 協作，但使用者完全看不到。</span>
+    <span class="en"><strong>Core problem: AI is a black box.</strong> Users had no visibility into what the AI was doing or when results would appear. The Multi-Agent backend — Planner, Data Fetcher, Map Agent — made this worse; all of it was invisible.</span>
+  </div>
+
+  <h3><span class="zh">設計迭代過程</span><span class="en">Design Iteration Process</span></h3>
+
+  <table>
+    <tr>
+      <th><span class="zh">版本</span><span class="en">Version</span></th>
+      <th><span class="zh">設計方向</span><span class="en">Approach</span></th>
+      <th><span class="zh">問題</span><span class="en">Issue Found</span></th>
+    </tr>
+    <tr>
+      <td><strong>V1 – Visualize Notes</strong></td>
+      <td><span class="zh">Agent 溝通流程圖疊加在地圖上（節點 + 箭頭）</span><span class="en">Agent flow graph overlaid on the map (nodes + arrows)</span></td>
+      <td><span class="zh">地圖 + 流程圖同時呈現，視覺資訊密度過高</span><span class="en">Map + flow chart simultaneously overloads the visual space</span></td>
+    </tr>
+    <tr>
+      <td><strong>V1 – Card+ Collection</strong></td>
+      <td><span class="zh">把查詢結果整理成可收藏的卡片集合</span><span class="en">Query results collected into saveable cards</span></td>
+      <td><span class="zh">使用情境不夠明確，用戶不知道何時該用</span><span class="en">Unclear use context; users didn't know when to engage with it</span></td>
+    </tr>
+    <tr>
+      <td><strong>V2 – Display in Order</strong></td>
+      <td><span class="zh">依序顯示各 Agent 進度，第二次點擊才展開細節</span><span class="en">Sequential Agent progress; expand details on second click</span></td>
+      <td><span class="zh">系統複雜度高，兩步操作增加認知負擔</span><span class="en">High system complexity; two-step interaction adds cognitive load</span></td>
+    </tr>
+    <tr>
+      <td><strong>V2 – Separate Use Case</strong></td>
+      <td><span class="zh">Fetch Data / Analyze 分成兩個獨立模式</span><span class="en">Fetch Data / Analyze split into two distinct modes</span></td>
+      <td><span class="zh">系統複雜度高，模式切換增加學習成本</span><span class="en">Mode-switching raises the learning curve</span></td>
+    </tr>
+    <tr>
+      <td><strong>Final Version</strong></td>
+      <td><span class="zh">左側 ChatBox + 中間地圖 + 右側資料面板的三欄單頁佈局</span><span class="en">Three-column single-page: ChatBox left · Map center · Data panel right</span></td>
+      <td>—</td>
+    </tr>
+  </table>
+
+  <div class="card">
+    <h3 style="margin-top:0;"><span class="zh">最終版本的核心功能</span><span class="en">Final Version: Core Features</span></h3>
+    <ul style="margin:0; padding-left:20px;">
+      <li>
+        <strong>ChatBox + Multi-Agent 視覺化</strong> —
+        <span class="zh">聊天介面輸入查詢，左側即時顯示 Agent 工作進度（Planner → Data Fetcher → Map），讓用戶知道 AI 正在做什麼</span>
+        <span class="en">Natural language input; left panel shows live Agent progress (Planner → Data Fetcher → Map) so users see what the AI is doing</span>
+      </li>
+      <li>
+        <strong>Agent Scalability</strong> —
+        <span class="zh">支援 5–8+ 個 Agent 同時協作，流程圖可縮放顯示，不同的 Agent 類型有不同圖示</span>
+        <span class="en">Supports 5–8+ concurrent agents; scalable flow diagram with distinct icons per agent type</span>
+      </li>
+      <li>
+        <strong>Save & Pin</strong> —
+        <span class="zh">重要的查詢結果可以「釘選」到 Saved Maps，便於對比不同時間點的地圖狀態</span>
+        <span class="en">Pin important results to Saved Maps for cross-temporal map state comparison</span>
+      </li>
+      <li>
+        <strong>Data Source Panel</strong> —
+        <span class="zh">右側面板顯示目前地圖上疊加的資料集，點擊可切換顯示/隱藏</span>
+        <span class="en">Right panel shows datasets currently overlaid on the map; toggle visibility per layer</span>
+      </li>
+    </ul>
+  </div>
+
+  <h3><span class="zh">設計原則</span><span class="en">Design Principles</span></h3>
+  <div class="stat-row">
+    <div class="stat" style="text-align:left; padding:16px;">
+      <div style="font-size:20px; margin-bottom:6px;">👁</div>
+      <div style="font-weight:700; font-size:15px; margin-bottom:4px;"><span class="zh">透明度（Transparency）</span><span class="en">Transparency</span></div>
+      <div style="font-size:13px; color:var(--sub);"><span class="zh">讓用戶看到 AI 在做什麼，不只是等待轉圈</span><span class="en">Show what the AI is doing, not just a spinner</span></div>
+    </div>
+    <div class="stat" style="text-align:left; padding:16px;">
+      <div style="font-size:20px; margin-bottom:6px;">📐</div>
+      <div style="font-weight:700; font-size:15px; margin-bottom:4px;"><span class="zh">漸進揭露</span><span class="en">Progressive Disclosure</span></div>
+      <div style="font-size:13px; color:var(--sub);"><span class="zh">先給摘要，點擊才展開細節</span><span class="en">Summary first; details on demand</span></div>
+    </div>
+    <div class="stat" style="text-align:left; padding:16px;">
+      <div style="font-size:20px; margin-bottom:6px;">🎯</div>
+      <div style="font-weight:700; font-size:15px; margin-bottom:4px;"><span class="zh">情境優先</span><span class="en">Context-First</span></div>
+      <div style="font-size:13px; color:var(--sub);"><span class="zh">每個功能要有明確的使用情境，避免為功能而功能</span><span class="en">Every feature needs a clear use case; no feature for its own sake</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 05 Skills ─── -->
+<section>
+  <h2><span class="num">05</span><span class="zh">技術能力養成</span><span class="en">Technical Skills Developed</span></h2>
+
+  <table>
+    <tr>
+      <th><span class="zh">類別</span><span class="en">Category</span></th>
+      <th><span class="zh">工具 / 概念</span><span class="en">Tools / Concepts</span></th>
+      <th><span class="zh">應用情境</span><span class="en">Applied In</span></th>
+    </tr>
+    <tr>
+      <td><span class="zh">環境管理</span><span class="en">Environment</span></td>
+      <td>pyenv · Poetry · Docker · KinD · kubectl · helm</td>
+      <td><span class="zh">三套部署環境建置</span><span class="en">Three-env deployment</span></td>
+    </tr>
+    <tr>
+      <td><span class="zh">資料管道</span><span class="en">Data Pipeline</span></td>
+      <td>Airflow · dbt · Airbyte · PostgreSQL · Jinja Template</td>
+      <td><span class="zh">ELT 管道實作</span><span class="en">ELT pipeline</span></td>
+    </tr>
+    <tr>
+      <td><span class="zh">地理空間</span><span class="en">Geospatial</span></td>
+      <td>H3 · Shapely · GeoPandas · GeoJSON · WKB · WGS84</td>
+      <td><span class="zh">新竹 / 台北西區分析</span><span class="en">Hsinchu / Taipei analysis</span></td>
+    </tr>
+    <tr>
+      <td><span class="zh">資料庫</span><span class="en">Database</span></td>
+      <td>PostgreSQL · pgAdmin · Schema · View · Constraints</td>
+      <td><span class="zh">資料建模與查詢</span><span class="en">Data modeling and querying</span></td>
+    </tr>
+    <tr>
+      <td><span class="zh">版本控制</span><span class="en">Version Control</span></td>
+      <td>Git · GitHub · Branch 管理 · .env 保護</td>
+      <td><span class="zh">跨人協作開發</span><span class="en">Collaborative development</span></td>
+    </tr>
+    <tr>
+      <td><span class="zh">UI / 產品設計</span><span class="en">UI / Product</span></td>
+      <td><span class="zh">設計迭代 · 功能規格 · 使用情境分析</span><span class="en">Design iteration · Feature spec · Use-case analysis</span></td>
+      <td>City AI Redesign</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ─── 06 Reflection ─── -->
+<section>
+  <h2><span class="num">06</span><span class="zh">反思與收穫</span><span class="en">Reflections</span></h2>
+
+  <div class="card">
+    <h3 style="margin-top:0;">
+      <span class="zh">🔩 從資料到介面的垂直整合</span>
+      <span class="en">🔩 Vertical integration: from data to interface</span>
+    </h3>
+    <p>
+      <span class="zh">這次實習最特別的地方是同時做了底層資料（Pipeline + H3）和上層介面（City AI UI）。這讓我在設計 UI 時能真正理解資料的邏輯，也在建立資料管道時知道下游使用者需要什麼格式——而不是各做各的。</span>
+      <span class="en">What made this internship unusual was doing both the data layer (pipeline + H3) and the interface layer (City AI UI). This meant I could design the UI with genuine understanding of the data's logic, and build the data pipeline knowing exactly what format downstream users needed — not two teams working in silos.</span>
+    </p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">
+      <span class="zh">💥 「資料庫整個搞壞了」的那一次</span>
+      <span class="en">💥 That time we broke the database</span>
+    </h3>
+    <p>
+      <span class="zh">在處理大規模資料集時，我們曾經不小心對 Lab 的 PostgreSQL 資料庫做了不可逆的操作，讓當時的分析工作暫時中斷。這件事讓「不要直接在 prod 環境操作」從一句話變成有血有肉的記憶——同時也讓我對 dbt 的設計哲學（轉換邏輯與實際資料分離）有了更深的理解。</span>
+      <span class="en">While handling a large dataset, we accidentally made an irreversible operation on the lab's PostgreSQL database, temporarily stalling our analysis work. "Never operate directly in prod" went from an abstract rule to a vivid memory — and deepened my appreciation for dbt's design philosophy of separating transformation logic from actual data.</span>
+    </p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">
+      <span class="zh">📏 大規模資料的感知</span>
+      <span class="en">📏 Developing a sense for data scale</span>
+    </h3>
+    <p>
+      <span class="zh">在本機的 Jupyter 上跑 350 萬筆資料，「跑完了嗎？」是常態。這讓我學會在動手之前先估算資料量，選擇合適的處理方式（向量化 vs. 迭代）；也學會了在 Lab 伺服器環境上處理本機跑不動的資料。</span>
+      <span class="en">Running 3.5M rows on a local Jupyter instance made "is it done?" a regular experience. I learned to estimate data volume before starting, choose appropriate processing strategies (vectorized vs. iterative), and use the lab server for what local machines couldn't handle.</span>
+    </p>
+  </div>
+
+  <div class="callout">
+    <span class="zh"><strong>最大的 Mindset 轉變：</strong>LLM 是加速器，不是替代品。在不熟悉的技術棧（Airflow、Kubernetes、H3）裡，我大量使用 LLM 幫助理解文件和除錯。但要能判斷 LLM 的答案是否正確，必須自己先有基礎概念——而建立基礎概念這件事，還是得靠自己動手。</span>
+    <span class="en"><strong>Biggest mindset shift:</strong> LLMs are accelerators, not replacements. Working in an unfamiliar stack (Airflow, Kubernetes, H3), I used LLMs heavily for documentation and debugging. But judging whether an LLM's answer is correct requires your own foundational understanding — and building that foundation still requires doing things yourself.</span>
+  </div>
+</section>
+
+<footer>
+  <span class="zh">本頁基於 CSL 實習期間的程式碼、筆記、簡報與週報整理。資料規模數字來自實際輸出檔案。© Chih-yu Chang</span>
+  <span class="en">Compiled from code, notes, presentations, and weekly reports from the CSL internship. Data scale figures are from actual output files. © Chih-yu Chang</span>
+</footer>
+
+</div>
+
+<script>
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', l==='zh');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+}
+</script>
+</body>
+</html>
