@@ -84,6 +84,14 @@
   .quest.locked{opacity:.92;}
   .quest.locked .thumb{filter:saturate(.75);}
 
+  /* project filter */
+  .filter-row{display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:34px;}
+  .filter-btn{cursor:pointer; font-weight:800; font-size:14px; padding:8px 20px; border-radius:999px; border:2px solid var(--ink); background:#fff; color:var(--ink); box-shadow:var(--shadow); transition:transform .12s;}
+  .filter-btn:hover{transform:translateY(-2px);}
+  .filter-btn.active{background:var(--ink); color:#fff;}
+  .filter-btn .count{opacity:.6; font-weight:700; margin-left:4px;}
+  .quest.hide{display:none;}
+
   /* skill tree */
   .skill-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
   .skill-card{background:var(--card); border:2.5px solid var(--ink); border-radius:20px; padding:22px 24px; box-shadow:var(--shadow);}
@@ -124,7 +132,8 @@
   <div class="top-inner">
     <a class="logo" href="#"><span class="dot"></span>Chih-yu Chang</a>
     <nav class="menu">
-      <a href="#quests"><span class="zh">作品</span><span class="en">Work</span></a>
+      <a href="#quests"><span class="zh">精選</span><span class="en">Featured</span></a>
+      <a href="work.html"><span class="zh">全部作品</span><span class="en">All Work</span></a>
       <a href="#skills"><span class="zh">技能</span><span class="en">Skills</span></a>
       <a href="#journey"><span class="zh">經歷</span><span class="en">Journey</span></a>
       <a href="#contact"><span class="zh">聯絡</span><span class="en">Contact</span></a>
@@ -167,9 +176,14 @@
       <h2><span class="zh">作品任務板</span><span class="en">Quest Board</span></h2>
       <p><span class="zh">每個專案都是一場冒險。點開看完整 case study！</span><span class="en">Every project is an adventure. Open one for the full case study!</span></p>
     </div>
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterQuests('all',this)"><span class="zh">全部</span><span class="en">All</span></button>
+      <button class="filter-btn" onclick="filterQuests('pm',this)"><span class="zh">產品 · PM</span><span class="en">Product · PM</span></button>
+      <button class="filter-btn" onclick="filterQuests('ux',this)"><span class="zh">UX 設計</span><span class="en">UX Design</span></button>
+    </div>
     <div class="quest-grid">
 
-      <div class="quest">
+      <div class="quest" data-cat="pm">
         <div class="thumb t-pm"><img src="assets/penguin.png" alt="MarxAI mascot" style="object-fit:contain; padding:16px;" onerror="this.replaceWith('🐧')"></div>
         <div class="body">
           <div class="rarity r-ssr">★ FEATURED · SSR</div>
@@ -180,7 +194,7 @@
         </div>
       </div>
 
-      <div class="quest">
+      <div class="quest" data-cat="ux">
         <div class="thumb t-ux"><img src="assets/world-hall-wireframe.png" alt="World Hall wireframe" onerror="this.replaceWith('🗺️')"></div>
         <div class="body">
           <div class="rarity r-ssr">★ FEATURED · SSR</div>
@@ -191,7 +205,7 @@
         </div>
       </div>
 
-      <div class="quest">
+      <div class="quest" data-cat="pm ux">
         <div class="thumb t-soon2" style="background:#0e2a3a;"><span style="font-size:54px;">🛰️</span></div>
         <div class="body">
           <div class="rarity r-ssr">🔬 RESEARCH · SSR</div>
@@ -202,7 +216,7 @@
         </div>
       </div>
 
-      <div class="quest">
+      <div class="quest" data-cat="pm ux">
         <div class="thumb t-soon2" style="background:#14323a;"><span style="font-size:54px;">🗺️</span></div>
         <div class="body">
           <div class="rarity r-sr">🔬 RESEARCH · SR</div>
@@ -213,7 +227,7 @@
         </div>
       </div>
 
-      <div class="quest">
+      <div class="quest" data-cat="ux">
         <div class="thumb t-pm" style="background:#0a0a0f;"><img src="assets/eidolon/hero.jpg" alt="EIDOLON scooter" onerror="this.replaceWith('🛴')"></div>
         <div class="body">
           <div class="rarity r-ssr">🏆 EXHIBITED @ BMW HQ</div>
@@ -224,7 +238,7 @@
         </div>
       </div>
 
-      <div class="quest">
+      <div class="quest" data-cat="ux">
         <div class="thumb t-soon3" style="background:#1a1008;"><img src="assets/rongtree/hero.jpg" alt="Rong Tree concept" onerror="this.replaceWith('🌳')"></div>
         <div class="body">
           <div class="rarity r-sr">🏆 AWARD · TOP 30 / 3,000+</div>
@@ -235,7 +249,7 @@
         </div>
       </div>
 
-      <div class="quest">
+      <div class="quest" data-cat="pm ux">
         <div class="thumb t-soon1">🎭</div>
         <div class="body">
           <div class="rarity r-sr">★ WORK · SR</div>
@@ -246,7 +260,7 @@
         </div>
       </div>
 
-      <div class="quest">
+      <div class="quest" data-cat="pm ux">
         <div class="thumb t-soon2" style="background:#2a2419;"><img src="assets/gathertown/scene-alley.jpg" alt="Gather Town murder mystery scene" onerror="this.replaceWith('🕵️')"></div>
         <div class="body">
           <div class="rarity r-sr">★ WORK · SR</div>
@@ -257,7 +271,7 @@
         </div>
       </div>
 
-      <div class="quest">
+      <div class="quest" data-cat="ux">
         <div class="thumb t-soon2" style="background:#e8863c;"><img src="assets/datanews/poster.jpg" alt="Californian Car Plates data video" onerror="this.replaceWith('🎬')"></div>
         <div class="body">
           <div class="rarity r-sr">🎬 SIDE QUEST · DATA VIDEO</div>
@@ -268,6 +282,9 @@
         </div>
       </div>
 
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a class="btn ghost" href="work.html"><span class="zh">查看全部作品 →</span><span class="en">See All Work →</span></a>
     </div>
   </div>
 </section>
@@ -379,9 +396,7 @@
       <p><span class="zh">正在尋找產品 PM／UX 相關機會，歡迎來信！</span><span class="en">Open to PM / UX opportunities — drop me a line!</span></p>
       <div class="contact-row">
         <a class="btn primary" href="mailto:clairechang1997@gmail.com">✉ clairechang1997@gmail.com</a>
-        <!-- TODO: 補上 LinkedIn 網址後取消註解
-        <a class="btn ghost" href="https://www.linkedin.com/in/你的ID" target="_blank">in LinkedIn</a>
-        -->
+        <a class="btn ghost" href="https://www.linkedin.com/in/chih-yu-chang-095b9741b" target="_blank" rel="noopener">in LinkedIn</a>
       </div>
     </div>
   </div>
@@ -401,6 +416,35 @@ function setLang(l){
   try{ localStorage.setItem('lang', l); }catch(e){}
 }
 try{ const s = localStorage.getItem('lang'); if(s) setLang(s); }catch(e){}
+
+function filterQuests(cat, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#quests .quest').forEach(q=>{
+    const cats = (q.dataset.cat || '').split(' ');
+    q.classList.toggle('hide', cat !== 'all' && !cats.includes(cat));
+  });
+}
+
+// auto-fill counts on each filter button
+(function(){
+  const quests = document.querySelectorAll('#quests .quest');
+  const tally = {all: quests.length, pm:0, ux:0};
+  quests.forEach(q=>{
+    const cats = (q.dataset.cat || '').split(' ');
+    if(cats.includes('pm')) tally.pm++;
+    if(cats.includes('ux')) tally.ux++;
+  });
+  document.querySelectorAll('.filter-btn').forEach(b=>{
+    const m = b.getAttribute('onclick').match(/filterQuests\('(\w+)'/);
+    if(m && tally[m[1]] != null){
+      const s = document.createElement('span');
+      s.className = 'count';
+      s.textContent = tally[m[1]];
+      b.appendChild(s);
+    }
+  });
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chih-yu Chang — 全部作品 / All Work</title>
+<meta name="description" content="Full project archive of Chih-yu Chang — PM × UX">
+<style>
+  :root{
+    --ink:#2b2350; --sub:#6f6a8a; --bg:#fef9ef;
+    --purple:#7c6cf0; --purple-deep:#5b4bd4;
+    --pink:#ff7bac; --yellow:#ffc93c; --mint:#4ecdc4; --orange:#ff9f5a;
+    --card:#ffffff; --line:#ece5d8;
+    --shadow:0 6px 0 rgba(43,35,80,.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.8; font-size:16px; overflow-x:hidden;}
+  .wrap{max-width:1020px; margin:0 auto; padding:0 24px;}
+
+  /* top nav */
+  header.top{position:sticky; top:0; z-index:100; background:rgba(254,249,239,.9); backdrop-filter:blur(10px); border-bottom:2px solid var(--ink);}
+  .top-inner{max-width:1020px; margin:0 auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  .logo{font-weight:900; font-size:18px; letter-spacing:.02em; text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:8px;}
+  .logo .dot{width:14px; height:14px; border-radius:4px; background:var(--yellow); border:2px solid var(--ink); display:inline-block; transform:rotate(12deg);}
+  nav.menu{display:flex; gap:4px; flex-wrap:wrap;}
+  nav.menu a{text-decoration:none; color:var(--ink); font-size:14px; font-weight:700; padding:6px 12px; border-radius:999px; border:2px solid transparent;}
+  nav.menu a:hover{border-color:var(--ink); background:#fff;}
+  nav.menu a.here{border-color:var(--ink); background:#fff;}
+  .lang-toggle{display:flex; border:2px solid var(--ink); border-radius:999px; overflow:hidden; background:#fff; flex-shrink:0;}
+  .lang-toggle button{border:0; background:transparent; padding:5px 14px; cursor:pointer; font-size:13px; font-weight:800; color:var(--sub);}
+  .lang-toggle button.active{background:var(--ink); color:#fff;}
+
+  /* page head */
+  .pagehead{padding:64px 0 24px; text-align:center;}
+  .pagehead .tag{display:inline-block; font-size:13px; font-weight:900; letter-spacing:.18em; color:#fff; background:var(--purple); border:2px solid var(--ink); padding:4px 14px; border-radius:999px; box-shadow:var(--shadow); text-transform:uppercase; transform:rotate(-1.5deg);}
+  .pagehead h1{font-size:clamp(28px,5vw,40px); font-weight:900; margin-top:14px;}
+  .pagehead p{color:var(--sub); margin-top:8px; max-width:600px; margin-left:auto; margin-right:auto;}
+
+  /* filter */
+  .filter-row{display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:28px 0 34px;}
+  .filter-btn{cursor:pointer; font-weight:800; font-size:14px; padding:8px 20px; border-radius:999px; border:2px solid var(--ink); background:#fff; color:var(--ink); box-shadow:var(--shadow); transition:transform .12s;}
+  .filter-btn:hover{transform:translateY(-2px);}
+  .filter-btn.active{background:var(--ink); color:#fff;}
+  .filter-btn .count{opacity:.6; font-weight:700; margin-left:4px;}
+
+  /* work list */
+  .worklist{max-width:900px; margin:0 auto 40px; display:flex; flex-direction:column; gap:16px;}
+  .work-row{background:var(--card); border:2.5px solid var(--ink); border-radius:16px; box-shadow:var(--shadow); padding:18px 22px; display:flex; gap:18px; align-items:flex-start; transition:transform .12s;}
+  .work-row:hover{transform:translateY(-3px);}
+  .work-row.hide{display:none;}
+  .work-cats{display:flex; flex-direction:column; gap:6px; flex-shrink:0; padding-top:2px;}
+  .cat-badge{font-size:10.5px; font-weight:900; letter-spacing:.06em; padding:3px 10px; border-radius:999px; border:2px solid var(--ink); text-align:center;}
+  .cat-pm{background:var(--purple); color:#fff;}
+  .cat-ux{background:var(--pink); color:#fff;}
+  .work-main{flex:1; min-width:0;}
+  .work-title{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .work-title h3{font-size:17px; font-weight:900; line-height:1.4;}
+  .badge-home{font-size:10.5px; font-weight:900; letter-spacing:.04em; color:var(--purple-deep); background:#efe9ff; border:2px solid var(--purple); border-radius:999px; padding:2px 9px;}
+  .badge-wip{font-size:10.5px; font-weight:900; letter-spacing:.04em; color:var(--sub); background:var(--bg); border:2px dashed var(--sub); border-radius:999px; padding:2px 9px;}
+  .work-main p{font-size:14px; color:var(--sub); margin:7px 0 10px;}
+  .work-tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;}
+  .chip{font-size:12px; font-weight:700; background:var(--bg); border:1.5px solid var(--ink); border-radius:999px; padding:2px 10px;}
+  .work-links{display:flex; gap:8px; flex-wrap:wrap;}
+  .work-links a{text-decoration:none; font-weight:900; font-size:13px; color:#fff; background:var(--ink); border-radius:9px; padding:6px 14px; border:2px solid var(--ink);}
+  .work-links a:hover{background:var(--purple-deep);}
+  .work-links a.alt{background:#fff; color:var(--ink);}
+  .work-links a.alt:hover{background:var(--bg);}
+  .work-links .soon{font-weight:900; font-size:13px; color:var(--sub); background:var(--bg); border:2px dashed var(--sub); border-radius:9px; padding:6px 14px;}
+
+  .backhome{text-align:center; padding:10px 0 70px;}
+  .backhome a{text-decoration:none; font-weight:900; font-size:15px; color:var(--ink); border:2px solid var(--ink); border-radius:14px; padding:11px 26px; box-shadow:var(--shadow); background:#fff; display:inline-block;}
+  .backhome a:hover{transform:translateY(-2px);}
+
+  footer{padding:36px 0 48px; text-align:center; color:var(--sub); font-size:13px; border-top:2px solid var(--ink); margin-top:20px;}
+
+  [data-lang="zh"] .en{display:none !important;}
+  [data-lang="en"] .zh{display:none !important;}
+  @media (max-width:640px){ nav.menu{display:none;} .work-row{flex-direction:column; gap:12px;} .work-cats{flex-direction:row;} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>Chih-yu Chang</a>
+    <nav class="menu">
+      <a href="index.html#quests"><span class="zh">精選</span><span class="en">Featured</span></a>
+      <a href="work.html" class="here"><span class="zh">全部作品</span><span class="en">All Work</span></a>
+      <a href="index.html#skills"><span class="zh">技能</span><span class="en">Skills</span></a>
+      <a href="index.html#contact"><span class="zh">聯絡</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="lang-toggle">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="pagehead">
+  <div class="wrap">
+    <span class="tag">Archive</span>
+    <h1><span class="zh">全部作品</span><span class="en">All Work</span></h1>
+    <p>
+      <span class="zh">完整專案清單——含首頁精選、以及還在整理中的作品。標「🏠 首頁」的目前顯示於首頁卡片區。</span>
+      <span class="en">The full project list — featured work plus pieces still in progress. Items marked "🏠 Home" currently appear on the homepage.</span>
+    </p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterWork('all',this)"><span class="zh">全部</span><span class="en">All</span></button>
+    <button class="filter-btn" onclick="filterWork('pm',this)"><span class="zh">產品 · PM</span><span class="en">Product · PM</span></button>
+    <button class="filter-btn" onclick="filterWork('ux',this)"><span class="zh">UX 設計</span><span class="en">UX Design</span></button>
+  </div>
+
+  <div class="worklist">
+
+    <!-- P01 MarxAI -->
+    <div class="work-row" data-cat="pm ux">
+      <div class="work-cats"><span class="cat-badge cat-pm">PM</span><span class="cat-badge cat-ux">UX</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">MarxAI 星朋友</span><span class="en">MarxAI "Star Friend"</span></h3>
+          <span class="badge-home">🏠 <span class="zh">首頁</span><span class="en">Home</span></span>
+        </div>
+        <p><span class="zh">火星生技軟體 PM 實習：AI 陪伴社群 App 從 0 到多版本迭代，含產品藍圖、四資源經濟＋數值模擬、對話模組、LLM 品質評估。</span><span class="en">Software PM internship: an AI companion social app from zero through iterations — roadmap, four-resource economy with simulation, conversation modules, LLM evaluation.</span></p>
+        <div class="work-tags"><span class="chip">PRD</span><span class="chip">Game Economy</span><span class="chip">LLM Eval</span><span class="chip">Conversation Design</span></div>
+        <div class="work-links">
+          <a href="marx-pm-case-study.html"><span class="zh">PM Case Study →</span><span class="en">PM Case Study →</span></a>
+          <a class="alt" href="marx-ux-case-study.html"><span class="zh">UX Case Study →</span><span class="en">UX Case Study →</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSL -->
+    <div class="work-row" data-cat="pm ux">
+      <div class="work-cats"><span class="cat-badge cat-pm">PM</span><span class="cat-badge cat-ux">UX</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">城市科學實驗室 UROP</span><span class="en">City Science Lab UROP</span></h3>
+          <span class="badge-home">🏠 <span class="zh">首頁</span><span class="en">Home</span></span>
+        </div>
+        <p><span class="zh">半年研究實習：從零建立城市資料 ELT 基礎設施、處理 350 萬+ 筆地理空間時序資料，並重新設計城市 AI 平台介面。</span><span class="en">Six-month research internship: built a city-data ELT pipeline from scratch, processed 3.5M+ geospatial time-series rows, redesigned the City AI platform interface.</span></p>
+        <div class="work-tags"><span class="chip">Airflow</span><span class="chip">dbt</span><span class="chip">H3 Geospatial</span><span class="chip">UI Design</span></div>
+        <div class="work-links">
+          <a href="csl-case-study.html"><span class="zh">Case Study →</span><span class="en">Case Study →</span></a>
+          <a class="alt" href="csl-internship.html"><span class="zh">完整脈絡 →</span><span class="en">Full Arc →</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- P05 EIDOLON -->
+    <div class="work-row" data-cat="ux">
+      <div class="work-cats"><span class="cat-badge cat-ux">UX</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">EIDOLON — Future Luxury × Rolls-Royce</span><span class="en">EIDOLON — Future Luxury × Rolls-Royce</span></h3>
+          <span class="badge-home">🏠 <span class="zh">首頁</span><span class="en">Home</span></span>
+        </div>
+        <p><span class="zh">柏林白湖 × FH Potsdam × Rolls-Royce 跨校專題：未來無車城市的奢華行動概念，2026/3 於 BMW 慕尼黑總部展出。負責情境腳本與全套分鏡插圖。</span><span class="en">weißensee × FH Potsdam × Rolls-Royce joint project: luxury mobility for car-free cities, exhibited at BMW Munich HQ (Mar 2026). Owned scenario writing and storyboard illustrations.</span></p>
+        <div class="work-tags"><span class="chip">未來思考</span><span class="chip">情境插圖</span><span class="chip">服務設計</span></div>
+        <div class="work-links"><a href="eidolon-case-study.html"><span class="zh">Case Study →</span><span class="en">Case Study →</span></a></div>
+      </div>
+    </div>
+
+    <!-- P04 Rong Tree -->
+    <div class="work-row" data-cat="ux">
+      <div class="work-cats"><span class="cat-badge cat-ux">UX</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">融樹：記憶的永恆守護</span><span class="en">Rong Tree — MODA Ideathon 2024</span></h3>
+          <span class="badge-home">🏠 <span class="zh">首頁</span><span class="en">Home</span></span>
+        </div>
+        <p><span class="zh">2024 數發部「點子松」好點子獎：為 2040 年多元家庭設計 AI 家族樹。未來思考＋兩輪 KANO＋使用者訪談，自 3,000+ 組入圍前 30。</span><span class="en">MODA Ideathon 2024 Good Idea Award: an AI family tree for 2040's plural families. Futures thinking, two KANO rounds, user interviews — Top 30 of 3,000+.</span></p>
+        <div class="work-tags"><span class="chip">UX 研究</span><span class="chip">KANO Model</span><span class="chip">未來思考</span></div>
+        <div class="work-links"><a href="rongtree-case-study.html"><span class="zh">Case Study →</span><span class="en">Case Study →</span></a></div>
+      </div>
+    </div>
+
+    <!-- P02 謀殺衛斯理官網 -->
+    <div class="work-row" data-cat="pm ux">
+      <div class="work-cats"><span class="cat-badge cat-pm">PM</span><span class="cat-badge cat-ux">UX</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">新版謀殺衛斯理官方網站</span><span class="en">Murder of Wesley — Site Redesign</span></h3>
+          <span class="badge-home">🏠 <span class="zh">首頁</span><span class="en">Home</span></span>
+        </div>
+        <p><span class="zh">主導官網完整改版：視覺風格定調、前後端需求溝通與時程掌控，並規劃文本外包控管品質。</span><span class="en">Led a full site redesign: visual direction, front/back-end coordination and timelines, managed outsourced copywriting.</span></p>
+        <div class="work-tags"><span class="chip">專案管理</span><span class="chip">視覺設計</span><span class="chip">網站改版</span></div>
+        <div class="work-links"><a href="https://mwlarp.com" target="_blank" rel="noopener"><span class="zh">造訪官網 ↗</span><span class="en">Visit Site ↗</span></a></div>
+      </div>
+    </div>
+
+    <!-- P03 Gather Town -->
+    <div class="work-row" data-cat="pm ux">
+      <div class="work-cats"><span class="cat-badge cat-pm">PM</span><span class="cat-badge cat-ux">UX</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">Gather Town 線上劇本殺遊戲</span><span class="en">Online Murder Mystery on Gather Town</span></h3>
+          <span class="badge-home">🏠 <span class="zh">首頁</span><span class="en">Home</span></span>
+        </div>
+        <p><span class="zh">疫情停業期間主導把實體謀殺推理遊戲移植線上：客製地圖、RPG 式搜證、自建文本系統、保留真人主持，開闢新產品線並獲玩家 4 星好評。</span><span class="en">Ported the physical murder mystery online during COVID: custom maps, RPG investigation, a custom text system, live hosts — a new product line with 4-star community reviews.</span></p>
+        <div class="work-tags"><span class="chip">遊戲設計</span><span class="chip">空間設計</span><span class="chip">線上營運</span></div>
+        <div class="work-links"><a href="gathertown-case-study.html"><span class="zh">Case Study →</span><span class="en">Case Study →</span></a></div>
+      </div>
+    </div>
+
+    <!-- P07 DataNews -->
+    <div class="work-row" data-cat="ux">
+      <div class="work-cats"><span class="cat-badge cat-ux">UX</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">Californian Car Plates 資料影片</span><span class="en">Californian Car Plates — Data Video</span></h3>
+          <span class="badge-home">🏠 <span class="zh">首頁</span><span class="en">Home</span></span>
+        </div>
+        <p><span class="zh">DataNews 工作坊（FH Potsdam 交換）：鑽進加州 DMV 兩萬多筆車牌審核紀錄，從資料分析、腳本到 AE 動畫，做成 85 秒資訊影片。</span><span class="en">DataNews workshop (FH Potsdam): mining 20,000+ California DMV vanity-plate records — analysis, script, AE animation — into an 85-second data video.</span></p>
+        <div class="work-tags"><span class="chip">Data Storytelling</span><span class="chip">Motion Graphics</span><span class="chip">After Effects</span></div>
+        <div class="work-links"><a href="datanews-case-study.html"><span class="zh">播放影片 →</span><span class="en">Watch →</span></a></div>
+      </div>
+    </div>
+
+    <!-- P08 拓點裝潢與活動 -->
+    <div class="work-row" data-cat="pm">
+      <div class="work-cats"><span class="cat-badge cat-pm">PM</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">謀殺衛斯理：拓點裝潢與活動專案</span><span class="en">Venue Expansion & Events PM</span></h3>
+          <span class="badge-wip"><span class="zh">素材蒐集中</span><span class="en">Gathering assets</span></span>
+        </div>
+        <p><span class="zh">統籌新據點裝潢工程與開幕（廠商管理、預算控管、工期追蹤）及行銷活動專案——實體專案管理經驗。</span><span class="en">Managed a new venue's build-out and opening (vendor management, budget, schedule) plus marketing events — hands-on physical project management.</span></p>
+        <div class="work-tags"><span class="chip">廠商管理</span><span class="chip">預算控管</span><span class="chip">工期管理</span><span class="chip">活動企劃</span></div>
+        <div class="work-links"><span class="soon"><span class="zh">Case study 準備中</span><span class="en">Case study coming</span></span></div>
+      </div>
+    </div>
+
+    <!-- P06 碩士論文 -->
+    <div class="work-row" data-cat="ux">
+      <div class="work-cats"><span class="cat-badge cat-ux">UX</span></div>
+      <div class="work-main">
+        <div class="work-title">
+          <h3><span class="zh">碩士論文／畢業製作</span><span class="en">Master Thesis / Capstone</span></h3>
+          <span class="badge-wip"><span class="zh">整理中</span><span class="en">In progress</span></span>
+        </div>
+        <p><span class="zh">北科大互動設計系碩士研究。題目與摘要整理中，確定公開後補上。</span><span class="en">Interaction Design master's research at Taipei Tech. Title and abstract being finalized.</span></p>
+        <div class="work-tags"><span class="chip">互動設計</span><span class="chip">研究</span></div>
+        <div class="work-links"><span class="soon"><span class="zh">準備中</span><span class="en">Coming soon</span></span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="backhome">
+    <a href="index.html"><span class="zh">← 回首頁精選</span><span class="en">← Back to Featured</span></a>
+  </div>
+</div>
+
+<footer>
+  <span class="zh">© 2026 Chih-yu Chang · 用 ❤️ 與很多 ☕ 打造</span>
+  <span class="en">© 2026 Chih-yu Chang · Made with ❤️ and a lot of ☕</span>
+</footer>
+
+<script>
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('btn-zh').classList.toggle('active', l==='zh');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  try{ localStorage.setItem('lang', l); }catch(e){}
+}
+try{ const s = localStorage.getItem('lang'); if(s) setLang(s); }catch(e){}
+
+function filterWork(cat, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.worklist .work-row').forEach(r=>{
+    const cats = (r.dataset.cat || '').split(' ');
+    r.classList.toggle('hide', cat !== 'all' && !cats.includes(cat));
+  });
+}
+
+// auto-fill counts
+(function(){
+  const rows = document.querySelectorAll('.worklist .work-row');
+  const tally = {all: rows.length, pm:0, ux:0};
+  rows.forEach(r=>{
+    const cats = (r.dataset.cat || '').split(' ');
+    if(cats.includes('pm')) tally.pm++;
+    if(cats.includes('ux')) tally.ux++;
+  });
+  document.querySelectorAll('.filter-btn').forEach(b=>{
+    const m = b.getAttribute('onclick').match(/filterWork\('(\w+)'/);
+    if(m && tally[m[1]] != null){
+      const s = document.createElement('span'); s.className='count'; s.textContent = tally[m[1]];
+      b.appendChild(s);
+    }
+  });
+})();
+</script>
+</body>
+</html>
