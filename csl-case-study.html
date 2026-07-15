@@ -58,6 +58,11 @@
     [data-lang="en"] .zh{display:none !important;}
     .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
     .tagrow span{background:var(--tag); border-radius:999px; padding:4px 14px; font-size:13px; color:var(--sub);}
+    .tldr{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:0 14px 14px 0; padding:18px 22px; margin:28px 0 4px;}
+    .tldr .tldr-head{font-size:12.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;}
+    .tldr ul{list-style:none; margin:0; padding:0;}
+    .tldr li{margin:8px 0; font-size:14.5px; color:var(--ink);}
+    .tldr li b{color:var(--accent);}
     @media(max-width:600px){.phase-bar{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -94,6 +99,16 @@
     <div><div class="k"><span class="zh">實驗室</span><span class="en">Lab</span></div><div class="v">City Science Lab (CSL)</div></div>
     <div><div class="k"><span class="zh">Mentor</span><span class="en">Mentor</span></div><div class="v">軒柏 & 威竹</div></div>
     <div><div class="k"><span class="zh">期間</span><span class="en">Timeline</span></div><div class="v">2025 / 02 – 05</div></div>
+  </div>
+
+  <div class="tldr">
+    <div class="tldr-head"><span class="zh">⏱ 90 秒版</span><span class="en">⏱ 90-Second Version</span></div>
+    <ul>
+      <li><b><span class="zh">角色</span><span class="en">Role</span></b>：<span class="zh">UROP 研究實習生（Mentor：軒柏 & 威竹）</span><span class="en">UROP Research Intern (Mentors: 軒柏 & 威竹)</span></li>
+      <li><b><span class="zh">挑戰</span><span class="en">Challenge</span></b>：<span class="zh">兩階段任務——先打好城市資料的基礎設施，再讓資料變成研究員能對話查詢的介面</span><span class="en">A two-phase mandate — first build the city-data infrastructure, then turn that data into an interface researchers can query</span></li>
+      <li><b><span class="zh">我做了什麼</span><span class="en">What I did</span></b>：<span class="zh">Phase 1 建立 ELT 管道並對新竹城市圖層做 H3 空間分析；Phase 2 分析台北西區 350 萬+ 筆時序人口資料，同時主導 City AI 介面 3 版迭代</span><span class="en">Phase 1 — built the ELT pipeline and ran H3 spatial analysis on Hsinchu city layers; Phase 2 — analyzed 3.5M+ rows of Taipei time-series population data while leading 3 rounds of City AI UI redesign</span></li>
+      <li><b><span class="zh">成果</span><span class="en">Result</span></b>：<span class="zh">3 個 DAG、3 套環境、464K+ 格新竹資料＋350 萬+ 筆台北資料、6+ 功能模組</span><span class="en">3 DAGs, 3 environments, 464K+ Hsinchu cells + 3.5M+ Taipei rows, 6+ feature modules</span></li>
+    </ul>
   </div>
 </div>
 
