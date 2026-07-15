@@ -49,6 +49,13 @@
   [data-lang="en"] .zh{display:none !important;}
   .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
   .tagrow span{background:var(--tag); border-radius:999px; padding:4px 14px; font-size:13px; color:var(--sub);}
+  .tldr{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:0 14px 14px 0; padding:18px 22px; margin:28px 0 4px;}
+  .tldr .tldr-head{font-size:12.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;}
+  .tldr ul{list-style:none; margin:0; padding:0;}
+  .tldr li{margin:8px 0; font-size:14.5px; color:var(--ink);}
+  .tldr li b{color:var(--accent);}
+  .tldr .sub-list{list-style:disc; margin:6px 0 0 20px; padding:0;}
+  .tldr .sub-list li{margin:4px 0; font-size:14px;}
 </style>
 </head>
 <body>
@@ -77,10 +84,26 @@
   </div>
 
   <div class="meta">
-    <div><div class="k"><span class="zh">角色</span><span class="en">Role</span></div><div class="v"><span class="zh">產品管理實習生</span><span class="en">PM Intern</span></div></div>
+    <div><div class="k"><span class="zh">角色</span><span class="en">Role</span></div><div class="v"><span class="zh">產品研究員-實習生</span><span class="en">PM Intern</span></div></div>
     <div><div class="k"><span class="zh">團隊</span><span class="en">Team</span></div><div class="v"><span class="zh">約 10 人跨職能</span><span class="en">~10, cross-functional</span></div></div>
-    <div><div class="k"><span class="zh">期間</span><span class="en">Timeline</span></div><div class="v">2025 (Sprint W18–W31+)</div></div>
+    <div><div class="k"><span class="zh">期間</span><span class="en">Timeline</span></div><div class="v">2025 (Sprint W1–W38+)</div></div>
     <div><div class="k"><span class="zh">狀態</span><span class="en">Status</span></div><div class="v"><span class="zh">MVP 多輪迭代，未上線</span><span class="en">MVP iterated; not launched</span></div></div>
+  </div>
+
+  <div class="tldr">
+    <div class="tldr-head"><span class="zh">⏱ 90 秒版</span><span class="en">⏱ 90-Second Version</span></div>
+    <ul>
+      <li><b><span class="zh">角色</span><span class="en">Role</span></b>：<span class="zh">產品企劃+專案管理+遊戲化</span><span class="en">PM Intern</span></li>
+      <li><b><span class="zh">挑戰</span><span class="en">Challenge</span></b>：<span class="zh">一款橫跨 AI 對話、社群、遊戲化世界三大板塊的 App，如何在資源有限下收斂範圍</span><span class="en">An app spanning AI chat, social, and a gamified world — how to scope down with limited resources</span></li>
+      <li><b><span class="zh">我做了什麼</span><span class="en">What I did</span></b>：
+        <ul class="sub-list">
+          <li><span class="zh">產品企劃：研究使用者需求、做 brainstorming，把抽象的概念拆解成可執行的規劃方向。</span><span class="en">Product planning — researched user needs, ran brainstorms, and broke abstract ideas into actionable plans.</span></li>
+          <li><span class="zh">開發管理：mentor 帶著我一起做，包含跟工程 team 對齊 sprint 進度、跟外包團隊洽談，以及定期跟老闆匯報專案狀況。</span><span class="en">Dev management — worked alongside my mentor to align sprints with engineering, coordinate with outsourced teams, and report project status to leadership.</span></li>
+          <li><span class="zh">遊戲化：自己研究了數值設計、美術外包的做法，最後設計出一套簡易的遊戲經濟系統跟核心循環（core loop）。</span><span class="en">Self-driven research into game-economy design and art outsourcing, resulting in a simple economy system and core loop.</span></li>
+        </ul>
+      </li>
+      <li><b><span class="zh">成果</span><span class="en">Result</span></b>：<span class="zh">PRD、模擬驗證的經濟模型、TestFlight 多輪 MVP 迭代（專案最終未上線）</span><span class="en">6+ complete PRDs, a simulation-validated economy, multiple TestFlight MVP iterations (the product never launched)</span></li>
+    </ul>
   </div>
 </div>
 
@@ -110,7 +133,7 @@
     <li><span class="zh"><strong>社群冷啟動與孤獨感</strong>：新社群沒內容沒朋友；傳統交友 App 的配對目的性太強。</span><span class="en"><strong>Social cold-start & loneliness</strong>: new networks are empty; dating-style matching is too intentional.</span></li>
     <li><span class="zh"><strong>黏著度來源單一</strong>：純聊天工具缺乏回訪理由，需要遊戲化循環支撐留存。</span><span class="en"><strong>Single-source stickiness</strong>: pure chat lacks return triggers; retention needs a gamified loop.</span></li>
   </ul>
-  <h3><span class="zh">雙 TA 循環</span><span class="en">The two-archetype loop</span></h3>
+  <h3><span class="zh">雙目標循環</span><span class="en">The two-archetype loop</span></h3>
   <p><span class="zh"><strong>A 型（工具驅動）</strong>為了讓 AI 更好用而參與養成；<strong>B 型（養成驅動）</strong>為了培養星朋友而持續互動。循環：養成動機 → 更多互動 → AI 更懂你 → 工具更個人化 → 互動更有價值 → 回饋養成。</span>
   <span class="en"><strong>Type A (utility-driven)</strong> engages with nurturing to make the AI more useful; <strong>Type B (nurture-driven)</strong> keeps interacting to raise their companion. The loop: nurturing motivation → more interaction → AI learns more → more personal tool → more valuable interaction → back into nurturing.</span></p>
 
@@ -146,7 +169,7 @@
   <h2><span class="num">03</span><span class="zh">我負責的核心系統</span><span class="en">Core Systems I Designed</span></h2>
 
   <div class="card">
-    <h3 style="margin-top:0"><span class="zh">Onboarding（2 次改版）</span><span class="en">Onboarding (2 revisions)</span></h3>
+    <h3 style="margin-top:0"><span class="zh">Onboarding</span><span class="en">Onboarding (2 revisions)</span></h3>
     <p><span class="zh">以 RPG 敘事包裝必要流程：世界觀 → 靈魂連結 → 4 題情境測驗 → 鑄造動畫 → 命名 → 世界介紹 → 社群註冊 → 星朋友成為第一位好友 → 推薦 NPC → 自由探索。關鍵決策：測驗情境化而非問卷式；「重點在孵出來講的第一句話」，16 型人格各自撰寫開場白；建立「必經路徑放 Onboarding、進階功能用 Just-in-Time 情境教學」的盤點框架。</span>
     <span class="en">RPG narrative wrapped around mandatory steps: worldview → soul link → 4 situational quiz questions → forging animation → naming → world tour → social registration → companion becomes your first friend → NPC recommendations → free exploration. Key decisions: situational (not survey) quiz writing; "the first sentence at hatching matters most," with openers written per 16 personality types; a teaching-split framework (mandatory paths in onboarding, advanced features just-in-time).</span></p>
   </div>
@@ -207,7 +230,7 @@
     <li><span class="zh">對照目標節奏（10 場到 L5）診斷：實際 45 場——<strong>升級門檻過高 4.5 倍</strong>。</span><span class="en">Against target pacing (L5 in ~10 sessions): actual 45 — <strong>thresholds 4.5× too steep</strong>.</span></li>
     <li><span class="zh">提出三個調參方案並以模擬預估改善，再上 Firebase 實測對話驗證。</span><span class="en">Proposed three tuning options, projected via simulation, validated with live chat tests on Firebase.</span></li>
   </ol>
-  <div class="callout"><span class="zh"><strong>原則：先模擬，再上線。</strong>數值不是拍腦袋，是「定義公式 → 模擬跑很多次 → 看曲線是否符合節奏 → 實測」的閉環。</span>
+  <div class="callout"><span class="zh"><strong>原則：先模擬，再上線。</strong>遊戲數值設計不是憑空想像，是「定義公式 → 模擬跑很多次 → 看曲線是否符合節奏 → 實測」的閉環。</span>
   <span class="en"><strong>Principle: simulate before you ship.</strong> Numbers aren't guessed — define formulas → simulate at scale → check curves against intended pacing → validate live.</span></div>
 </section>
 
@@ -224,14 +247,14 @@
   <ul>
     <li><span class="zh"><strong>以 Scrum 敏捷模式運作</strong>，我擔任近似 Product Owner 的角色：維護跨六大系統的 product backlog 並排優先級，團隊每日開 stand-up、每週跑 Sprint。採里程碑式發布——每個 Sprint 持續累積可交付增量，在對利害關係人做 sprint review 前才部署 TestFlight 版本。</span><span class="en"><strong>Ran on Scrum</strong>, where I acted as a de facto Product Owner: maintaining and prioritizing the product backlog across six systems, with daily stand-ups and weekly sprints. Releases were milestone-based — increments accumulated each sprint, with a TestFlight build deployed ahead of each stakeholder sprint review.</span></li>
     <li><span class="zh"><strong>數據驅動的 retrospective</strong>：每輪迭代用數據回顧、據此調整下一輪——例如以模擬發現升級節奏慢 4.5 倍後修正參數、評估後判斷某 LLM 評估工具效益有限而改用自建方案。</span><span class="en"><strong>Data-driven retrospectives</strong>: each iteration was reviewed on data and adjusted for the next — e.g., correcting leveling parameters after simulation showed pacing was 4.5× too slow, and switching to a self-built evaluator after judging an LLM tool's ROI limited.</span></li>
-    <li><span class="zh">Notion 週 Sprint（W18–W31+）；我的 ticket 橫跨家具文案、價格數值到每日任務修改，同時輸出六大系統的 spec／PRD。</span><span class="en">Weekly Notion sprints (W18–W31+); my tickets spanned furniture copy, price tuning, and daily-quest revisions, alongside specs/PRDs across six systems.</span></li>
+    <li><span class="zh">Notion 每週 Sprint（W31+）；我的 ticket 橫跨家具文案、價格數值到每日任務修改，同時輸出六大系統的 spec／PRD。</span><span class="en">Weekly Notion sprints (W18–W31+); my tickets spanned furniture copy, price tuning, and daily-quest revisions, alongside specs/PRDs across six systems.</span></li>
     <li><span class="zh">文件保持「決策＋依據＋待辦」結構；例如世界大廳的 20+ 項開放問題清單逐項標記已決／未決。</span><span class="en">Docs kept a decision + rationale + open-questions structure — e.g., a 20+-item open-question list for the World Hall.</span></li>
     <li><span class="zh">對美術：需求量化到可估工時（5 地點 × 2 動態頭貼 × 4 動物＋走路動畫＋20 隻 NPC）。</span><span class="en">With artists: requirements quantified into estimable units (5 locations × 2 avatars × 4 animals + walk cycles + 20 NPCs).</span></li>
     <li><span class="zh">對工程：直接交付 JSON schema、欄位表與 prompt 模板，縮短規格到實作的距離。</span><span class="en">With engineers: delivered JSON schemas, field tables, and prompt templates directly.</span></li>
   </ul>
   <figure>
     <img src="assets/sprint-board.png" alt="Notion Product Team Sprint board" onerror="this.parentElement.style.display='none'">
-    <figcaption><span class="zh">團隊的 Notion Sprint 看板（W18–W31），跨 UI/UX、iOS、DEV、Game Art、Game Design、PM 六個職能。</span><span class="en">The team's Notion sprint board (W18–W31) across UI/UX, iOS, DEV, game art, game design, and PM.</span></figcaption>
+    <figcaption><span class="zh">團隊的 Notion Sprint 看板，跨 UI/UX、iOS、DEV、Game Art、Game Design、PM 六個職能。</span><span class="en">The team's Notion sprint board (W18–W31) across UI/UX, iOS, DEV, game art, game design, and PM.</span></figcaption>
   </figure>
 </section>
 
